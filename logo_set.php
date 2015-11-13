@@ -99,7 +99,7 @@
 <body>
 
 <!--    Only Index Page for Analytics   -->
-<?php include_once("analyticstracking.php") ?>
+
 	<!-- TOP BAR -->
 	<div id="top-bar">
 		
@@ -181,7 +181,7 @@ unlink('<?php if(isset($_SESSION['logo'])) { echo "upload/".$_SESSION['logo'];}e
 
 	require "lib/gump.class.php";
             $db->query("UPDATE store_details  SET log ='".$upload."',type='".$type."'");
-       header("location:index.php");
+       header("location: index.php");
       }
     }
   }

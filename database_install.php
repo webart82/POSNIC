@@ -63,7 +63,7 @@ document.getElementById("name").disabled=true;
 <body>
 
 <!--    Only Index Page for Analytics   -->
-<?php include_once("analyticstracking.php") ?>
+
 	<!-- TOP BAR -->
 	<div id="top-bar">
 		
@@ -119,7 +119,7 @@ document.getElementById("name").disabled=true;
                         $link = mysqli_connect("$host","$user","$pass");
 if (!$link) {
     $data="Database Configration is Not vaild";
-      header("location:instal.php?msg=$data");
+      header("location: instal.php?msg=$data");
       exit;
 }
 

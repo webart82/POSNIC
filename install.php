@@ -57,7 +57,7 @@
 <body>
 
 <!--    Only Index Page for Analytics   -->
-<?php include_once("analyticstracking.php") ?>
+
 	<!-- TOP BAR -->
 	<div id="top-bar">
 		

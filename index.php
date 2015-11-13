@@ -1,14 +1,14 @@
 <?php
 session_start();
-if(!include_once "config.php"){
-           header("location:install.php");
+if(!file_exists("config.php") || !include_once "config.php"){
+           header("location: install.php");
  }
 if (!defined('posnicEntry')) {
     define('posnicEntry', true);
 }
 if(isset($_SESSION['username'])) {
     if($_SESSION['usertype'] =='admin') // if session variable "username" does not exist.
-	header("location:dashboard.php"); // Re-direct to index.php
+	header("location: dashboard.php"); // Re-direct to index.php
 }
 ?>
 <!DOCTYPE html>
@@ -69,7 +69,7 @@ if(isset($_SESSION['username'])) {
 <body>
 
 <!--    Only Index Page for Analytics   -->
-<?php include_once("analyticstracking.php") ?>
+
 	<!-- TOP BAR -->
 	<div id="top-bar">
 		

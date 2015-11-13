@@ -63,7 +63,7 @@
 <body>
 
 <!--    Only Index Page for Analytics   -->
-<?php include_once("analyticstracking.php") ?>
+
 	<!-- TOP BAR -->
 	<div id="top-bar">
 		
@@ -123,7 +123,7 @@
  $password=$_POST['password'];
  $answer=$_POST['answer'];
            $db->query("UPDATE stock_user  SET username ='".$uname."',password='".$password."',answer='".$answer."'");
-          header("location:next_store_details.php");
+          header("location: next_store_details.php");
      // exit;
         }
         ?>

@@ -2,7 +2,7 @@
 include_once "init.php"; 
 // Use session variable on this page. This function must put on the top of page.
 if(!isset($_SESSION['username']) || $_SESSION['usertype'] !='admin'){ // if session variable "username" does not exist.
-header("location:index.php?msg=Please%20login%20to%20access%20admin%20area%20!"); // Re-direct to index.php
+header("location: index.php?msg=Please%20login%20to%20access%20admin%20area%20!"); // Re-direct to index.php
 }
 else
 {
@@ -54,7 +54,7 @@ else
 	
 	$db->execute("DELETE FROM $tablename WHERE id=$id");
 	
-	header("location:$return?msg=Record Deleted Successfully!&id=$id");
+	header("location: $return?msg=Record Deleted Successfully!&id=$id");
 	}
 	if(isset($_POST['table']) && isset($_POST['checklist']))
 	{
@@ -64,11 +64,11 @@ else
            for($i=0;$i<count($data);$i++){
               $db->execute("DELETE FROM $tablename WHERE id=$data[$i]"); 
            }
-	header("location:$return?msg=Record Deleted Successfully!");
+	header("location: $return?msg=Record Deleted Successfully!");
 }
 echo $_POST['return'];
 if(isset($_POST['return'])){
-    header("location:$return");
+    header("location: $return");
 }
 }
 ?>

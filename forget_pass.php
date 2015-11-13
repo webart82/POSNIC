@@ -60,7 +60,7 @@
 <body>
 
 <!--    Only Index Page for Analytics   -->
-<?php include_once("analyticstracking.php") ?>
+
 	<!-- TOP BAR -->
 	<div id="top-bar">
 		
@@ -117,7 +117,7 @@
       <?php
   }else{
       $data="Answer Is Wrong";
-     header("location:forget_pass.php?msg=$data");
+     header("location: forget_pass.php?msg=$data");
   }
   echo "</p></fieldset>";
     }else{

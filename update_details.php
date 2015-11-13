@@ -139,7 +139,7 @@ if ((($_FILES["file"]["type"] == "image/gif")
     setTimeout("window.location.reload();",4000);
     </script>
         <?php
-            header("location:update_details.php");
+            header("location: update_details.php");
       
     }
   }
@@ -151,7 +151,7 @@ else
 ?>
          
 <!--    Only Index Page for Analytics   -->
-<?php include_once("analyticstracking.php") ?>
+
 	<!-- TOP BAR -->
 	<div id="top-bar">
 		
@@ -200,7 +200,7 @@ else
   if($db->query("UPDATE store_details  SET pin='".$pin."',city='".$city."',name='".$name."',email='".$email."',web='".$web."',address='".$address."',place='".$place."',phone='".$phone."' "))
 			echo "<br><font color=green size=+1 > Store Details Updated!</font>" ;
 			
-          // header("location:logo_set.php");
+          // header("location: logo_set.php");
     //  exit;
         }
         ?>

@@ -484,7 +484,7 @@ function balance_amount(){
                         }
 			}		
                         $msg="<br><font color=green size=6px >Parchase order Added successfully Ref: [". $_POST['stockid']."] !</font>" ;
-				header("Location: add_purchase.php?msg=$msg");
+				header("location:  add_purchase.php?msg=$msg");
 							}
 						
                                         }

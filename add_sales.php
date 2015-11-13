@@ -567,14 +567,14 @@ function discount_type(){
                         
 			}		
                           $msg="<br><font color=green size=6px >Sales Added successfully Ref: [". $_POST['stockid']."] !</font>" ;
-				header("Location: add_sales.php?msg=$msg");
+				header("location:  add_sales.php?msg=$msg");
 							
 			
 			
                         			echo "<script>window.open('add_sales_print.php?sid=$autoid','myNewWinsr','width=620,height=800,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no');</script>";
                         			//echo "<script>window.open('add_sales_print.php?sid=$autoid','myNewWinsr','width=620,height=800,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no');</script>";
                         //$msg="<br><font color=green size=6px >Parchase order Added successfully Ref: [". $_POST['stockid']."] !</font>" ;
-				//header("Location: add_purchase.php?msg=$msg");
+				//header("location:  add_purchase.php?msg=$msg");
 							}
 						
                                         }

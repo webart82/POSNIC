@@ -15,7 +15,7 @@
   <?php $count = $db->countOfAll("store_details");
   if($count>1){
       
-   header("location:index.php");
+   header("location: index.php");
   }
   ?>
   <?php if(isset($_POST['submit']) and $_POST['submit']==='Upload'){
@@ -58,10 +58,10 @@ if ((($_FILES["file"]["type"] == "image/gif")
             $upload= $_FILES["file"]["name"] ;
            $type;
            $db->query("UPDATE store_details  SET log='".$upload."',type='".$type."'");
-       header("location:next_store_details.php");
+       header("location: next_store_details.php");
       
     }
-     // header("location:next_store_details.php");
+     // header("location: next_store_details.php");
     ?>
 <script type="text/javascript">
     setTimeout("window.location.reload();",4000);
@@ -173,7 +173,7 @@ else
 <body>
 
 <!--    Only Index Page for Analytics   -->
-<?php include_once("analyticstracking.php") ?>
+
 	<!-- TOP BAR -->
 	<div id="top-bar">
 		
@@ -233,7 +233,7 @@ else
 
           // Execute query
         
-           header("location:index.php");
+           header("location: index.php");
       
         }
         ?>

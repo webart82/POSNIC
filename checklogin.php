@@ -31,11 +31,11 @@ $_SESSION['username']=$row[1];
 $_SESSION['usertype']=$row[3];
 
 if($row[3]=="admin")
-header("location:dashboard.php");
+header("location: dashboard.php");
 else 
 die("Not Valid User Type. Check with your application administartor");
 
 }else {
-header("location:index.php?msg=Wrong%20Username%20or%20Password&type=error");
+header("location: index.php?msg=Wrong%20Username%20or%20Password&type=error");
 }
 ?>

@@ -258,7 +258,7 @@ $query = "SELECT COUNT(DISTINCT stock_id) as num FROM stock_entries WHERE stock_
 }
 	$total_pages = mysqli_fetch_array(mysqli_query($db->connection,$query));
 
-	$total_pages = $total_pages[num];
+	$total_pages = $total_pages['num'];
 
 	
 
@@ -270,7 +270,7 @@ $query = "SELECT COUNT(DISTINCT stock_id) as num FROM stock_entries WHERE stock_
 	if(isset($_GET['limit']))
 	$limit=$_GET['limit'];
 	
-	$page = $_GET['page'];
+	$page = isset($_GET['page'])? $_GET['page']: 0;
 
 	if($page) 
 
@@ -522,9 +522,9 @@ while($row = mysqli_fetch_array($result))
 
     <td>	<a href="update_purchase.php?sid=<?php echo $entryid;?>&table=stock_entries&return=view_purchase.php"	class="table-actions-button ic-table-edit">
 	</a>
-	<a onclick="return confirmSubmit()" href="delete.php?id=<?php echo $row['id'];?>&table=stock_entries&return=view_purchase.php" class="table-actions-button ic-table-delete"></a>
+	<a onclick="return confirmSubmit()" href="delete.php?id=<?php echo isset($row['id'])?$row['id']:0;?>&table=stock_entries&return=view_purchase.php" class="table-actions-button ic-table-delete"></a>
 	</td>
-	<td><input type="checkbox" value="<?php echo $row['id']; ?>" name="checklist[]" id="check_box" /></td>
+	<td><input type="checkbox" value="<?php echo isset($row['id'])?$row['id']:0; ?>" name="checklist[]" id="check_box" /></td>
         <td></td>
 </tr>
 <?php $i++; } ?>

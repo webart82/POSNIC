@@ -410,7 +410,7 @@ function quantity_chnage(e){
 			$description=mysqli_real_escape_string($db->connection,$_POST['description']);
 			
 			$namet=$_POST['stock_name'];
-			$quantityt=$_POST['quanitity'];
+			$quantityt=isset($_POST['quanitity'])?  $_POST['quanitity']:'';
 			$bratet=$_POST['cost'];
 			$sratet=$_POST['sell'];
 			$totalt=$_POST['total'];
@@ -526,18 +526,18 @@ function quantity_chnage(e){
                   <table class="form" id="display" style="display:none">
                        <tr >
                  
-                      <td><input name=""  type="text" id="item"  maxlength="200"  class="round my_with " style="width: 150px" value="<?php echo $supplier; ?>" /></td>
+                      <td><input name=""  type="text" id="item"  maxlength="200"  class="round my_with " style="width: 150px" value="<?php echo isset($supplier)?  $supplier:''; ?>" /></td>
                        
-                      <td><input name=""  type="text" id="quty"  maxlength="200"   class="round  my_with" onKeyPress="quantity_chnage(event);return numbersonly(event)" onkeyup="total_amount();unique_check()" value="<?php echo $category; ?>"   /></td>
+                      <td><input name=""  type="text" id="quty"  maxlength="200"   class="round  my_with" onKeyPress="quantity_chnage(event);return numbersonly(event)" onkeyup="total_amount();unique_check()" value="<?php echo isset($category)?  $category:''; ?>"   /></td>
                      
-                      <td><input name=""  type="text" id="cost" readonly="readonly" maxlength="200"  class="round my_with"  value="<?php echo $category; ?>" /></td>
+                      <td><input name=""  type="text" id="cost" readonly="readonly" maxlength="200"  class="round my_with"  value="<?php echo isset($category)?  $category:''; ?>" /></td>
                        
                       
-                      <td><input name=""  type="text" id="sell" readonly="readonly" maxlength="200"  class="round  my_with"  value="<?php echo $category; ?>" /></td>
+                      <td><input name=""  type="text" id="sell" readonly="readonly" maxlength="200"  class="round  my_with"  value="<?php echo isset($category)?  $category:''; ?>" /></td>
                             
                                         
-                      <td><input name=""  type="text" id="stock" readonly="readonly" maxlength="200"  class="round  my_with"  value="<?php echo $category; ?>" /></td>
-                      <td><input name=""  type="text" id="total" maxlength="200"  class="round default-width-input " style="width:120px;  margin-left: 20px" value="<?php echo $category; ?>" /></td>
+                      <td><input name=""  type="text" id="stock" readonly="readonly" maxlength="200"  class="round  my_with"  value="<?php echo isset($category)?  $category:''; ?>" /></td>
+                      <td><input name=""  type="text" id="total" maxlength="200"  class="round default-width-input " style="width:120px;  margin-left: 20px" value="<?php echo isset($category)?  $category:''; ?>" /></td>
                       <td><input type="button" onclick="add_values()" onkeyup=" balance_amount();" id="add_new_code"  style="margin-left:20px; width:30px;height:30px;border:none;background:url(images/save.png)" class="round">
                          </td><td> <input type="button" value="" id="cancel" onclick="clear_data()" style="width:30px;float: right; border:none;height:30px;background:url(images/close_new.png)">
                       </td>

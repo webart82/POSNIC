@@ -167,7 +167,7 @@ include_once("init.php");
                     </tr>
                    
                       
-                    </tr>
+
                    
                     <tr>
                       <td>

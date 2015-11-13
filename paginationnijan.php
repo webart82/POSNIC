@@ -355,7 +355,7 @@ $query = "SELECT COUNT(*) as num FROM  customer_details WHERE customer_name LIKE
 
 	$total_pages = mysqli_fetch_array(mysqli_query($db->connection,$query));
 
-	$total_pages = $total_pages[num];
+	$total_pages = $total_pages['num'];
 echo"$total_pages";
 	
 
@@ -368,7 +368,7 @@ if(isset($_GET['limit']))
 	$limit=$_GET['limit'];
 	
 
-	$page = $_GET['page'];
+	$page = isset($_GET['page'])? $_GET['page']: 0;
 	echo"page";
 
 	if($page) 

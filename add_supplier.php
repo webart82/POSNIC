@@ -197,10 +197,10 @@ include_once("init.php");
                   <table class="form"  border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td><span class="man">*</span>Name:</td>
-                      <td><input name="name"placeholder="ENTER YOUR FULL NAME" type="text" id="name" maxlength="200"  class="round default-width-input" value="<?php echo $name; ?>" /></td>
+                      <td><input name="name"placeholder="ENTER YOUR FULL NAME" type="text" id="name" maxlength="200"  class="round default-width-input" value="<?php echo isset($name)?$name:''; ?>" /></td>
                        <td>Contact 1 </td>
                       <td><input name="contact1" placeholder="ENTER YOUR ADDRESS contact1"type="text" id="buyingrate" maxlength="20"   class="round default-width-input" 
-					  value="<?php echo $contact1; ?>" /></td>
+					  value="<?php echo isset($contact1)?$contact1:''; ?>" /></td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>
@@ -208,10 +208,10 @@ include_once("init.php");
                     </tr>
                     <tr>
                       <td>Address</td>
-                      <td><textarea name="address" placeholder="ENTER YOUR ADDRESS"cols="8" class="round full-width-textarea"><?php echo $address; ?></textarea></td>
+                      <td><textarea name="address" placeholder="ENTER YOUR ADDRESS"cols="8" class="round full-width-textarea"><?php echo isset($address)?$address:''; ?></textarea></td>
                         <td>Contact 2 </td>
                       <td><input name="contact2"placeholder="ENTER YOUR contact2" type="text" id="sellingrate" maxlength="20"  class="round default-width-input" 
-					  value="<?php echo $contact2; ?>" /></td>
+					  value="<?php echo isset($contact2)?$contact2:''; ?>" /></td>
                     </tr>
                     <tr>
                       <td>&nbsp;</td>

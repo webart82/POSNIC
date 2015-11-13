@@ -260,7 +260,7 @@ $query = "SELECT COUNT(*) as num FROM  category_details WHERE category_name LIKE
 
 	$total_pages = mysqli_fetch_array(mysqli_query($db->connection,$query));
 
-	$total_pages = $total_pages[num];
+	$total_pages = $total_pages['num'];
  
 	
 
@@ -274,7 +274,7 @@ if(isset($_GET['limit']) && is_numeric($_GET['limit'])){
         $_GET['limit']=10;
 }
 
-	$page = $_GET['page'];
+	$page = isset($_GET['page'])? $_GET['page']: 0;
 
 
 	if($page) 

@@ -182,7 +182,7 @@ include_once("init.php");
                   <table class="form"  border="0" cellspacing="0" cellpadding="0">
                     <tr>
                       <td><span class="man">*</span>Name:</td>
-                      <td><input name="name"placeholder="ENTER CATEGORY NAME" type="text" id="name" maxlength="200"  class="round default-width-input" value="<?php echo $name; ?>" /></td>
+                      <td><input name="name"placeholder="ENTER CATEGORY NAME" type="text" id="name" maxlength="200"  class="round default-width-input" value="<?php echo isset($name)? $name:''; ?>" /></td>
                        
                     </tr>
                     <tr>
@@ -191,7 +191,7 @@ include_once("init.php");
                     </tr>
                     <tr>
                       <td>Address</td>
-                      <td><textarea name="address" placeholder="ENTER DESCRIPTION"cols="8" class="round full-width-textarea"><?php echo $address; ?></textarea></td>
+                      <td><textarea name="address" placeholder="ENTER DESCRIPTION"cols="8" class="round full-width-textarea"><?php echo isset($address)? $address:''; ?></textarea></td>
                       
                     </tr>
                     <tr>

@@ -232,7 +232,7 @@ echo $db->queryUniqueValue("select sum(balance) FROM  stock_entries where count1
                     </tr>
                    
                       
-                    </tr>
+
                    
                     <tr>
                       <td>&nbsp;</td>

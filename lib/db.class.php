@@ -171,7 +171,7 @@
     function debugAndDie($query)
     {
       $this->debugQuery($query, "Error");
-      die("<p style=\"margin: 2px;\">".mysqli_error()."</p></div>");
+      die("<p style=\"margin: 2px;\">".mysqli_error($this->connection)."</p></div>");
     }
     /** Internal function to debug a MySQL query.\n
       * Show the query and output the resulting table if not NULL.

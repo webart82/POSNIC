@@ -90,9 +90,10 @@ function numbersonly(e){
     }
     }
 	</script>
-	</script>
+
 
 </head>
+
 <body>
 
 	<!-- TOP BAR -->
@@ -243,26 +244,26 @@ function numbersonly(e){
 					  $autoid="SD".$max."";
 					  ?>
                       <td><span class="man">*</span>Stock ID:</td>
-                      <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"  class="round default-width-input" value="<?php echo $autoid; ?>" /></td>
+                      <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"  class="round default-width-input" value="<?php echo isset($autoid)?$autoid:''; ?>" /></td>
                        
                       <td><span class="man">*</span>Name:</td>
-                      <td><input name="name"placeholder="ENTER CATEGORY NAME" type="text" id="name" maxlength="200"  class="round default-width-input" value="<?php echo $name; ?>" /></td>
+                      <td><input name="name"placeholder="ENTER CATEGORY NAME" type="text" id="name" maxlength="200"  class="round default-width-input" value="<?php echo isset($name)?$name:''; ?>" /></td>
                        
                     </tr>
                     <tr>
                       <td><span class="man">*</span>Cost:</td>
-                      <td><input name="cost" placeholder="ENTER COST PRICE" type="text" id="cost"  maxlength="200"  class="round default-width-input" onkeypress="return numbersonly(event)" value="<?php echo $cost; ?>" /></td>
+                      <td><input name="cost" placeholder="ENTER COST PRICE" type="text" id="cost"  maxlength="200"  class="round default-width-input" onkeypress="return numbersonly(event)" value="<?php echo isset($cost)?$cost:''; ?>" /></td>
                        
                       <td><span class="man">*</span>Sell:</td>
-                      <td><input name="sell" placeholder="ENTER SELLING PRICE" type="text" id="sell" maxlength="200"  class="round default-width-input" onkeypress="return numbersonly(event)" value="<?php echo $sell; ?>" /></td>
+                      <td><input name="sell" placeholder="ENTER SELLING PRICE" type="text" id="sell" maxlength="200"  class="round default-width-input" onkeypress="return numbersonly(event)" value="<?php echo isset($sell)?$sell:''; ?>" /></td>
                        
                     </tr>
                     <tr>
                       <td>Supplier:</td>
-                      <td><input name="supplier" placeholder="ENTER SUPPLIER NAME" type="text" id="supplier"  maxlength="200"  class="round default-width-input" value="<?php echo $supplier; ?>" /></td>
+                      <td><input name="supplier" placeholder="ENTER SUPPLIER NAME" type="text" id="supplier"  maxlength="200"  class="round default-width-input" value="<?php echo isset($supplier)?$supplier:''; ?>" /></td>
                        
                       <td>Category:</td>
-                      <td><input name="category" placeholder="ENTER CATEGORY NAME" type="text" id="category" maxlength="200"  class="round default-width-input" value="<?php echo $category; ?>" /></td>
+                      <td><input name="category" placeholder="ENTER CATEGORY NAME" type="text" id="category" maxlength="200"  class="round default-width-input" value="<?php echo isset($category)?$category:''; ?>" /></td>
                        
                     </tr>
                    

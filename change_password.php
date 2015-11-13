@@ -169,7 +169,7 @@ include_once("init.php");
     </script>
 <div class="g-plusone" data-href="https://plus.google.com/u/0/107268519615804538483"></div>
 
-		<p>Any Queries email to <a href="mailto:sridharkalaibala@gmail.com?subject=Stock%20Management%20System">sridharkalaibala@gmail.com</a>.</p>
+		<p>Any Queries email to <a href="mailto:sridhar.posnic@gmail.com?subject=Stock%20Management%20System">sridhar.posnic@gmail.com</a>.</p>
 	
 	</div> <!-- end footer -->
 

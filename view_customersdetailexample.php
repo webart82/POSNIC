@@ -6,7 +6,7 @@ if(!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin'){ // if ses
 else
 {
 include_once "db.php";
-error_reporting(E_ALL ^ E_NOTICE);
+error_reporting(0);
 
 
 ?><!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"

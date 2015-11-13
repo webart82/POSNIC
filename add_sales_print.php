@@ -6,7 +6,7 @@ if(!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin'){ // if ses
 else
 {
 
-error_reporting(E_ALL ^ E_NOTICE);
+error_reporting(0);
 if(isset($_GET['sid']))
 {
 echo $_GET['sid'];

@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(E_ALL ^ E_NOTICE);
+error_reporting(0);
 include("lib/db.class.php");
 include_once "config.php";
 

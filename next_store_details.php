@@ -1,6 +1,5 @@
 <?php session_start();
 	include("lib/db.class.php");
-       
 	       $host=$_SESSION['host'] ;
             $user=$_SESSION['user'];
             $pass=$_SESSION['pass'];
@@ -11,10 +10,8 @@
 	# Note that filters and validators are separate rule sets and method calls. There is a good reason for this. 
 
 	require "lib/gump.class.php";
-?>
-  <?php $count = $db->countOfAll("store_details");
+   $count = $db->countOfAll("store_details");
   if($count>1){
-      
    header("location: index.php");
   }
   ?>
@@ -210,7 +207,7 @@ else
 	
 	<?php
         
-        if(isset($_POST['submit']) and isset($_POST['sname']) and isset($_POST['address']) and $_POST['submit']=='Down'){
+        if(isset($_POST['submit']) and isset($_POST['sname']) and isset($_POST['address']) and $_POST['submit']=='Finish'){
             $host=$_SESSION['host'] ;
             $user=$_SESSION['user'];
             $pass=$_SESSION['pass'];
@@ -291,7 +288,7 @@ else
 			
 				
 				<!--<a href="dashboard.php" class="button round blue image-right ic-right-arrow">LOG IN</a>-->
-				<input type="submit" class="button round blue image-right ic-right-arrow" name="submit" value="Down" />
+				<input type="submit" class="button round blue image-right ic-right-arrow" name="submit" value="Finish" />
                                     </td><td>&nbsp;</td></tr></table>
 
 		</form>

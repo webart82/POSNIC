@@ -10,7 +10,7 @@ include_once("init.php");
 	<title>POSNIC - Update Payment</title>
 	
 	<!-- Stylesheets -->
-	<link href='http://fonts.googleapis.com/css?family=Droid+Sans:400,700' rel='stylesheet'>
+
 	<link rel="stylesheet" href="css/style.css">
          <link rel="stylesheet" href="js/date_pic/date_input.css">
 	

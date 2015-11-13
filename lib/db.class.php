@@ -12,13 +12,13 @@
       */
     var $defaultDebug = false;
 
-    /** INTERNAL: The start time, in miliseconds.
+    /** INTERNAL: The start time, in milliseconds.
       */
     var $mtStart;
     /** INTERNAL: The number of executed queries.
       */
     var $nbQueries;
-    /** INTERNAL: The last result ressource of a query().
+    /** INTERNAL: The last result resource of a query().
       */
     var $lastResult;
 
@@ -67,7 +67,7 @@
       $this->debug($debug, $query);
     }
     /** Convenient method for mysqli_fetch_object().
-      * @param $result The ressource returned by query(). If NULL, the last result returned by query() will be used.
+      * @param $result The resource returned by query(). If NULL, the last result returned by query() will be used.
       * @return An object representing a data row.
       */
     function fetchNextObject($result = NULL)
@@ -81,7 +81,7 @@
         return mysqli_fetch_object($result);
     }
     /** Get the number of rows of a query.
-      * @param $result The ressource returned by query(). If NULL, the last result returned by query() will be used.
+      * @param $result The resource returned by query(). If NULL, the last result returned by query() will be used.
       * @return The number of rows of the query (0 or more).
       */
     function numRows($result = NULL)

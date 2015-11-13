@@ -1,11 +1,22 @@
-1 extract the zip file 
-2 coppy file to localhost
-3 run the project in localhost
-4 configure the configure the localhost namae ,username and password
-5 click install button 
-6 create a database oru select any existing database and click next button
-7 then upload your store logo
-8 enter your store details with your logo
-9 press down
-10 enjoy 
+# POSNIC
+## Intro
+* A really simple Point of Sale application based on PHP/MySQL
 
+## Security notes
+* Stores passwords in plain text by default
+* No cleaning of any POST / GET variables
+* PHP 5.3.x and MySQL 5.1 tested
+
+## Installation
+* Extract the zip file 
+* Copy file to localhost
+* Run the project in localhost
+* Configure the localhost name, username and password
+* Click install button 
+* Create a database or select your existing database and click next button
+* Upload your store logo
+* Enter your store details (with your logo)
+* Press Finish
+* Enjoy
+
+## If you find any difficulties in installation please modify config.php.sample file and save as config.php.

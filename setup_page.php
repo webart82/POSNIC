@@ -363,7 +363,7 @@ mysqli_query($db->connection,$con,$sql);
           // Execute query
           mysqli_query($db->connection,$con,$sql);
  $ourFileName = "config.php";
-$ourFileHandle = fopen($ourFileName, 'w') or die("can't open file");
+$ourFileHandle = fopen($ourFileName, 'w') or die("Not able to write config file (check directory permissions). You can directly Create config.php file as like config.php.sample file. ");
 $data = '<?php $config["database"] = "'.$name.'"; $config["host"]= "'.$host.'";$config["username"]= "'.$user.'"; $config["password"]= "'.$pass.'";?>';
 fwrite($ourFileHandle, $data);
 fclose($ourFileHandle);

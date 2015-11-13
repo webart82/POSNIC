@@ -612,9 +612,9 @@ class GUMP
 	 * @param  array $params
 	 * @return string
 	 */	
-	protected function filter_mysql_escape($value, $params = NULL)
+	protected function filter_mysqli_escape($value, $params = NULL)
 	{
-		return mysql_real_escape_string($value);
+		return $value;
 	}
 
 	

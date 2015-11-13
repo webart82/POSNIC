@@ -403,7 +403,7 @@ function balance_amount(){
 					));
 				
 					$gump->filter_rules(array(
-						'supplier'    	  => 'trim|sanitize_string|mysql_escape'
+						'supplier'    	  => 'trim|sanitize_string|mysqli_escape'
 						
 
 					));
@@ -421,12 +421,12 @@ function balance_amount(){
 					} else {
                                             $username = $_SESSION['username'];
                                             
-							$stockid=mysql_real_escape_string($_POST['stockid']);
+							$stockid=mysqli_real_escape_string($db->connection,$_POST['stockid']);
 						
-							$bill_no =mysql_real_escape_string($_POST['bill_no']);
-							$supplier=mysql_real_escape_string($_POST['supplier']);
-							$address=mysql_real_escape_string($_POST['address']);
-							$contact=mysql_real_escape_string($_POST['contact']);
+							$bill_no =mysqli_real_escape_string($db->connection,$_POST['bill_no']);
+							$supplier=mysqli_real_escape_string($db->connection,$_POST['supplier']);
+							$address=mysqli_real_escape_string($db->connection,$_POST['address']);
+							$contact=mysqli_real_escape_string($db->connection,$_POST['contact']);
 							$stock_name=$_POST['stock_name'];
                                                        
                                                      $count = $db->countOf("supplier_details", "supplier_name='$supplier'");
@@ -440,11 +440,11 @@ function balance_amount(){
 							$cost=$_POST['cost'];
 							$total=$_POST['total'];
 							$subtotal=$_POST['subtotal'];
-							$description=mysql_real_escape_string($_POST['description']);
-							$due=mysql_real_escape_string($_POST['duedate']);
-							$payment=mysql_real_escape_string($_POST['payment']);
-							$balance=mysql_real_escape_string($_POST['balance']);
-							$mode=mysql_real_escape_string($_POST['mode']);
+							$description=mysqli_real_escape_string($db->connection,$_POST['description']);
+							$due=mysqli_real_escape_string($db->connection,$_POST['duedate']);
+							$payment=mysqli_real_escape_string($db->connection,$_POST['payment']);
+							$balance=mysqli_real_escape_string($db->connection,$_POST['balance']);
+							$mode=mysqli_real_escape_string($db->connection,$_POST['mode']);
                                    
 					  $autoid=$_POST['stockid'];
 					  $autoid1=$autoid;                   

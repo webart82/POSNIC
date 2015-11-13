@@ -58,7 +58,7 @@ $gump->validation_rules(array(
 ));
 
 $gump->filter_rules(array(
-	'username' 	  => 'trim|sanitize_string|mysql_escape',
+	'username' 	  => 'trim|sanitize_string|mysqli_escape',
 	'password'	  => 'trim|base64',
 	'email'    	  => 'trim|sanitize_email',
 	'gender'   	  => 'trim',

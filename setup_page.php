@@ -15,7 +15,7 @@
             $_SESSION['user']=$user;
             $_SESSION['pass']=$pass;
             $_SESSION['db_name']=$name;
-                    $link = mysql_connect("$host","$user","$pass");
+                    $link = mysqli_connect("$host","$user","$pass");
 if (!$link) {
     $data="Database Configration is Not vaild";
       header("location:instal.php?msg=$data");
@@ -26,7 +26,7 @@ $con=mysqli_connect("$host","$user","$pass");
 // Check connection
  if(isset($_POST['name'])){
 $sql="CREATE DATABASE $name";
-if (!mysqli_query($con,$sql)){
+if (!mysqli_query($db->connection,$con,$sql)){
     $data="This Database Name Is Already In the DataBase";
       header("location:database_instal.php?msg=$data");
       exit;
@@ -51,7 +51,7 @@ $sql="CREATE TABLE IF NOT EXISTS `category_details` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=20";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 if($dummy===1){
 $sql="INSERT INTO `category_details` (`id`, `category_name`, `category_description`) VALUES
 (20, 'pen', 'Boll Pen'),
@@ -73,7 +73,7 @@ $sql="INSERT INTO `category_details` (`id`, `category_name`, `category_descripti
 (36, 'Bulk Rolls', 'Vegitable')";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 }
 
 $sql="CREATE TABLE IF NOT EXISTS `customer_details` (
@@ -87,7 +87,7 @@ $sql="CREATE TABLE IF NOT EXISTS `customer_details` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 
 if($dummy===1){
 $sql="INSERT INTO `customer_details` (`id`, `customer_name`, `customer_address`, `customer_contact1`, `customer_contact2`, `balance`) VALUES
@@ -103,7 +103,7 @@ $sql="INSERT INTO `customer_details` (`id`, `customer_name`, `customer_address`,
 (17, 'amal', 'hsr layout', '7787876786', '989898988', 0)";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 }
 
 $sql="CREATE TABLE IF NOT EXISTS `stock_avail` (
@@ -114,7 +114,7 @@ $sql="CREATE TABLE IF NOT EXISTS `stock_avail` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=22 ";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 
 if($dummy===1){
 $sql="INSERT INTO `stock_avail` (`id`, `name`, `quantity`) VALUES
@@ -126,7 +126,7 @@ $sql="INSERT INTO `stock_avail` (`id`, `name`, `quantity`) VALUES
 (27, 'Lamy Mod 17 Safari Matt ...', 0)";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 }
 
 $sql="CREATE TABLE IF NOT EXISTS `stock_details` (
@@ -145,7 +145,7 @@ $sql="CREATE TABLE IF NOT EXISTS `stock_details` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34  ";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 
 
 if($dummy===1){
@@ -158,7 +158,7 @@ $sql="INSERT INTO `stock_details` (`id`, `stock_id`, `stock_name`, `stock_quatit
 (39, 'SD39', 'Lamy Mod 17 Safari Matt ...', 0, 'sadham', '1980.00', '2000.00', 'pen', '2013-08-15 08:34:17', '0000-00-00 00:00:00', '')";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 }
 $sql="CREATE TABLE IF NOT EXISTS `stock_entries` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -188,7 +188,7 @@ $sql="CREATE TABLE IF NOT EXISTS `stock_entries` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=253";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 
 
 if($dummy===1){
@@ -206,7 +206,7 @@ $sql="INSERT INTO `stock_entries` (`id`, `stock_id`, `stock_name`, `stock_suppli
 (271, 'SD270', 'techo tip', '', '', 100, '0.00', '10.00', 1000, 900, '2013-08-15 00:00:00', 'admin', 'sales', 'SD270', '1000.00', '0.00', '0.00', '', '', '0000-00-00 00:00:00', 0, 2, 'BILL-127')";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 }
 $sql="CREATE TABLE IF NOT EXISTS `stock_sales` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -237,7 +237,7 @@ $sql="CREATE TABLE IF NOT EXISTS `stock_sales` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 
 
 if($dummy===1){
@@ -253,7 +253,7 @@ $sql="INSERT INTO `stock_sales` (`id`, `transactionid`, `stock_name`, `category`
 (28, 'SD270', 'techo tip', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'jerin', '1900.00', '190.00', '1810.00', '0', '78', 'hjhjkh', '100', '2000', '1970-01-01', 'cheque', 'khksg', 2, 'BILL-127')";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 }
 $sql="CREATE TABLE IF NOT EXISTS `stock_user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -265,12 +265,12 @@ $sql="CREATE TABLE IF NOT EXISTS `stock_user` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 $sql="INSERT INTO `stock_user` (`id`, `username`, `password`, `user_type`) VALUES
 (1, 'admin', 'admin', 'admin'); ";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 
 $sql="CREATE TABLE IF NOT EXISTS `supplier_details` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
@@ -283,7 +283,7 @@ $sql="CREATE TABLE IF NOT EXISTS `supplier_details` (
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=37 ";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 
 if($dummy===1){
 $sql="INSERT INTO `supplier_details` (`id`, `supplier_name`, `supplier_address`, `supplier_contact1`, `supplier_contact2`, `balance`) VALUES
@@ -301,7 +301,7 @@ $sql="INSERT INTO `supplier_details` (`id`, `supplier_name`, `supplier_address`,
 (48, 'santhosh', '#126,2nd sector,hsr layout bangalore', '7787876786', '9539126325', 0)";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 }
 
 $sql="CREATE TABLE IF NOT EXISTS `transactions` (
@@ -320,7 +320,7 @@ $sql="CREATE TABLE IF NOT EXISTS `transactions` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=16";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 
 
 $sql="CREATE TABLE IF NOT EXISTS `uom_details` (
@@ -332,7 +332,7 @@ $sql="CREATE TABLE IF NOT EXISTS `uom_details` (
 
 // Execute query
 
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
 $sql="INSERT INTO `uom_details` (`id`, `name`, `spec`) VALUES
 (0000000006, 'UOM1', 'UOM1 Specification'),
 (0000000007, 'UOM2', 'UOM2 Specification'),
@@ -340,7 +340,7 @@ $sql="INSERT INTO `uom_details` (`id`, `name`, `spec`) VALUES
 (0000000009, 'UOM4', 'UOM4 Specification')";
 
 // Execute query
-mysqli_query($con,$sql);
+mysqli_query($db->connection,$con,$sql);
           //
           $sql="CREATE TABLE IF NOT EXISTS `store_details` (
   `name` varchar(100) NOT NULL,
@@ -356,12 +356,12 @@ mysqli_query($con,$sql);
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1";
 
           // Execute query
-          mysqli_query($con,$sql);
+          mysqli_query($db->connection,$con,$sql);
           $sql="INSERT INTO `store_details` (`name`, `log`, `type`, `address`, `place`, `city`, `phone`, `email`, `web`, `pin`) VALUES
 ('Posnic', 'posnic.png', 'png', '133', 'HSR Layout', 'Bangalore', '779539126325', 'info@posnic.com', 'posnic.com', '600020')";
 
           // Execute query
-          mysqli_query($con,$sql);
+          mysqli_query($db->connection,$con,$sql);
  $ourFileName = "config.php";
 $ourFileHandle = fopen($ourFileName, 'w') or die("can't open file");
 $data = '<?php $config["database"] = "'.$name.'"; $config["host"]= "'.$host.'";$config["username"]= "'.$user.'"; $config["password"]= "'.$pass.'";?>';

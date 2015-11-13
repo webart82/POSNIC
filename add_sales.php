@@ -452,7 +452,7 @@ function discount_type(){
 					));
 				
 					$gump->filter_rules(array(
-						'payment'    	  => 'trim|sanitize_string|mysql_escape'
+						'payment'    	  => 'trim|sanitize_string|mysqli_escape'
 						
 
 					));
@@ -469,12 +469,12 @@ function discount_type(){
 					} else {
                                             $username = $_SESSION['username'];
                                             
-							$stockid=mysql_real_escape_string($_POST['stockid']);
+							$stockid=mysqli_real_escape_string($db->connection,$_POST['stockid']);
 						
-							$bill_no =mysql_real_escape_string($_POST['bill_no']);
-							$customer=mysql_real_escape_string($_POST['supplier']);
-							$address=mysql_real_escape_string($_POST['address']);
-							$contact=mysql_real_escape_string($_POST['contact']);			   
+							$bill_no =mysqli_real_escape_string($db->connection,$_POST['bill_no']);
+							$customer=mysqli_real_escape_string($db->connection,$_POST['supplier']);
+							$address=mysqli_real_escape_string($db->connection,$_POST['address']);
+							$contact=mysqli_real_escape_string($db->connection,$_POST['contact']);
                                                      $count = $db->countOf("customer_details", "customer_name='$customer'");
 							if($count==0)
 							{
@@ -482,29 +482,29 @@ function discount_type(){
                                                         }
                                                         $stock_name=$_POST['stock_name'];
 							$quty=$_POST['quty'];
-							$date=mysql_real_escape_string($_POST['date']);
+							$date=mysqli_real_escape_string($db->connection,$_POST['date']);
 							$sell=$_POST['sell'];
 							$total=$_POST['total'];
 							$payable=$_POST['subtotal'];
-							$description=mysql_real_escape_string($_POST['description']);
-							$due=mysql_real_escape_string($_POST['duedate']);
-							$payment=mysql_real_escape_string($_POST['payment']);
-							$discount=mysql_real_escape_string($_POST['discount']);
+							$description=mysqli_real_escape_string($db->connection,$_POST['description']);
+							$due=mysqli_real_escape_string($db->connection,$_POST['duedate']);
+							$payment=mysqli_real_escape_string($db->connection,$_POST['payment']);
+							$discount=mysqli_real_escape_string($db->connection,$_POST['discount']);
                                                         if($discount==""){
                                                             $discount=00;
                                                         }
-							$dis_amount=mysql_real_escape_string($_POST['dis_amount']);
+							$dis_amount=mysqli_real_escape_string($db->connection,$_POST['dis_amount']);
 							if($dis_amount==""){
                                                             $dis_amount=00;
                                                         }
-                                                        $subtotal=mysql_real_escape_string($_POST['payable']);
-							$balance=mysql_real_escape_string($_POST['balance']);
-							$mode=mysql_real_escape_string($_POST['mode']);
-							$tax=mysql_real_escape_string($_POST['tax']);
+                                                        $subtotal=mysqli_real_escape_string($db->connection,$_POST['payable']);
+							$balance=mysqli_real_escape_string($db->connection,$_POST['balance']);
+							$mode=mysqli_real_escape_string($db->connection,$_POST['mode']);
+							$tax=mysqli_real_escape_string($db->connection,$_POST['tax']);
                                                         if($tax==""){
                                                             $tax=00;
                                                         }
-							$tax_dis=mysql_real_escape_string($_POST['tax_dis']);
+							$tax_dis=mysqli_real_escape_string($db->connection,$_POST['tax_dis']);
                                                         $temp_balance = $db->queryUniqueValue("SELECT balance FROM customer_details WHERE customer_name='$customer'");
                                                         $temp_balance = (int) $temp_balance +  (int) $balance;
                                                         $db->execute("UPDATE customer_details SET balance=$temp_balance WHERE customer_name='$customer'");

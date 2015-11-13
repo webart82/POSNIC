@@ -176,12 +176,12 @@ function numbersonly(e){
 					));
 				
 					$gump->filter_rules(array(
-						'name'    	  => 'trim|sanitize_string|mysql_escape',
-						'stockid'     => 'trim|sanitize_string|mysql_escape',
-						'sell'     => 'trim|sanitize_string|mysql_escape',
-						'cost'     => 'trim|sanitize_string|mysql_escape',
-						'category'     => 'trim|sanitize_string|mysql_escape',
-						'supplier'     => 'trim|sanitize_string|mysql_escape'
+						'name'    	  => 'trim|sanitize_string|mysqli_escape',
+						'stockid'     => 'trim|sanitize_string|mysqli_escape',
+						'sell'     => 'trim|sanitize_string|mysqli_escape',
+						'cost'     => 'trim|sanitize_string|mysqli_escape',
+						'category'     => 'trim|sanitize_string|mysqli_escape',
+						'supplier'     => 'trim|sanitize_string|mysqli_escape'
 
 					));
 				
@@ -199,12 +199,12 @@ function numbersonly(e){
 					} else {
 						
 						
-							$name=mysql_real_escape_string($_POST['name']);
-							$stockid=mysql_real_escape_string($_POST['stockid']);
-							$sell=mysql_real_escape_string($_POST['sell']);
-							$cost=mysql_real_escape_string($_POST['cost']);
-							$supplier=mysql_real_escape_string($_POST['supplier']);
-							$category=mysql_real_escape_string($_POST['category']);
+							$name=mysqli_real_escape_string($db->connection,$_POST['name']);
+							$stockid=mysqli_real_escape_string($db->connection,$_POST['stockid']);
+							$sell=mysqli_real_escape_string($db->connection,$_POST['sell']);
+							$cost=mysqli_real_escape_string($db->connection,$_POST['cost']);
+							$supplier=mysqli_real_escape_string($db->connection,$_POST['supplier']);
+							$category=mysqli_real_escape_string($db->connection,$_POST['category']);
 							
 						
 						$count = $db->countOf("stock_details", "stock_id ='$stockid'");

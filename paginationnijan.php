@@ -307,13 +307,13 @@ Page per Record<input name="limit" type="text"  style="margin-left:5px;" value="
 					
 					<form name="deletefiles" action="delete.php" method="post">
 					<table><?php 
-		$con = mysql_connect('localhost', 'root', '');
+		$con = mysqli_connect('localhost', 'root', '');
 if (!$con)
   {
-  die('Could not connect: ' . mysql_error());
+  die('Could not connect: ' . mysqli_error());
   }
 
-mysql_select_db("stock", $con);
+mysqli_select_db("stock", $con);
 
 
 
@@ -353,7 +353,7 @@ $query = "SELECT COUNT(*) as num FROM  customer_details WHERE customer_name LIKE
 }
 
 
-	$total_pages = mysql_fetch_array(mysql_query($query));
+	$total_pages = mysqli_fetch_array(mysqli_query($db->connection,$query));
 
 	$total_pages = $total_pages[num];
 echo"$total_pages";
@@ -393,7 +393,7 @@ if(isset($_GET['limit']))
 }
 
 
-	$result = mysql_query($sql);
+	$result = mysqli_query($db->connection,$sql);
 
 	
 
@@ -588,7 +588,7 @@ if(isset($_GET['limit']))
 
 						
 </div></td>
-<?php	while($row = mysql_fetch_array($result)) 
+<?php	while($row = mysqli_fetch_array($result))
 {
  ?> 
 	<tr>
@@ -615,7 +615,7 @@ if(isset($_GET['limit']))
 
       <tr>
 </form>
-				<?php mysql_close($con); ?>
+				<?php mysqli_close($con); ?>
 
 				
 		</div> 

@@ -133,8 +133,8 @@ include_once("init.php");
 					));
 				
 					$gump->filter_rules(array(
-						'name'    	  => 'trim|sanitize_string|mysql_escape',
-						'address'     => 'trim|sanitize_string|mysql_escape',
+						'name'    	  => 'trim|sanitize_string|mysqli_escape',
+						'address'     => 'trim|sanitize_string|mysqli_escape',
 
 					));
 				
@@ -148,8 +148,8 @@ include_once("init.php");
 					} else {
 						
 						
-							$name=mysql_real_escape_string($_POST['name']);
-							$address=mysql_real_escape_string($_POST['address']);
+							$name=mysqli_real_escape_string($db->connection,$_POST['name']);
+							$address=mysqli_real_escape_string($db->connection,$_POST['address']);
 							
 						
 						$count = $db->countOf("category_details", "category_name='$name'");

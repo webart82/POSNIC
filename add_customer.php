@@ -268,10 +268,10 @@ div.pagination span.current {
 					));
 				
 					$gump->filter_rules(array(
-						'name'    	  => 'trim|sanitize_string|mysql_escape',
-						'address'     => 'trim|sanitize_string|mysql_escape',
-						'contact1'    => 'trim|sanitize_string|mysql_escape',
-						'contact2'    => 'trim|sanitize_string|mysql_escape'
+						'name'    	  => 'trim|sanitize_string|mysqli_escape',
+						'address'     => 'trim|sanitize_string|mysqli_escape',
+						'contact1'    => 'trim|sanitize_string|mysqli_escape',
+						'contact2'    => 'trim|sanitize_string|mysqli_escape'
 					));
 				
 					$validated_data = $gump->run($_POST);
@@ -285,10 +285,10 @@ div.pagination span.current {
 					} else {
 						
 						
-							$name=mysql_real_escape_string($_POST['name']);
-							$address=mysql_real_escape_string($_POST['address']);
-							$contact1=mysql_real_escape_string($_POST['contact1']);
-							$contact2=mysql_real_escape_string($_POST['contact2']);
+							$name=mysqli_real_escape_string($db->connection,$_POST['name']);
+							$address=mysqli_real_escape_string($db->connection,$_POST['address']);
+							$contact1=mysqli_real_escape_string($db->connection,$_POST['contact1']);
+							$contact2=mysqli_real_escape_string($db->connection,$_POST['contact2']);
 							
 							$count = $db->countOf("customer_details", "customer_name='$name'");
 							if($count==1)

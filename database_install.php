@@ -116,7 +116,7 @@ document.getElementById("name").disabled=true;
             $user= trim($_POST['username']);
             $pass= trim($_POST['password']); 
              }
-                        $link = mysql_connect("$host","$user","$pass");
+                        $link = mysqli_connect("$host","$user","$pass");
 if (!$link) {
     $data="Database Configration is Not vaild";
       header("location:instal.php?msg=$data");
@@ -142,9 +142,9 @@ if (!$link) {
                                     $con=mysqli_connect("$host","$user","$pass");
                             // Check connection
                                  $sql="CREATE DATABASE MY_posnic_1234";
-                                  if (mysqli_query($con,$sql)){
+                                  if (mysqli_query($db->connection,$con,$sql)){
                                        $sql="DROP DATABASE MY_posnic_1234";
-                                 mysqli_query($con,$sql);
+                                 mysqli_query($db->connection,$con,$sql);
   
                                     ?>
                                     <input type="radio" value="1" name="select[]"  id="create" onclick="create_data()" >Create New DataBase

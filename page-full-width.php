@@ -104,17 +104,17 @@
 					
 						<thead>
 						<?php
-$con = mysql_connect('localhost', 'root', '');
+$con = mysqli_connect('localhost', 'root', '');
 if (!$con)
   {
-  die('Could not connect: ' . mysql_error());
+  die('Could not connect: ' . mysqli_error());
   }
 
-mysql_select_db("s", $con);
+mysqli_select_db("s", $con);
 
 $sql="SELECT * FROM a" ;
 
-$result = mysql_query($sql);
+$result = mysqli_query($db->connection,$sql);
 	
 echo              "   
 							<tr>
@@ -125,7 +125,7 @@ echo              "
 								<th>Actions</th>
 							</tr>";
 						
-					while($row = mysql_fetch_array($result))
+					while($row = mysqli_fetch_array($result))
   {
   echo "<tr>";
   echo "<td>" . $row['name'] . "</td>";
@@ -136,7 +136,7 @@ echo              "
   }
 echo "</table>";
 
-mysql_close($con);
+mysqli_close($con);
 ?> 
 						
 						</tbody>

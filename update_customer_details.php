@@ -145,7 +145,7 @@ include_once("init.php");
                                 $contact2 = trim(mysqli_real_escape_string($db->connection, $_POST['contact2']));
 
 
-                                if ($db->query("UPDATE customer_details  SET customer_name='$name',customer_address='$address',customer_contact1='$contact1',customer_contact2='$contact2' where id=$id"))
+                                if ($db->query("UPDATE customer_details  SET customer_name='$name',customer_address='$address',customer_contact1='$contact1',customer_contact2='$contact2' where id='$id'"))
                                     echo "<br><font color=green size=+1 > [ $name ] Supplier Details Updated!</font>";
                                 else
                                     echo "<br><font color=red size=+1 >Problem in Updation !</font>";

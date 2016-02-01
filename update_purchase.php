@@ -399,7 +399,7 @@ include_once("init.php");
                         }
                         $temp_balance = $db->queryUniqueValue("SELECT balance FROM supplier_details WHERE supplier_name='$supplier'");
                         $temp_balance = (int)$temp_balance + (int)$balance;
-                        $db->execute("UPDATE supplier_details SET balance=$temp_balance WHERE supplier_name='$supplier'");
+                        $db->execute("UPDATE supplier_details SET balance='$temp_balance' WHERE supplier_name='$supplier'");
                         $selected_date = $_POST['due'];
                         $selected_date = strtotime($selected_date);
                         $mysqldate = date('Y-m-d H:i:s', $selected_date);
@@ -437,12 +437,12 @@ include_once("init.php");
                             $count = $db->countOf("stock_avail", "name='$name1'");
 
                             $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name1'");
-                            $oldquantity = $db->queryUniqueValue("SELECT quantity FROM stock_entries WHERE id=$sysid ");
+                            $oldquantity = $db->queryUniqueValue("SELECT quantity FROM stock_entries WHERE id='$sysid' ");
                             $amount1 = ($amount + $quantity) - $oldquantity;
 
 
-                            $db->execute("UPDATE stock_avail SET quantity=$amount1 WHERE name='$name1'");
-                            $db->query("UPDATE stock_entries SET stock_name='$name1', stock_supplier_name='$supplier', quantity=$quantity, company_price=$brate, selling_price=$srate, opening_stock=$amount, closing_stock=$amount1, date='$mysqldate', username='$username', type='entry', total=$total, payment=$payment, balance=$balance, mode='$mode', description='$description', due='$due', subtotal=$subtotal,billnumber='$billnumber' WHERE id=$sysid");
+                            $db->execute("UPDATE stock_avail SET quantity='$amount1' WHERE name='$name1'");
+                            $db->query("UPDATE stock_entries SET stock_name='$name1', stock_supplier_name='$supplier', quantity='$quantity', company_price='$brate', selling_price='$srate', opening_stock='$amount', closing_stock='$amount1', date='$mysqldate', username='$username', type='entry', total='$total', payment='$payment', balance='$balance', mode='$mode', description='$description', due='$due', subtotal='$subtotal',billnumber='$billnumber' WHERE id='$sysid'");
                             //INSERT INTO `stock`.`stock_entries` (`id`, `stock_id`, `stock_name`, `stock_supplier_name`, `category`, `quantity`, `company_price`, `selling_price`, `opening_stock`, `closing_stock`, `date`, `username`, `type`, `salesid`, `total`, `payment`, `balance`, `mode`, `description`, `due`, `subtotal`, `count1`)
                             //VALUES (NULL, '$autoid1', '$name1', '$supplier', '', '$quantity', '$brate', '$srate', '$amount', '$amount1', '$mysqldate', 'sdd', 'entry', 'Sa45', '432.90', '2342.90', '24.34', 'cash', 'sdflj', '2010-03-25 12:32:02', '45645', '1');
 

@@ -220,7 +220,7 @@ include_once("init.php");
                                 echo "<font color=red> Dublicat Entry. Please Verify</font>";
                             } else {
 
-                                if ($db->query("insert into stock_details(stock_id,stock_name,stock_quatity,supplier_id,company_price,selling_price,category) values('$stockid','$name',0,'$supplier',$cost,$sell,'$category')")) {
+                                if ($db->query("insert into stock_details(stock_id,stock_name,stock_quatity,supplier_id,company_price,selling_price,category) values('$stockid','$name',0,'$supplier','$cost','$sell','$category')")) {
                                     echo "<br><font color=green size=+1 > [ $name ] Stock Details Added !</font>";
                                     $db->query("insert into stock_avail(name,quantity) values('$name',0)");
                                 } else

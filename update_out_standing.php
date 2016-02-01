@@ -164,8 +164,8 @@ include_once("init.php");
                                 $balance = (int)$balance - (int)$newpayment;
                                 $payment = (int)$payment + (int)$newpayment;
 
-                                if ($db->query("UPDATE stock_entries  SET balance=$balance,payment=$payment,due='$due' where stock_id='$id'")) {
-                                    $db->query("INSERT INTO transactions(type,supplier,payment,balance,rid,due,subtotal) values('entry','$supplier',$newpayment,$balance,'$id','$due',$subtotal)");
+                                if ($db->query("UPDATE stock_entries  SET balance='$balance',payment='$payment',due='$due' where stock_id='$id'")) {
+                                    $db->query("INSERT INTO transactions(type,supplier,payment,balance,rid,due,subtotal) values('entry','$supplier','$newpayment','$balance','$id','$due','$subtotal')");
                                     echo "<br><font color=green size=+1 > [ $id ] Supplier Details Updated!</font>";
                                 } else
                                     echo "<br><font color=red size=+1 >Problem in Updation !</font>";

@@ -532,18 +532,18 @@ include_once("init.php");
 
 
                                     $db->query("insert into stock_sales (tax,tax_dis,discount,dis_amount,grand_total,transactionid,stock_name,selling_price,quantity,amount,date,username,customer_id,subtotal,payment,balance,due,mode,description,count1,billnumber)
-                            values($tax,'$tax_dis',$discount,$dis_amount,$payable,'$autoid','$name1',$rate,$quantity,$total,'$mysqldate','$username','$customer',$subtotal,$payment,$balance,'$due','$mode','$description',$i+1,'$bill_no')");
+                            values('$tax','$tax_dis','$discount','$dis_amount','$payable','$autoid','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$subtotal','$payment','$balance','$due','$mode','$description',$i+1,'$bill_no')");
 
                                     $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name1'");
                                     $amount1 = $amount - $quantity;
 
-                                    $db->query("insert into stock_entries (stock_id,stock_name,quantity,opening_stock,closing_stock,date,username,type,salesid,total,selling_price,count1,billnumber) values('$autoid','$name1',$quantity,$amount,$amount1,'$mysqldate','$username','sales','$autoid',$total,$rate,$i+1,'$bill_no')");
+                                    $db->query("insert into stock_entries (stock_id,stock_name,quantity,opening_stock,closing_stock,date,username,type,salesid,total,selling_price,count1,billnumber) values('$autoid','$name1','$quantity','$amount','$amount1','$mysqldate','$username','sales','$autoid','$total','$rate',$i+1,'$bill_no')");
                                     //echo "<br><font color=green size=+1 >New Sales Added ! Transaction ID [ $autoid ]</font>" ;
 
 
                                     $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name1'");
                                     $amount1 = $amount - $quantity;
-                                    $db->execute("UPDATE stock_avail SET quantity=$amount1 WHERE name='$name1'");
+                                    $db->execute("UPDATE stock_avail SET quantity='$amount1' WHERE name='$name1'");
 
                                 } else {
                                     echo "<br><font color=green size=+1 >There is no enough stock deliver for $name1! Please add stock !</font>";

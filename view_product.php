@@ -234,10 +234,10 @@ include_once("init.php");
                                 <?php
 
 
-                                $SQL = "SELECT * FROM  stock_details";
+                                $SQL = "SELECT * FROM  stock_details ORDER BY id DESC";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
-                                    $SQL = "SELECT * FROM  stock_details WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_address LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_id LIKE '%" . $_POST['searchtxt'] . "%' OR date LIKE '%" . $_POST['searchtxt'] . "%'";
+                                    $SQL = "SELECT * FROM  stock_details WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_address LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_id LIKE '%" . $_POST['searchtxt'] . "%' OR date LIKE '%" . $_POST['searchtxt'] . "%' ORDER BY id DESC";
 
 
                                 }
@@ -295,10 +295,10 @@ include_once("init.php");
 
                                 /* Get data. */
 
-                                $sql = "SELECT * FROM stock_details LIMIT $start, $limit ";
+                                $sql = "SELECT * FROM stock_details  ORDER BY id DESC LIMIT $start, $limit";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
-                                    $sql = "SELECT * FROM  stock_details WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_id LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_id LIKE '%" . $_POST['searchtxt'] . "%' OR date LIKE '%" . $_POST['searchtxt'] . "%'  LIMIT $start, $limit";
+                                    $sql = "SELECT * FROM  stock_details WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_id LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_id LIKE '%" . $_POST['searchtxt'] . "%' OR date LIKE '%" . $_POST['searchtxt'] . "%'  ORDER BY id DESC LIMIT $start, $limit";
 
 
                                 }

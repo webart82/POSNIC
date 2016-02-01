@@ -232,10 +232,10 @@ include_once("init.php");
                                 <?php
 
 
-                                $SQL = "SELECT DISTINCT(transactionid) FROM  stock_sales ";
+                                $SQL = "SELECT DISTINCT(transactionid) FROM  stock_sales ORDER BY id DESC ";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
-                                    $SQL = "SELECT DISTINCT(transactionid) FROM  stock_sales WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' ";
+                                    $SQL = "SELECT DISTINCT(transactionid) FROM  stock_sales WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' ORDER BY id DESC ";
 
 
                                 }

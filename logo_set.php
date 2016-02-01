@@ -190,7 +190,7 @@
             }
         }
     } else {
-        echo "<p  style=color:red;margin-left:550px;font-size:20px >Invalid file</p>";
+        echo "<p  style='color:red;margin-left:550px;font-size:20px' >Invalid file</p>";
     }
 }
 

@@ -137,7 +137,7 @@ include_once("init.php");
                                 $address = trim(mysqli_real_escape_string($db->connection, $_POST['address']));
 
 
-                                if ($db->query("UPDATE category_details  SET category_name='$name',category_description='$address' where id=$id"))
+                                if ($db->query("UPDATE category_details  SET category_name='$name',category_description='$address' where id='$id'"))
                                     echo "<br><font color=green size=+1 > [ $name ] Supplier Details Updated!</font>";
                                 else
                                     echo "<br><font color=red size=+1 >Problem in Updation !</font>";

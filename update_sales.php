@@ -464,7 +464,7 @@ include_once("init.php");
                         $diff = $newvalue - $oldvalue;
                         $temp_balance = isset($temp_balance) ? $temp_balance : 0;
                         $temp_balance = (int)$temp_balance + (int)$diff;
-                        $db->execute("UPDATE customer_details SET balance=$temp_balance WHERE customer_name='$customer'");
+                        $db->execute("UPDATE customer_details SET balance='$temp_balance' WHERE customer_name='$customer'");
                         $selected_date = $_POST['due'];
                         $selected_date = strtotime($selected_date);
                         $mysqldate = date('Y-m-d H:i:s', $selected_date);
@@ -476,7 +476,7 @@ include_once("init.php");
                         $oldvalue = $db->queryUniqueValue("SELECT balance FROM customer_details WHERE customer_name='$customer'");
                         $diff = $newvalue - $oldvalue;
                         $temp_balance = (int)$temp_balance + (int)$diff;
-                        $db->execute("UPDATE customer_details SET balance=$temp_balance WHERE customer_name='$customer'");
+                        $db->execute("UPDATE customer_details SET balance='$temp_balance' WHERE customer_name='$customer'");
                         $selected_date = $_POST['due'];
                         $selected_date = strtotime($selected_date);
                         $mysqldate = date('Y-m-d H:i:s', $selected_date);
@@ -523,18 +523,18 @@ include_once("init.php");
                             $mysqldate = date('Y-m-d H:i:s', $selected_date);
                             $username = $_SESSION['username'];
 
-                            $count = $db->queryUniqueValue("SELECT count(*) FROM stock_avail WHERE name='$name1' and quantity >=$quantity");
+                            $count = $db->queryUniqueValue("SELECT count(*) FROM stock_avail WHERE name='$name1' and quantity >='$quantity'");
 
                             if ($count == 1) {
 
-                                $old_quantity = $db->queryUniqueValue("SELECT quantity FROM stock_sales WHERE id='$autoid' and count1=$i");
-                                $db->query("update stock_sales set tax=$tax,tax_dis='$tax_did', grand_total=$payable,discount=$discount,dis_amount=$dis_amount, stock_name='$name1',selling_price=$rate,quantity=$quantity,amount=$total,date='$mysqldate',username='$username',customer_id='$customer',subtotal=$subtotal,payment=$payment,balance=$balance,due='$due',mode='$mode',description='$description',billnumber='$billnumber' where id=$autoid");
+                                $old_quantity = $db->queryUniqueValue("SELECT quantity FROM stock_sales WHERE id='$autoid' and count1='$i'");
+                                $db->query("update stock_sales set tax=$tax,tax_dis='$tax_did', grand_total='$payable',discount='$discount',dis_amount='$dis_amount', stock_name='$name1',selling_price='$rate',quantity='$quantity',amount='$total',date='$mysqldate',username='$username',customer_id='$customer',subtotal='$subtotal',payment='$payment',balance='$balance',due='$due',mode='$mode',description='$description',billnumber='$billnumber' where id='$autoid'");
                                 $quantity_diff = $quantity - $old_quantity;
                                 $quantity = $quantity + $quantity_diff;
                                 $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name1'");
                                 $amount1 = $amount - $quantity;
 
-                                $db->query("update stock_entries set  stock_id='$autoid',stock_name='$name1',quantity=$quantity,opening_stock=$amount,closing_stock=$amount1,date='$mysqldate',username='$username',type='sales',salesid='$billnumber',total=$total,selling_price=$rate,billnumber='$billnumber' where salesid='$autoid' and count1=$j");
+                                $db->query("update stock_entries set  stock_id='$autoid',stock_name='$name1',quantity='$quantity',opening_stock='$amount',closing_stock='$amount1',date='$mysqldate',username='$username',type='sales',salesid='$billnumber',total='$total',selling_price='$rate',billnumber='$billnumber' where salesid='$autoid' and count1='$j'");
                                 //echo "<br><font color=green size=+1 >New Sales Added ! Transaction ID [ $autoid ]</font>" ;
 
 

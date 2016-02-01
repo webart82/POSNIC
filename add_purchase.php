@@ -454,17 +454,17 @@ include_once("init.php");
                                     $db->query("insert into stock_avail(name,quantity) values('$stock_name[$i]',$quty[$i])");
                                     echo "<br><font color=green size=+1 >New Stock Entry Inserted !</font>";
 
-                                    $db->query("insert into stock_details(stock_id,stock_name,stock_quatity,supplier_id,company_price,selling_price) values('$autoid','$stock_name[$i]',0,'$supplier',$cost[$i],$sell[$i])");
+                                    $db->query("insert into stock_details(stock_id,stock_name,stock_quatity,supplier_id,company_price,selling_price) values('$autoid','$stock_name[$i]',0,'$supplier','$cost[$i]','$sell[$i]')");
 
 
-                                    $db->query("INSERT INTO stock_entries(stock_id,stock_name, stock_supplier_name, quantity, company_price, selling_price, opening_stock, closing_stock, date, username, type, total, payment, balance, mode, description, due, subtotal,count1,billnumber) VALUES ( '$autoid1','$stock_name[$i]','$supplier',$quty[$i],$cost[$i],$sell[$i],0,$quty[$i],'$date','$username','entry',$total[$i],$payment,$balance,'$mode','$description','$due',$subtotal,$i+1,'$bill_no')");
+                                    $db->query("INSERT INTO stock_entries(stock_id,stock_name, stock_supplier_name, quantity, company_price, selling_price, opening_stock, closing_stock, date, username, type, total, payment, balance, mode, description, due, subtotal,count1,billnumber) VALUES ( '$autoid1','$stock_name[$i]','$supplier','$quty[$i]','$cost[$i]','$sell[$i]',0,'$quty[$i]','$date','$username','entry','$total[$i]','$payment','$balance','$mode','$description','$due','$subtotal',$i+1,'$bill_no')");
 
                                 } else if ($count == 1) {
 
                                     $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$stock_name[$i]'");
                                     $amount1 = $amount + $quty[$i];
-                                    $db->execute("UPDATE stock_avail SET quantity=$amount1 WHERE name='$stock_name[$i]'");
-                                    $db->query("INSERT INTO stock_entries(stock_id,stock_name,stock_supplier_name,quantity,company_price,selling_price,opening_stock,closing_stock,date,username,type,total,payment,balance,mode,description,due,subtotal,count1,billnumber) VALUES ('$autoid1','$stock_name[$i]','$supplier',$quty[$i],$cost[$i],$sell[$i],$amount,$amount1,'$date','$username','entry',$total[$i],$payment,$balance,'$mode','$description','$due',$subtotal,$i+1,'$bill_no')");
+                                    $db->execute("UPDATE stock_avail SET quantity='$amount1' WHERE name='$stock_name[$i]'");
+                                    $db->query("INSERT INTO stock_entries(stock_id,stock_name,stock_supplier_name,quantity,company_price,selling_price,opening_stock,closing_stock,date,username,type,total,payment,balance,mode,description,due,subtotal,count1,billnumber) VALUES ('$autoid1','$stock_name[$i]','$supplier','$quty[$i]','$cost[$i]','$sell[$i]','$amount','$amount1','$date','$username','entry','$total[$i]','$payment','$balance','$mode','$description','$due','$subtotal',$i+1,'$bill_no')");
                                     //INSERT INTO `stock`.`stock_entries` (`id`, `stock_id`, `stock_name`, `stock_supplier_name`, `category`, `quantity`, `company_price`, `selling_price`, `opening_stock`, `closing_stock`, `date`, `username`, `type`, `salesid`, `total`, `payment`, `balance`, `mode`, `description`, `due`, `subtotal`, `count1`)
                                     //VALUES (NULL, '$autoid1', '$stock_name[$i]', '$supplier', '', '$quantity', '$brate', '$srate', '$amount', '$amount1', '$mysqldate', 'sdd', 'entry', 'Sa45', '432.90', '2342.90', '24.34', 'cash', 'sdflj', '2010-03-25 12:32:02', '45645', '1');
 

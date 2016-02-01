@@ -220,10 +220,10 @@ include_once("init.php");
                                 <?php
 
 
-                                $SQL = "SELECT DISTINCT(stock_id) FROM  stock_entries where type LIKE 'entry%' and balance>0";
+                                $SQL = "SELECT DISTINCT(stock_id) FROM  stock_entries where type LIKE 'entry%' and balance>0 ORDER BY id DESC";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
-                                    $SQL = "SELECT DISTINCT(stock_id) FROM  stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' and balance>0  AND type LIKE 'entry%'";
+                                    $SQL = "SELECT DISTINCT(stock_id) FROM  stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' and balance>0  AND type LIKE 'entry%' ORDER BY id DESC";
 
 
                                 }
@@ -243,10 +243,10 @@ include_once("init.php");
 
                                 */
 
-                                $query = "SELECT COUNT(stock_id) as num FROM $tbl_name where type LIKE 'entry%' and balance>0";
+                                $query = "SELECT COUNT(stock_id) as num FROM $tbl_name where type LIKE 'entry%' and balance>0 ORDER BY id DESC";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
-                                    $query = "SELECT COUNT(stock_id) as num FROM stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' and balance>0 AND type LIKE 'entry%'";
+                                    $query = "SELECT COUNT(stock_id) as num FROM stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' and balance>0 AND type LIKE 'entry%' ORDER BY id DESC";
 
 
                                 }
@@ -281,7 +281,7 @@ include_once("init.php");
 
                                 /* Get data. */
 
-                                $sql = "SELECT * FROM stock_entries where type LIKE 'entry%' and balance>0 ORDER BY date desc LIMIT $start, $limit  ";
+                                $sql = "SELECT * FROM stock_entries where type LIKE 'entry%' and balance>0 ORDER BY date desc LIMIT $start, $limit   ";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
                                     $sql = "SELECT * FROM stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' AND type LIKE 'entry%' and balance>0  ORDER BY date desc LIMIT $start, $limit";

@@ -231,10 +231,10 @@ include_once("init.php");
                                 <?php
 
 
-                                $SQL = "SELECT * FROM  supplier_details";
+                                $SQL = "SELECT * FROM  supplier_details ORDER BY id DESC";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
-                                    $SQL = "SELECT * FROM  supplier_details WHERE supplier_name LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_address LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_contact1 LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_contact1 LIKE '%" . $_POST['searchtxt'] . "%'";
+                                    $SQL = "SELECT * FROM  supplier_details WHERE supplier_name LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_address LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_contact1 LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_contact1 LIKE '%" . $_POST['searchtxt'] . "%' ORDER BY id DESC";
 
 
                                 }
@@ -292,10 +292,10 @@ include_once("init.php");
 
                                 /* Get data. */
 
-                                $sql = "SELECT * FROM supplier_details LIMIT $start, $limit ";
+                                $sql = "SELECT * FROM supplier_details  ORDER BY id DESC LIMIT $start, $limit ";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
-                                    $sql = "SELECT * FROM  supplier_details WHERE supplier_name LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_address LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_contact1 LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_contact1 LIKE '%" . $_POST['searchtxt'] . "%'  LIMIT $start, $limit";
+                                    $sql = "SELECT * FROM  supplier_details WHERE supplier_name LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_address LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_contact1 LIKE '%" . $_POST['searchtxt'] . "%' OR supplier_contact1 LIKE '%" . $_POST['searchtxt'] . "%' ORDER BY id DESC  LIMIT $start, $limit";
 
 
                                 }

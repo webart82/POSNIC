@@ -40,6 +40,14 @@ include_once("init.php");
                         required: true
 
                     },
+                    new_payment: {
+                        required: true
+                    },
+
+                    paid: {
+                        required: true
+
+                    },
                     sell: {
                         required: true
 
@@ -52,6 +60,13 @@ include_once("init.php");
                     },
                     cost: {
                         required: "Please enter a cost Price"
+                    },
+
+                    new_payment: {
+                        required: "Please enter a New Payment"
+                    },
+                    paid: {
+                        required: "Please enter a Paid Amount"
                     },
                     sell: {
                         required: "Please enter a Sell Price"
@@ -220,6 +235,7 @@ include_once("init.php");
                                 $customer = mysqli_real_escape_string($db->connection, $_POST['customer']);
                                 $subtotal = mysqli_real_escape_string($db->connection, $_POST['total']);
                                 $newpayment = mysqli_real_escape_string($db->connection, $_POST['new_payment']);
+                                $newpayment = empty($_POST['new_payment']) ? 0:$newpayment;
                                 $selected_date = $_POST['date'];
                                 $selected_date = strtotime($selected_date);
                                 $mysqldate = date('Y-m-d', $selected_date);
@@ -229,7 +245,7 @@ include_once("init.php");
                                 $max = $db->maxOfAll("id", "transactions");
                                 $receiptid = "RCPT" . $max;
                                 if ($db->query("UPDATE stock_sales SET balance=$balance,payment=$payment,due='$due' where transactionid='$id'")) {
-                                    $db->query("INSERT INTO transactions(type,customer,payment,balance,rid,due,subtotal,receiptid) values('sales','$customer',$newpayment,$balance,'$id','$due',$subtotal,'$receiptid')");
+                                    $db->query("INSERT INTO transactions(type,customer,payment,balance,rid,due,subtotal,receiptid) values('sales','$customer','$newpayment','$balance','$id','$due','$subtotal','$receiptid')");
                                     $max = $db->maxOfAll("id", "transactions");
                                     echo "<br><font color=green size=+1 > [ $id ] Customer Details Updated!</font>";
                                     echo "<script>window.open('payment_receipt_print.php?sid=$max','myNewWinsr','width=620,height=800,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no');</script>";

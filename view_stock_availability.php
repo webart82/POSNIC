@@ -224,10 +224,10 @@ include_once("init.php");
                                 <?php
 
 
-                                $SQL = "SELECT * FROM  stock_avail";
+                                $SQL = "SELECT * FROM  stock_avail ORDER BY id DESC";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
-                                    $SQL = "SELECT * FROM  stock_avail WHERE name LIKE '%" . $_POST['searchtxt'] . "%'";
+                                    $SQL = "SELECT * FROM  stock_avail WHERE name LIKE '%" . $_POST['searchtxt'] . "%' ORDER BY id DESC";
 
 
                                 }
@@ -285,10 +285,10 @@ include_once("init.php");
 
                                 /* Get data. */
 
-                                $sql = "SELECT * FROM stock_avail LIMIT $start, $limit ";
+                                $sql = "SELECT * FROM stock_avail ORDER BY id DESC LIMIT $start, $limit  ";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
-                                    $sql = "SELECT * FROM  stock_avail WHERE name LIKE '%" . $_POST['searchtxt'] . "%'  LIMIT $start, $limit";
+                                    $sql = "SELECT * FROM  stock_avail WHERE name LIKE '%" . $_POST['searchtxt'] . "%'   ORDER BY id DESC LIMIT $start, $limit";
 
 
                                 }

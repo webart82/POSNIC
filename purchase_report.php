@@ -124,7 +124,7 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                                     </tr>
                                     <?php
                                     $result = $db->query("SELECT * FROM stock_entries where  type='entry' AND date BETWEEN '$fromdate' AND '$todate' ");
-                                    while ($line = mysqli_fetch_array($result)) {
+                                    while ($line = $db->fetchNextObject($result)) {
                                         ?>
 
                                         <tr>
@@ -132,14 +132,12 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                                                 $phpdate = strtotime($mysqldate);
                                                 $phpdate = date("d/m/Y", $phpdate);
                                                 echo $phpdate; ?></td>
-                                            <td><?php echo $line['stock_id']; ?></td>
-                                            <td><?php echo $line['stock_supplier_name'] ?></td>
-                                            <td><?php echo $line['payment'] ?></td>
-                                            <td><?php echo $line['balance'] ?></td>
-                                            <td><?php echo $line['subtotal'] ?></td>
+                                            <td><?php echo $line->stock_id; ?></td>
+                                            <td><?php echo $line->stock_supplier_name; ?></td>
+                                            <td><?php echo $line->payment;?></td>
+                                            <td><?php echo $line->balance; ?></td>
+                                            <td><?php echo $line->subtotal; ?></td>
                                         </tr>
-
-
                                         <?php
                                     }
                                     ?>

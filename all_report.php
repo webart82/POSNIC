@@ -147,8 +147,8 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
                                                 $phpdate = date("d/m/Y", $phpdate);
                                                 echo $phpdate; ?></td>
                                             <td><?php echo $line->stock_supplier_name; ?></td>
-                                            <td><?php echo $line->payment; ?></td>
                                             <td><?php echo $line->stock_name; ?></td>
+                                            <td><?php echo $line->quantity; ?></td>
                                             <td><?php echo $line->company_price; ?></td>
                                             <td><?php echo $line->opening_stock; ?></td>
                                             <td><?php echo $line->closing_stock; ?></td>

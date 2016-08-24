@@ -321,7 +321,7 @@ include_once("init.php");
                 document.getElementById('payment').value = parseFloat(document.getElementById('payable_amount').value);
 
             }
-
+            balance_amount();
         }
         function discount_as_amount() {
             if (parseFloat(document.getElementById('disacount_amount').value) > parseFloat(document.getElementById('grand_total').value))
@@ -341,6 +341,28 @@ include_once("init.php");
                 }
             }
         }
+        
+        function add_tax() {
+            var grand_tot = parseFloat(document.getElementById('grand_total').value);
+            if (parseFloat(document.getElementById('tax').value) > parseFloat(document.getElementById('grand_total').value))
+                document.getElementById('tax').value = "";
+            var result = isNaN(parseFloat(document.getElementById('tax').value));
+            if(result == true)
+            {
+                document.getElementById('payable_amount').value = grand_tot;
+            }
+            if (document.getElementById('grand_total').value != "") {
+                if (parseFloat(document.getElementById('tax').value) < parseFloat(document.getElementById('grand_total').value)) {
+                    tax = parseFloat(document.getElementById('tax').value);
+                    document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value) + tax;
+                    if (parseFloat(document.getElementById('payment').value) > parseFloat(document.getElementById('payable_amount').value)) {
+                        document.getElementById('payment').value = parseFloat(document.getElementById('payable_amount').value);
+                    }
+                }
+            } 
+            balance_amount();
+         }
+        
         function reduce_balance(id) {
             var minus = parseFloat(document.getElementById(id + "my_tot").value);
             document.getElementById('grand_total').value = parseFloat(document.getElementById('grand_total').value) - minus;
@@ -573,7 +595,7 @@ include_once("init.php");
                             <tr>
                                 <?php
                                 $max = $db->maxOfAll("id", "stock_entries");
-                                $max = $max + 3;
+                                $max = $max + 1;
                                 $autoid = "PR" . $max . "";
                                 ?>
                                 <td>Stock ID:</td>
@@ -722,7 +744,7 @@ include_once("init.php");
                                     Due Date:<input type="text" name="duedate" id="test2"
                                                     value="<?php echo date('d-m-Y'); ?>" class="round">
                                 </td>
-                                <td> Tax:<input type="text" name="tax" onkeypress="return numbersonly(event);"></td>
+                                <td> Tax:<input type="text" id="tax" name="tax" onkeypress="return numbersonly(event);" onkeyup="add_tax();"></td>
                                 <td>Tax Description:<input type="text" name="tax_dis"></td>
 
 

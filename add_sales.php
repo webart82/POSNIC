@@ -41,6 +41,7 @@ include_once("init.php");
             $("#item").blur(function () {
                 document.getElementById('total').value = document.getElementById('sell').value * document.getElementById('quty').value
             });
+            
             $("#item").blur(function () {
 
 
@@ -529,7 +530,7 @@ include_once("init.php");
                             $temp_balance = $db->queryUniqueValue("SELECT balance FROM customer_details WHERE customer_name='$customer'");
                             $temp_balance = (int)$temp_balance + (int)$balance;
                             $db->execute("UPDATE customer_details SET balance=$temp_balance WHERE customer_name='$customer'");
-                            $selected_date = $_POST['due'];
+                            $selected_date = isset($_POST['due']) ? $_POST['due'] : null ;
                             $selected_date = strtotime($selected_date);
                             $mysqldate = date('Y-m-d H:i:s', $selected_date);
                             $due = $mysqldate;
@@ -559,7 +560,7 @@ include_once("init.php");
                                     $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name1'");
                                     $amount1 = $amount - $quantity;
 
-                                    $db->query("insert into stock_entries (stock_id,stock_name,quantity,opening_stock,closing_stock,date,username,type,salesid,total,selling_price,count1,billnumber) values('$autoid','$name1','$quantity','$amount','$amount1','$mysqldate','$username','sales','$autoid','$total','$rate',$i+1,'$bill_no')");
+                                   // $db->query("insert into stock_entries (stock_id,stock_name,quantity,opening_stock,closing_stock,date,username,type,salesid,total,selling_price,count1,billnumber) values('$autoid','$name1','$quantity','$amount','$amount1','$mysqldate','$username','sales','$autoid','$total','$rate',$i+1,'$bill_no')");
                                     //echo "<br><font color=green size=+1 >New Sales Added ! Transaction ID [ $autoid ]</font>" ;
 
 
@@ -648,7 +649,9 @@ include_once("init.php");
                                 <td><input name="" type="text" id="quty" maxlength="200"
                                            class="round default-width-input my_with"
                                            onKeyPress="quantity_chnage(event);return numbersonly(event)"
-                                           onkeyup="total_amount();unique_check();stock_size();"/></td>
+                                           onkeyup="total_amount();unique_check();stock_size();
+                                           
+                                           "/></td>
 
 
                                 <td><input name="" type="text" id="sell" readonly="readonly" maxlength="200"

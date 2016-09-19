@@ -79,8 +79,8 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
   `customer_name` varchar(200) NOT NULL,
   `customer_address` varchar(500) NOT NULL,
   `customer_contact1` varchar(100) NOT NULL,
-  `customer_contact2` varchar(100),
-  `balance` int(11) NOT NULL,
+  `customer_contact2` varchar(100) DEFAULT NULL,
+  `balance` int(11) '0',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ";
 

@@ -5,7 +5,7 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
     header("location: index.php?msg=Please%20login%20to%20access%20admin%20area%20!"); // Re-direct to index.php
 } else {
 
-    error_reporting(0);
+    
     if (isset($_GET['id']) && isset($_GET['table'])) {
         $id = $_GET['id'];
         $tablename = $_GET['table'];

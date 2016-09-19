@@ -79,7 +79,7 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
   `customer_name` varchar(200) NOT NULL,
   `customer_address` varchar(500) NOT NULL,
   `customer_contact1` varchar(100) NOT NULL,
-  `customer_contact2` varchar(100) NOT NULL,
+  `customer_contact2` varchar(100),
   `balance` int(11) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ";
@@ -88,6 +88,7 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
     mysqli_query($con, $sql);
 
     if ($dummy === 1) {
+        
         $sql = "INSERT INTO `customer_details` (`id`, `customer_name`, `customer_address`, `customer_contact1`, `customer_contact2`, `balance`) VALUES
 (8, 'Chandru', 'hsr layout', '7787876786', '989898988', 0),
 (9, 'dhanush', 'hsr layout', '7787876786', '989898988', 0),
@@ -102,6 +103,7 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
 
 // Execute query
         mysqli_query($con, $sql);
+      
     }
 
     $sql = "CREATE TABLE IF NOT EXISTS `stock_avail` (

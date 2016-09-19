@@ -124,7 +124,7 @@ if (isset($_POST['submit']) and isset($_POST['uname']) and isset($_POST['passwor
     $uname = $_POST['uname'];
     $password = $_POST['password'];
     $answer = $_POST['answer'];
-    $db->query("UPDATE stock_user  SET username ='" . $uname . "',password='" . $password . "',answer='" . $answer . "'");
+    $db->query("INSERT INTO stock_user(username,password,answer,user_type)VALUES ('" . $uname . "','" . $password . "','" . $answer . "','admin')");
     echo "<script>window.location = 'next_store_details.php';</script>";
     // exit;
 }

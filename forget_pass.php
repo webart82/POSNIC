@@ -1,6 +1,6 @@
 <?php
 
-error_reporting(0);
+
 include("lib/db.class.php");
 include_once "config.php";
 

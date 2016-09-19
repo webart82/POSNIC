@@ -5,7 +5,7 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
 } else {
     if (isset($_GET['from_stock_sales_date']) && isset($_GET['to_stock_sales_date']) && $_GET['from_stock_sales_date'] != '' && $_GET['to_stock_sales_date'] != '') {
 
-        error_reporting(0);
+        
         $selected_date = $_GET['from_stock_sales_date'];
         $selected_date = strtotime($selected_date);
         $mysqldate = date('Y-m-d H:i:s', $selected_date);

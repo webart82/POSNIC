@@ -492,13 +492,15 @@ include_once("init.php");
                             $username = $_SESSION['username'];
 
                             $stockid = mysqli_real_escape_string($db->connection, $_POST['stockid']);
-
                             $bill_no = mysqli_real_escape_string($db->connection, $_POST['bill_no']);
                             $customer = mysqli_real_escape_string($db->connection, $_POST['supplier']);
                             $address = mysqli_real_escape_string($db->connection, $_POST['address']);
                             $contact = mysqli_real_escape_string($db->connection, $_POST['contact']);
                             $count = $db->countOf("customer_details", "customer_name='$customer'");
-                            if ($count == 0) {
+                            if (($count == 0)&&(isset($_POST['supplier']))) {
+                                $db->query("insert into customer_details(customer_name,customer_address,customer_contact1) values('$customer','$address','$contact')");
+                            }else{
+                                $customer = 'anonymous';
                                 $db->query("insert into customer_details(customer_name,customer_address,customer_contact1) values('$customer','$address','$contact')");
                             }
                             $stock_name = $_POST['stock_name'];
@@ -598,7 +600,7 @@ include_once("init.php");
                                 $max = $max + 1;
                                 $autoid = "SID" . $max . "";
                                 ?>
-                                <td>Sales ID:</td>
+                                <td>Bill no:</td>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
                                            class="round default-width-input" style="width:130px "
                                            value="<?php echo $autoid ?>"/></td>
@@ -608,13 +610,11 @@ include_once("init.php");
                                            type="text" id="name" maxlength="200" class="round default-width-input"/>
                                 </td>
                                 
-                                <td><span class="man">*</span>Bill No:</td>
-                                <td><input name="bill_no" placeholder="ENTER BILL NO" type="text" id="bill_no"
-                                           maxlength="200" class="round default-width-input" style="width:120px "/></td>
+                                
 
                             </tr>
                             <tr>
-                                <td><span class="man">*</span>Customer:</td>
+                                <td>Customer:</td>
                                 <td><input name="supplier" placeholder="ENTER CUSTOMER" type="text" id="supplier"
                                            maxlength="200" class="round default-width-input" style="width:130px "/></td>
 
@@ -642,8 +642,14 @@ include_once("init.php");
                                 <td> &nbsp;</td>
                             </tr>
                             <tr>
-
-                                <td><input name="" type="text" id="item" maxlength="200"
+<script type="text/javascript">
+function ff()
+{
+ var focusval1=document.getElementById("item").value;
+ document.getElementById("aa").innerHTML=focusval1;
+ }
+ </script>
+                                <td><input name="" type="text" id="item" maxlength="200"autofocus="autofocus" id="xax"
                                            class="round default-width-input " style="width: 150px"/></td>
 
                                 <td><input name="" type="text" id="quty" maxlength="200"

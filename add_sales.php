@@ -491,7 +491,6 @@ include_once("init.php");
                             $username = $_SESSION['username'];
 
                             $stockid = mysqli_real_escape_string($db->connection, $_POST['stockid']);
-
                             $bill_no = mysqli_real_escape_string($db->connection, $_POST['bill_no']);
                             $customer = mysqli_real_escape_string($db->connection, $_POST['supplier']);
                             $address = mysqli_real_escape_string($db->connection, $_POST['address']);
@@ -597,7 +596,7 @@ include_once("init.php");
                                 $max = $max + 1;
                                 $autoid = "SID" . $max . "";
                                 ?>
-                                <td>Sales ID:</td>
+                                <td>Bill no:</td>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
                                            class="round default-width-input" style="width:130px "
                                            value="<?php echo $autoid ?>"/></td>
@@ -605,25 +604,20 @@ include_once("init.php");
                                 <td>Date:</td>
                                 <td><input name="date" id="test1" placeholder="" value="<?php echo date('d-m-Y'); ?>"
                                            type="text" id="name" maxlength="200" class="round default-width-input"/>
-                                </td>
-                                
-                                <td><span class="man">*</span>Bill No:</td>
-                                <td><input name="bill_no" placeholder="ENTER BILL NO" type="text" id="bill_no"
-                                           maxlength="200" class="round default-width-input" style="width:120px "value="<?php echo rand(); ?>"/></td>
-
+                                </td>                         
                             </tr>
                             <tr>
-                                <td><span class="man">*</span>Customer:</td>
+                                <td>Customer:</td>
                                 <td><input name="supplier" placeholder="ENTER CUSTOMER" type="text" id="supplier"
-                                           maxlength="200" class="round default-width-input" style="width:130px "/></td>
+                                           value="anonymous" maxlength="200" class="round default-width-input" style="width:130px "/></td>
 
                                 <td>Address:</td>
                                 <td><input name="address" placeholder="ENTER ADDRESS" type="text" id="address"
-                                           maxlength="200" class="round default-width-input"/></td>
+                                           value="coast street"maxlength="200" class="round default-width-input"/></td>
 
                                 <td>contact:</td>
                                 <td><input name="contact" placeholder="ENTER CONTACT" type="text" id="contact1"
-                                           maxlength="200" class="round default-width-input"
+                                           value="9876543210"maxlength="200" class="round default-width-input"
                                            onkeypress="return numbersonly(event)" style="width:120px "/></td>
 
                             </tr>
@@ -641,8 +635,14 @@ include_once("init.php");
                                 <td> &nbsp;</td>
                             </tr>
                             <tr>
-
-                                <td><input name="" type="text" id="item" maxlength="200"
+<script type="text/javascript">
+function ff()
+{
+ var focusval1=document.getElementById("item").value;
+ document.getElementById("aa").innerHTML=focusval1;
+ }
+ </script>
+                                <td><input name="" type="text" id="item" maxlength="200"autofocus="autofocus" id="xax"
                                            class="round default-width-input " style="width: 150px"/></td>
 
                                 <td><input name="" type="text" id="quty" maxlength="200"

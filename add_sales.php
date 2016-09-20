@@ -535,7 +535,7 @@ include_once("init.php");
                             $due = $mysqldate;
                             $max = $db->maxOfAll("id", "stock_entries");
                             $max = $max + 1;
-                            $autoid = "SD" . $max . "";
+                            $autoid = "SID" . $max . "";
                             for ($i = 0; $i < count($stock_name); $i++) {
                                 $name1 = $stock_name[$i];
                                 $quantity = $_POST['quty'][$i];
@@ -596,7 +596,7 @@ include_once("init.php");
                                 <?php
                                 $max = $db->maxOfAll("id", "stock_entries");
                                 $max = $max + 1;
-                                $autoid = "PR" . $max . "";
+                                $autoid = "SID" . $max . "";
                                 ?>
                                 <td>Stock ID:</td>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"

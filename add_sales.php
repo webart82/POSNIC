@@ -100,8 +100,7 @@ include_once("init.php");
                 rules: {
                     bill_no: {
                         required: true,
-                        minlength: 3,
-                        maxlength: 200
+                        
                     },
                     stockid: {
                         required: true
@@ -610,7 +609,7 @@ include_once("init.php");
                                 
                                 <td><span class="man">*</span>Bill No:</td>
                                 <td><input name="bill_no" placeholder="ENTER BILL NO" type="text" id="bill_no"
-                                           maxlength="200" class="round default-width-input" style="width:120px "/></td>
+                                           maxlength="200" class="round default-width-input" style="width:120px "value="<?php echo rand(); ?>"/></td>
 
                             </tr>
                             <tr>

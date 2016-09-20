@@ -496,10 +496,7 @@ include_once("init.php");
                             $address = mysqli_real_escape_string($db->connection, $_POST['address']);
                             $contact = mysqli_real_escape_string($db->connection, $_POST['contact']);
                             $count = $db->countOf("customer_details", "customer_name='$customer'");
-                            if (($count == 0)&&(isset($_POST['supplier']))) {
-                                $db->query("insert into customer_details(customer_name,customer_address,customer_contact1) values('$customer','$address','$contact')");
-                            }else{
-                                $customer = 'anonymous';
+                            if ($count == 0) {
                                 $db->query("insert into customer_details(customer_name,customer_address,customer_contact1) values('$customer','$address','$contact')");
                             }
                             $stock_name = $_POST['stock_name'];
@@ -612,15 +609,15 @@ include_once("init.php");
                             <tr>
                                 <td>Customer:</td>
                                 <td><input name="supplier" placeholder="ENTER CUSTOMER" type="text" id="supplier"
-                                           maxlength="200" class="round default-width-input" style="width:130px "/></td>
+                                           value="anonymous" maxlength="200" class="round default-width-input" style="width:130px "/></td>
 
                                 <td>Address:</td>
                                 <td><input name="address" placeholder="ENTER ADDRESS" type="text" id="address"
-                                           maxlength="200" class="round default-width-input"/></td>
+                                           value="coast street"maxlength="200" class="round default-width-input"/></td>
 
                                 <td>contact:</td>
                                 <td><input name="contact" placeholder="ENTER CONTACT" type="text" id="contact1"
-                                           maxlength="200" class="round default-width-input"
+                                           value="9876543210"maxlength="200" class="round default-width-input"
                                            onkeypress="return numbersonly(event)" style="width:120px "/></td>
 
                             </tr>

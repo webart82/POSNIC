@@ -459,7 +459,7 @@ include_once("init.php");
                                 <tr>
                                     <th>No</th>
                                     <th>Stock Name</th>
-                                    <th>Stock Id</th>
+                                    <th>Sales Id</th>
                                     <th>Date</th>
                                     <th>Customer</th>
 

@@ -100,8 +100,7 @@ include_once("init.php");
                 rules: {
                     bill_no: {
                         required: true,
-                        minlength: 3,
-                        maxlength: 200
+                        
                     },
                     stockid: {
                         required: true
@@ -608,10 +607,7 @@ include_once("init.php");
                                 <td>Date:</td>
                                 <td><input name="date" id="test1" placeholder="" value="<?php echo date('d-m-Y'); ?>"
                                            type="text" id="name" maxlength="200" class="round default-width-input"/>
-                                </td>
-                                
-                                
-
+                                </td>                         
                             </tr>
                             <tr>
                                 <td>Customer:</td>

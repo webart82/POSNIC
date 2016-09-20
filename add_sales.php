@@ -590,7 +590,7 @@ include_once("init.php");
                     <form name="form1" method="post" id="form1" action="">
                         <input type="hidden" id="posnic_total">
 
-                        <p><strong>Add Stock/Product </strong> - Add New ( Control +2)</p>
+                        <p><strong>Add Sales/Product </strong> - Add New ( Control +2)</p>
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <?php
@@ -598,7 +598,7 @@ include_once("init.php");
                                 $max = $max + 1;
                                 $autoid = "SID" . $max . "";
                                 ?>
-                                <td>Stock ID:</td>
+                                <td>Sales ID:</td>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
                                            class="round default-width-input" style="width:130px "
                                            value="<?php echo $autoid ?>"/></td>
@@ -607,6 +607,7 @@ include_once("init.php");
                                 <td><input name="date" id="test1" placeholder="" value="<?php echo date('d-m-Y'); ?>"
                                            type="text" id="name" maxlength="200" class="round default-width-input"/>
                                 </td>
+                                
                                 <td><span class="man">*</span>Bill No:</td>
                                 <td><input name="bill_no" placeholder="ENTER BILL NO" type="text" id="bill_no"
                                            maxlength="200" class="round default-width-input" style="width:120px "/></td>

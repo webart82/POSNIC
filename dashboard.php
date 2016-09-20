@@ -111,7 +111,7 @@ include_once("init.php");
                             <td align="left">&nbsp;</td>
                         </tr>
                         <tr>
-                            <td align="left">Tatal Sales Transactions</td>
+                            <td align="left">Total Sales Transactions</td>
                             <td align="left"><?php echo $count = $db->countOfAll("stock_sales"); ?></td>
                         </tr>
                         <tr>

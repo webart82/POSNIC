@@ -17,7 +17,9 @@ $myusername = mysqli_real_escape_string($db->connection, $myusername);
 $mypassword = mysqli_real_escape_string($db->connection, $mypassword);
 
 $sql = "SELECT * FROM $tbl_name WHERE username='$myusername' and password='$mypassword'";
+
 $result = mysqli_query($db->connection, $sql);
+
 // mysqli_num_row is counting table row
 $count = mysqli_num_rows($result);
 // If result matched $myusername and $mypassword, table row must be 1 row

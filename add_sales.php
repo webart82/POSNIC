@@ -437,9 +437,18 @@ include_once("init.php");
                 <li><a href="add_sales.php">Add Sales</a></li>
                 <li><a href="view_sales.php">View Sales</a></li>
             </ul>
-
+<h3 style="margin-left: 50px;">Help Term</h3>
+            <ul>
+                <li><a ="dashboard.php">Home (Ctrl+0)</a></li>
+                
+                <li><a ="add_sales.php">Add sales (Ctrl+)</a></li>
+                <li><a ="add_sales.php">Save (Ctrl+s)</a></li>
+                <li><a ="print.php">Print (Ctrl+p)</a></li>
+                
+            </ul>
         </div>
         <!-- end side-menu -->
+        
 
         <div class="side-content fr">
 
@@ -602,12 +611,12 @@ include_once("init.php");
                                            value="<?php echo $autoid ?>"/></td>
 
                                 <td>Date:</td>
-                                <td><input name="date" id="test1" placeholder="" value="<?php echo date('d-m-Y'); ?>"
-                                           style="margin-left: 15px;"type="text" id="name" maxlength="200" class="round default-width-input"/>
+                                <td><input name="date" id="test1" placeholder="" value="<?php echo date('d-m-Y');?>"
+                                style="margin-left: 15px;"type="text" id="name" maxlength="200" class="round default-width-input"/>
                                 </td>
                                
                                 
-                            
+                 
                             </tr>
                             <tr>
                                 <td>Customer:</td>

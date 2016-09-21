@@ -437,17 +437,7 @@ include_once("init.php");
                 <li><a href="add_sales.php">Add Sales</a></li>
                 <li><a href="view_sales.php">View Sales</a></li>
             </ul>
-
-        </div>
-        <!-- end side-menu -->
-        <!-- MAIN CONTENT -->
-<div id="">
-
-    <div class="page-full-width cf" >
-
-        <div class="side-menu fl" style="margin-left: -190px; margin-top: 150px;">
-
-            <h3 style="margin-left: 50px;">Help Term</h3>
+<h3 style="margin-left: 50px;">Help Term</h3>
             <ul>
                 <li><a ="dashboard.php">Home (Ctrl+0)</a></li>
                 
@@ -456,9 +446,9 @@ include_once("init.php");
                 <li><a ="print.php">Print (Ctrl+p)</a></li>
                 
             </ul>
-
         </div>
         <!-- end side-menu -->
+        
 
         <div class="side-content fr">
 
@@ -622,7 +612,7 @@ include_once("init.php");
 
                                 <td>Date:</td>
                                 <td><input name="date" id="test1" placeholder="" value="<?php echo date('d-m-Y'); ?>"
-                                           type="text" id="name" maxlength="200" class="round default-width-input"/>
+                                           style="margin-left:15px;" type="text" id="name" maxlength="200" class="round default-width-input"/>
                                 </td>                         
                             </tr>
                             <tr>

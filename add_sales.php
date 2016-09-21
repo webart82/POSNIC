@@ -94,7 +94,7 @@ include_once("init.php");
          submitHandler: function() { alert("submitted!"); }
          });*/
         $(document).ready(function () {
-            document.getElementById('bill_no').focus();
+            document.getElementById('item').focus();
             // validate signup form on keyup and submit
             $("#form1").validate({
                 rules: {
@@ -611,9 +611,12 @@ include_once("init.php");
                                            value="<?php echo $autoid ?>"/></td>
 
                                 <td>Date:</td>
-                                <td><input name="date" id="test1" placeholder="" value="<?php echo date('d-m-Y'); ?>"
-                                           style="margin-left:15px;" type="text" id="name" maxlength="200" class="round default-width-input"/>
-                                </td>                         
+                                <td><input name="date" id="test1" placeholder="" value="<?php echo date('d-m-Y');?>"
+                                style="margin-left: 15px;"type="text" id="name" maxlength="200" class="round default-width-input"/>
+                                </td>
+                               
+                                
+                 
                             </tr>
                             <tr>
                                 <td>Customer:</td>
@@ -644,14 +647,8 @@ include_once("init.php");
                                 <td> &nbsp;</td>
                             </tr>
                             <tr>
-<script type="text/javascript">
-function ff()
-{
- var focusval1=document.getElementById("item").value;
- document.getElementById("aa").innerHTML=focusval1;
- }
- </script>
-                                <td><input name="" type="text" id="item" maxlength="200"autofocus="autofocus" id="xax"
+
+                                <td><input name="" type="text" id="item" maxlength="200"
                                            class="round default-width-input " style="width: 150px"/></td>
 
                                 <td><input name="" type="text" id="quty" maxlength="200"

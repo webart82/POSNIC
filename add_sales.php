@@ -440,6 +440,25 @@ include_once("init.php");
 
         </div>
         <!-- end side-menu -->
+        <!-- MAIN CONTENT -->
+<div id="">
+
+    <div class="page-full-width cf" >
+
+        <div class="side-menu fl" style="margin-left: -190px; margin-top: 150px;">
+
+            <h3 style="margin-left: 50px;">Help Term</h3>
+            <ul>
+                <li><a ="dashboard.php">Home (Ctrl+0)</a></li>
+                
+                <li><a ="add_sales.php">Add sales (Ctrl+)</a></li>
+                <li><a ="add_sales.php">Save (Ctrl+s)</a></li>
+                <li><a ="print.php">Print (Ctrl+p)</a></li>
+                
+            </ul>
+
+        </div>
+        <!-- end side-menu -->
 
         <div class="side-content fr">
 

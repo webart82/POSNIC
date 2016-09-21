@@ -29,7 +29,7 @@
 			window.location = "add_stock.php";
 			  return false;
 			});
-			jQuery(document).bind('keydown', 'Ctrl+3',function() {
+			jQuery(document).bind('keydown', 'Ctrl++',function() {
 			window.location = "add_sales.php";
 			  return false;
 			});
@@ -55,6 +55,10 @@
 			});
 			jQuery(document).bind('keydown', 'Ctrl+9',function() {
 			window.location = "view_purchase.php";
+			  return false;
+                      });
+                          jQuery(document).bind('keydown', 'Ctrl+p',function() {
+			window.print();
 			  return false;
 			});
 			//$.validationEngine.loadValidation("#date")

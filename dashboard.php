@@ -152,7 +152,7 @@ include_once("init.php");
                         <tr>
                             <td>&nbsp;</td>
                             <td width="250" align="left">Add Stock(Ctrl+2)</td>
-                            <td align="left">Add Sale(Ctrl+3)</td>
+                            <td align="left">Add Sale(Ctrl+)</td>
 
                         </tr>
                         <tr>

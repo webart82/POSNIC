@@ -57,7 +57,7 @@
 			window.location = "view_purchase.php";
 			  return false;
                       });
-                          jQuery(document).bind('keydown', 'Ctrl+p',function() {
+                          jQuery(document).bind('keydown', 'Ctrl+return',function() {
 			window.print();
 			  return false;
 			});

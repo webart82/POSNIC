@@ -443,7 +443,7 @@ include_once("init.php");
                 
                 <li><a ="add_sales.php">Add sales (Ctrl+)</a></li>
                 <li><a ="add_sales.php">Save (Ctrl+s)</a></li>
-                <li><a ="print.php">Print (Ctrl+p)</a></li>
+                <li><a ="print.php">Print (Ctrl+enter)</a></li>
                 
             </ul>
         </div>

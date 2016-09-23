@@ -79,13 +79,12 @@ include_once("init.php");
                 <li><a href="add_sales.php">Add Sales</a></li>
                 <li><a href="view_sales.php">View Sales</a></li>
             </ul>
-<h3 style="margin-left: 50px;">Help Term</h3>
+<h3>Help Term</h3>
             <ul>
-                <li><a ="dashboard.php">Home (Ctrl+0)</a></li>
-                
-                <li><a ="add_sales.php">Add sales (Ctrl+)</a></li>
-                <li><a ="add_sales.php">Save (Ctrl+s)</a></li>
-                <li><a ="print.php">Print (Ctrl+enter)</a></li>
+                <li><a> Home (Ctrl+0)</a></li>
+                <li><a> Add sales (Ctrl+)</a></li>
+                <li><a> Save (Ctrl+s)</a></li>
+                <li><a> Print (Ctrl+enter)</a></li>
                 
             </ul>
         </div>
@@ -223,13 +222,9 @@ include_once("init.php");
 
                             }
                             $msg = "<br><font color=green size=6px >Sales Added successfully Ref: [" . $_POST['stockid'] . "] !</font>";
-                            echo "<script>window.location = 'add_sales.php?msg=$msg';</script>";
-
-
+                            echo $msg;
                             echo "<script>window.open('add_sales_print.php?sid=$autoid','myNewWinsr','width=620,height=800,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no');</script>";
-                            //echo "<script>window.open('add_sales_print.php?sid=$autoid','myNewWinsr','width=620,height=800,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no');</script>";
-                            //$msg="<br><font color=green size=6px >Parchase order Added successfully Ref: [". $_POST['stockid']."] !</font>" ;
-                            //header("location:  add_purchase.php?msg=$msg");
+
                         }
 
                     }

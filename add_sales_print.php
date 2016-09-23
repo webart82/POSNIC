@@ -37,10 +37,18 @@ echo $_GET['sid'];
 
         -->
     </style>
+     <?php include_once("tpl/common_js.php"); ?>
+    <script>
+        $(document).ready(function(){
+           jQuery(document).bind('keydown', 'return',function() {
+			  window.close();
+	    }); 
+        });
+     </script>
 </head>
 
-<body>
-<input name="print" type="button" value="Print" id="printButton" onClick="printpage()">
+    <body onload="window.print();">
+    <input name="print" type="button" class="hide" value="Print" id="printButton" onClick="printpage()">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
         <td align="center" valign="top">

@@ -58,7 +58,7 @@
 			  return false;
                       });
                           jQuery(document).bind('keydown', 'Ctrl+return',function() {
-			window.print();
+			    $('#form1').submit();
 			  return false;
 			});
 			//$.validationEngine.loadValidation("#date")

@@ -356,7 +356,7 @@ include_once("init.php");
                                     <th>Amount</th>
                                     <th>Edit /Delete</th>
                                     <th>Select</th>
-                                    <td></td>
+                                    
                                 </tr>
 
                                 <?php $i = 1;
@@ -378,7 +378,7 @@ include_once("init.php");
 
                                     <tr>
 
-                                        <td></td>
+                                        <td> <?php echo $no + $i; ?></td>
 
                                         <td width="100"><?php echo $line->stock_id; ?></td>
                                         <td width="100"><?php echo $line->stock_name; ?></td>
@@ -401,7 +401,7 @@ include_once("init.php");
                                         <td><input type="checkbox"
                                                    value="<?php echo isset($row['id']) ? $row['id'] : 0; ?>"
                                                    name="checklist[]" id="check_box"/></td>
-                                        <td></td>
+                                        
                                     </tr>
                                     <?php $i++;
                                 } ?>

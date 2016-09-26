@@ -199,32 +199,29 @@ include_once("init.php");
                                 $max = $max + 3;
                                 $autoid = "PR" . $max . "";
                                 ?>
-                                <td>Stock ID:</td>
+                                <td>Bill no:</td>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
                                            class="round default-width-input" style="width:130px "
                                            value="<?php echo $autoid ?>"/></td>
 
                                 <td>Date:</td>
                                 <td><input name="date" id="test1" placeholder="" value="<?php echo date('d-m-Y'); ?>"
-                                           type="text" id="name" maxlength="200" class="round default-width-input"/>
+                                           style="margin-left:15px;" type="text" id="name" maxlength="200" class="round default-width-input"/>
                                 </td>
-                                <td><span class="man">*</span>Bill No:</td>
-                                <td><input name="bill_no" placeholder="ENTER BILL NO" type="text" id="bill_no"
-                                           maxlength="200" class="round default-width-input" style="width:120px "/></td>
-
+                                
                             </tr>
                             <tr>
-                                <td><span class="man">*</span>Supplier:</td>
+                                <td><span class="man"></span>Supplier:</td>
                                 <td><input name="supplier" placeholder="ENTER SUPPLIER" type="text" id="supplier"
-                                           maxlength="200" class="round default-width-input" style="width:130px "/></td>
+                                           value="anonymous" maxlength="200" class="round default-width-input" style="width:130px "/></td>
 
                                 <td>Address:</td>
                                 <td><input name="address" placeholder="ENTER ADDRESS" type="text" id="address"
-                                           maxlength="200" class="round default-width-input"/></td>
+                                           value="coast street" maxlength="200" class="round default-width-input"/></td>
 
                                 <td>contact:</td>
                                 <td><input name="contact" placeholder="ENTER CONTACT" type="text" id="contact1"
-                                           maxlength="200" class="round default-width-input"
+                                           value="9876543210" maxlength="200" class="round default-width-input"
                                            onkeypress="return numbersonly(event)" style="width:120px "/></td>
 
                             </tr>

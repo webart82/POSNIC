@@ -78,15 +78,27 @@ include_once("init.php");
             <ul>
                 <li><a href="add_sales.php">Add Sales</a></li>
                 <li><a href="view_sales.php">View Sales</a></li>
+          
             </ul>
-<h3>Help Term</h3>
-            <ul>
-                <li><a> Home (Ctrl+0)</a></li>
-                <li><a> Add sales (Ctrl+)</a></li>
-                <li><a> Save (Ctrl+s)</a></li>
-                <li><a> Print (Ctrl+enter)</a></li>
-                
-            </ul>
+            <h3>Help Term <img src ="images/help_icon.png"height="20" width="20"></h3>
+            
+            
+<div style="background-color:white;color:#800000;padding:20px;">
+  <h2>For Your Reference</h2>
+  <h2>shortcut keys - - ></h2>
+  <p>Home (Ctrl+0)</p>
+  <p>Add sales(Ctrl+)</p>
+  <p>Save (Ctrl+s)</p>
+  <p>Print (Ctrl+enter)</p>
+</div>
+              <?php
+              /* <table style="width:250px; float:right; " border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <td  <br> <font size="2" color="#4169E1"  <br><br>Home (Ctrl+0) Add sales(Ctrl+)<br><br>Save (Ctrl+s)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br><br>Print (Ctrl+enter)&nbsp;&nbsp;&nbsp;<br><br></td>
+                    </tr>
+               </table>*/
+          
+          ?>
         </div>
         <!-- end side-menu -->
         
@@ -141,7 +153,7 @@ include_once("init.php");
                             $username = $_SESSION['username'];
 
                             $stockid = mysqli_real_escape_string($db->connection, $_POST['stockid']);
-                            $bill_no = mysqli_real_escape_string($db->connection, $_POST['bill_no']);
+                            //$bill_no = mysqli_real_escape_string($db->connection, $_POST['bill_no']);
                             $customer = mysqli_real_escape_string($db->connection, $_POST['supplier']);
                             $address = mysqli_real_escape_string($db->connection, $_POST['address']);
                             $contact = mysqli_real_escape_string($db->connection, $_POST['contact']);
@@ -156,7 +168,7 @@ include_once("init.php");
                             $total = $_POST['total'];
                             $payable = $_POST['subtotal'];
                             $description = mysqli_real_escape_string($db->connection, $_POST['description']);
-                            $due = mysqli_real_escape_string($db->connection, $_POST['duedate']);
+                            //$due = mysqli_real_escape_string($db->connection, $_POST['duedate']);
                             $payment = mysqli_real_escape_string($db->connection, $_POST['payment']);
                             $discount = mysqli_real_escape_string($db->connection, $_POST['discount']);
                             if ($discount == "") {
@@ -177,10 +189,10 @@ include_once("init.php");
                             $temp_balance = $db->queryUniqueValue("SELECT balance FROM customer_details WHERE customer_name='$customer'");
                             $temp_balance = (int)$temp_balance + (int)$balance;
                             $db->execute("UPDATE customer_details SET balance=$temp_balance WHERE customer_name='$customer'");
-                            $selected_date = $_POST['due'];
-                            $selected_date = strtotime($selected_date);
-                            $mysqldate = date('Y-m-d H:i:s', $selected_date);
-                            $due = $mysqldate;
+                            //$selected_date = $_POST['due'];
+                            //$selected_date = strtotime($selected_date);
+                            //$mysqldate = date('Y-m-d H:i:s', $selected_date);
+                            //$due = $mysqldate;
                             $max = $db->maxOfAll("id", "stock_entries");
                             $max = $max + 1;
                             $autoid = "SID" . $max . "";
@@ -201,8 +213,8 @@ include_once("init.php");
                                 if ($count >= 1) {
 
 
-                                    $db->query("insert into stock_sales (tax,tax_dis,discount,dis_amount,grand_total,transactionid,stock_name,selling_price,quantity,amount,date,username,customer_id,subtotal,payment,balance,due,mode,description,count1,billnumber)
-                            values('$tax','$tax_dis','$discount','$dis_amount','$payable','$autoid','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$subtotal','$payment','$balance','$due','$mode','$description',$i+1,'$bill_no')");
+                                    $db->query("insert into stock_sales (tax,tax_dis,discount,dis_amount,grand_total,transactionid,stock_name,selling_price,quantity,amount,date,username,customer_id,subtotal,payment,balance,mode,description,count1,billnumber)
+                            values('$tax','$tax_dis','$discount','$dis_amount','$payable','$autoid','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$subtotal','$payment','$balance','$mode','$description',$i+1,'$bill_no')");
 
                                     $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name1'");
                                     $amount1 = $amount - $quantity;
@@ -383,10 +395,7 @@ include_once("init.php");
                                         <option value="other">Other</option>
                                     </select>
                                 </td>
-                                <td>
-                                    Due Date:<input type="text" name="duedate" id="test2"
-                                                    value="<?php echo date('d-m-Y'); ?>" class="round">
-                                </td>
+                                
                                 <td> Tax:<input type="text" id="tax" name="tax" onkeypress="return numbersonly(event);" onkeyup="add_tax();"></td>
                                 <td>Tax Description:<input type="text" name="tax_dis"></td>
 

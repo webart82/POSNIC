@@ -294,7 +294,7 @@ include_once("init.php");
 
                                 /* Get data. */
 
-                                $sql = "SELECT * FROM category_details LIMIT $start, $limit  ORDER BY id DESC";
+                                $sql = "SELECT * FROM category_details ORDER BY id DESC LIMIT $start, $limit  ";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
                                     $sql = "SELECT * FROM  category_details WHERE category_name LIKE '%" . $_POST['searchtxt'] . "%' ORDER BY id DESC LIMIT $start, $limit";

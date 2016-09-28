@@ -89,9 +89,7 @@
                     supplier: {
                         required: true,
                     },
-                    payment: {
-                        required: true,
-                    }
+                   
                 },
                 messages: {
                     supplier: {
@@ -100,9 +98,7 @@
                     stockid: {
                         required: "Please Enter Stock ID"
                     },
-                    payment: {
-                        required: "Please Enter Payment"
-                    },
+                    
                     grand_total: {
                         required: "Add Stock Items"
                     },
@@ -252,22 +248,22 @@
             return true;
         }
         function balance_amount() {
-            if (document.getElementById('payable_amount').value != "" && document.getElementById('payment').value != "") {
+            if (document.getElementById('payable_amount').value != "" && document.getElementById('total').value != "") {
                 data = parseFloat(document.getElementById('payable_amount').value);
-                document.getElementById('balance').value = data - parseFloat(document.getElementById('payment').value);
-                if (parseFloat(document.getElementById('payable_amount').value) >= parseFloat(document.getElementById('payment').value)) {
+                //document.getElementById('total').value = data - parseFloat(document.getElementById('payable_amount').value);
+                if (parseFloat(document.getElementById('payable_amount').value) >= parseFloat(document.getElementById('total').value)) {
 
                 } else {
                     if (document.getElementById('payable_amount').value != "") {
-                        document.getElementById('balance').value = '000.00';
-                        document.getElementById('payment').value = parseFloat(document.getElementById('payable_amount').value);
+                        //document.getElementById('balance').value = '000.00';
+                       // document.getElementById('payment').value = parseFloat(document.getElementById('payable_amount').value);
                     } else {
-                        document.getElementById('balance').value = '000.00';
-                        document.getElementById('payment').value = "";
+                        //document.getElementById('balance').value = '000.00';
+                       // document.getElementById('payment').value = "";
                     }
                 }
             } else {
-                document.getElementById('balance').value = "";
+                //document.getElementById('balance').value = "";
             }
 
 
@@ -293,8 +289,8 @@
                 discont = 0;
             }
             document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value) - discont;
-            if (parseFloat(document.getElementById('payment').value) > parseFloat(document.getElementById('payable_amount').value)) {
-                document.getElementById('payment').value = parseFloat(document.getElementById('payable_amount').value);
+            if (parseFloat(document.getElementById('grand_total').value) > parseFloat(document.getElementById('payable_amount').value)) {
+               // document.getElementById('payment').value = parseFloat(document.getElementById('payable_amount').value);
 
             }
             balance_amount();
@@ -308,8 +304,8 @@
                     discont = parseFloat(document.getElementById('disacount_amount').value);
 
                     document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value) - discont;
-                    if (parseFloat(document.getElementById('payment').value) > parseFloat(document.getElementById('payable_amount').value)) {
-                        document.getElementById('payment').value = parseFloat(document.getElementById('payable_amount').value);
+                    if (parseFloat(document.getElementById('grand_total').value) > parseFloat(document.getElementById('payable_amount').value)) {
+                        //document.getElementById('payment').value = parseFloat(document.getElementById('payable_amount').value);
 
                     }
                 } else {
@@ -331,8 +327,8 @@
                 if (parseFloat(document.getElementById('tax').value) < parseFloat(document.getElementById('grand_total').value)) {
                     tax = parseFloat(document.getElementById('tax').value);
                     document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value) + tax;
-                    if (parseFloat(document.getElementById('payment').value) > parseFloat(document.getElementById('payable_amount').value)) {
-                        document.getElementById('payment').value = parseFloat(document.getElementById('payable_amount').value);
+                    if (parseFloat(document.getElementById('grand_total').value) > parseFloat(document.getElementById('payable_amount').value)) {
+                       // document.getElementById('payment').value = parseFloat(document.getElementById('payable_amount').value);
                     }
                 }
             } 

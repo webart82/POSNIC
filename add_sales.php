@@ -113,27 +113,12 @@ include_once("init.php");
                         echo $_GET['msg'];
                     }
 
-                    if (isset($_POST['payment'])) {
-                        $_POST = $gump->sanitize($_POST);
-
-                        $gump->validation_rules(array(
-                            'payment' => 'required|max_len,100|min_len,1'
-
-
-                        ));
-
-                        $gump->filter_rules(array(
-                            'payment' => 'trim|sanitize_string|mysqli_escape'
-
-
-                        ));
-
+                    if (isset($_POST['total'])) {
                         $validated_data = $gump->run($_POST);
                         $stock_name = "";
                         $stockid = "";
                         $payment = "";
                         $bill_no = "";
-
 
                         if ($validated_data === false) {
                             echo $gump->get_readable_errors(true);
@@ -141,7 +126,7 @@ include_once("init.php");
                             $username = $_SESSION['username'];
 
                             $stockid = mysqli_real_escape_string($db->connection, $_POST['stockid']);
-                            $bill_no = mysqli_real_escape_string($db->connection, $_POST['bill_no']);
+                            //$bill_no = mysqli_real_escape_string($db->connection, $_POST['bill_no']);
                             $customer = mysqli_real_escape_string($db->connection, $_POST['supplier']);
                             $address = mysqli_real_escape_string($db->connection, $_POST['address']);
                             $contact = mysqli_real_escape_string($db->connection, $_POST['contact']);
@@ -156,8 +141,8 @@ include_once("init.php");
                             $total = $_POST['total'];
                             $payable = $_POST['subtotal'];
                             $description = mysqli_real_escape_string($db->connection, $_POST['description']);
-                            $due = mysqli_real_escape_string($db->connection, $_POST['duedate']);
-                            $payment = mysqli_real_escape_string($db->connection, $_POST['payment']);
+                            //$due = mysqli_real_escape_string($db->connection, $_POST['duedate']);
+                            //$payment = mysqli_real_escape_string($db->connection, $_POST['payment']);
                             $discount = mysqli_real_escape_string($db->connection, $_POST['discount']);
                             if ($discount == "") {
                                 $discount = 00;
@@ -167,7 +152,7 @@ include_once("init.php");
                                 $dis_amount = 00;
                             }
                             $subtotal = mysqli_real_escape_string($db->connection, $_POST['payable']);
-                            $balance = mysqli_real_escape_string($db->connection, $_POST['balance']);
+                            //$balance = mysqli_real_escape_string($db->connection, $_POST['balance']);
                             $mode = mysqli_real_escape_string($db->connection, $_POST['mode']);
                             $tax = mysqli_real_escape_string($db->connection, $_POST['tax']);
                             if ($tax == "") {
@@ -175,12 +160,12 @@ include_once("init.php");
                             }
                             $tax_dis = mysqli_real_escape_string($db->connection, $_POST['tax_dis']);
                             $temp_balance = $db->queryUniqueValue("SELECT balance FROM customer_details WHERE customer_name='$customer'");
-                            $temp_balance = (int)$temp_balance + (int)$balance;
+                            //$temp_balance = (int)$temp_balance + (int)$balance;
                             $db->execute("UPDATE customer_details SET balance=$temp_balance WHERE customer_name='$customer'");
-                            $selected_date = $_POST['due'];
-                            $selected_date = strtotime($selected_date);
-                            $mysqldate = date('Y-m-d H:i:s', $selected_date);
-                            $due = $mysqldate;
+                            //$selected_date = $_POST['due'];
+                            //$selected_date = strtotime($selected_date);
+                            //$mysqldate = date('Y-m-d H:i:s', $selected_date);
+                            //$due = $mysqldate;
                             $max = $db->maxOfAll("id", "stock_entries");
                             $max = $max + 1;
                             $autoid = "SID" . $max . "";
@@ -201,8 +186,8 @@ include_once("init.php");
                                 if ($count >= 1) {
 
 
-                                    $db->query("insert into stock_sales (tax,tax_dis,discount,dis_amount,grand_total,transactionid,stock_name,selling_price,quantity,amount,date,username,customer_id,subtotal,payment,balance,due,mode,description,count1,billnumber)
-                            values('$tax','$tax_dis','$discount','$dis_amount','$payable','$autoid','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$subtotal','$payment','$balance','$due','$mode','$description',$i+1,'$bill_no')");
+                                    $db->query("insert into stock_sales (tax,tax_dis,discount,dis_amount,grand_total,transactionid,stock_name,selling_price,quantity,amount,date,username,customer_id,subtotal,payment,mode,description,count1,billnumber)
+                            values('$tax','$tax_dis','$discount','$dis_amount','$payable','$autoid','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$subtotal','$payment','$mode','$description',$i+1,'$bill_no')");
 
                                     $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name1'");
                                     $amount1 = $amount - $quantity;
@@ -240,8 +225,9 @@ include_once("init.php");
                                 <?php
                                 $max = $db->maxOfAll("id", "stock_entries");
                                 $max = $max + 1;
-                                $autoid = "SID" . $max . "";
-                                ?>
+                                $autoid = "SID" . $max . "";                         
+                                  ?>
+                                
                                 <td>Bill no:</td>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
                                            class="round default-width-input" style="width:130px "
@@ -305,10 +291,7 @@ include_once("init.php");
                                 <td><input name="" type="text" id="total" maxlength="200"
                                            class="round default-width-input " style="width:120px;  margin-left: 20px"/>
                                 </td>
-                                <td><input type="button" onclick="add_values()" onkeyup=" balance_amount();"
-                                           id="add_new_code"
-                                           style="margin-left:30px; width:30px;height:30px;border:none;background:url(images/add_new.png)"
-                                           class="round"></td>
+                                
 
                             </tr>
                         </table>
@@ -339,7 +322,11 @@ include_once("init.php");
                                                            id="disacount_amount" name="dis_amount">
                                 </td>
                                 <td> &nbsp;</td>
-
+                                <td> &nbsp;</td>
+                                <td> &nbsp;</td>
+                                <td> &nbsp;</td>
+                                <td> &nbsp;</td>
+                                <td> &nbsp;</td>
                                 <td> &nbsp;</td>
                                 <td> &nbsp;</td>
                                 <td>Grand Total:<input type="hidden" readonly="readonly" id="grand_total"
@@ -347,30 +334,25 @@ include_once("init.php");
                                     <input type="text" id="main_grand_total" readonly="readonly"
                                            class="round default-width-input" style="text-align:right;width: 120px">
                                 </td>
-                                <td> &nbsp;</td>
-                                <td>Description</td>
-                                <td><textarea name="description"></textarea></td>
+                                
                             </tr>
                             <tr>
                                 <td> &nbsp;</td>
-                                <td>Payment:<input type="text" class="round" onkeyup=" balance_amount(); "
-                                                   onkeypress="return numbersonly(event);" name="payment" id="payment">
-                                </td>
-
-                                <td>Balance:<input type="text" class="round" readonly="readonly" id="balance"
-                                                   name="balance">
-                                </td>
+                                <td> Tax:<input type="text" id="tax" name="tax" onkeypress="return numbersonly(event);" onkeyup="add_tax();"></td>
+                                <td>Tax Description:<input type="text" name="tax_dis"></td>
                                 <td> &nbsp;</td>
-
+                                <td> &nbsp;</td>
+                                <td> &nbsp;</td>
+                                <td> &nbsp;</td>
+                                <td> &nbsp;</td>
+                                <td> &nbsp;</td>
                                 <td> &nbsp;</td>
                                 <td> &nbsp;</td>
                                 <td>Payable Amount:<input type="hidden" readonly="readonly" id="grand_total">
                                     <input type="text" id="payable_amount" readonly="readonly" name="payable"
                                            class="round default-width-input" style="text-align:right;width: 120px">
                                 </td>
-                                <td> &nbsp;</td>
-                                <td> &nbsp;</td>
-                                <td> &nbsp;</td>
+                                
                             </tr>
                         </table>
                         <table>
@@ -382,15 +364,11 @@ include_once("init.php");
                                         <option value="cheque">Cheque</option>
                                         <option value="other">Other</option>
                                     </select>
-                                </td>
-                                <td>
-                                    Due Date:<input type="text" name="duedate" id="test2"
-                                                    value="<?php echo date('d-m-Y'); ?>" class="round">
-                                </td>
-                                <td> Tax:<input type="text" id="tax" name="tax" onkeypress="return numbersonly(event);" onkeyup="add_tax();"></td>
-                                <td>Tax Description:<input type="text" name="tax_dis"></td>
-
-
+                                </td>                         
+                                <td> &nbsp;</td>
+                                <td> &nbsp;</td>
+                                <td>Description</td>
+                                <td><textarea name="description"></textarea></td>
                                 <td> &nbsp;</td>
                                 <td> &nbsp;</td>
                             </tr>
@@ -409,20 +387,13 @@ include_once("init.php");
                             </tr>
                         </table>
                     </form>
-
-
                 </div>
                 <!-- end content-module-main -->
-
-
             </div>
             <!-- end content-module -->
-
-
         </div>
     </div>
     <!-- end full-width -->
-
 </div>
 <!-- end content -->
 

@@ -192,18 +192,7 @@ echo $_GET['sid'];
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td width="33%" align="left" valign="top"><br/>
-                                    <strong>&nbsp;&nbsp;Paid Amount :&nbsp;&nbsp;<?php echo $payment; ?><br/>
-                                        &nbsp;&nbsp;Balance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;:&nbsp;&nbsp;<?php echo $balance; ?><br/>
-                                        &nbsp;&nbsp;Due Date&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;: <?php if ($balance == 0) {
-                                            $mysqldate = $ldue;
-
-                                            $phpdate = strtotime($mysqldate);
-
-                                            $phpdate = date("d/m/Y", $phpdate);
-                                        }
-                                        echo $phpdate; ?> <br/>
-                                    </strong></td>
+                                    </td>
                                 <td width="67%" align="right"><br/>
                                     <br/>
                                     <br/>

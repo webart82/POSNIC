@@ -337,12 +337,12 @@ $(document).ready(function() {
             var result = isNaN(parseFloat(document.getElementById('tax').value));
             if(result == true)
             {
-                document.getElementById('payable_amount').value = grand_tot;
+                document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value) - discont;
             }
             if (document.getElementById('grand_total').value != "") {
                 if (parseFloat(document.getElementById('tax').value) < parseFloat(document.getElementById('grand_total').value)) {
                     tax = parseFloat(document.getElementById('tax').value);
-                    document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value) + tax;
+                    document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value) - discont + tax;
                     if (parseFloat(document.getElementById('grand_total').value) > parseFloat(document.getElementById('payable_amount').value)) {
                        // document.getElementById('payment').value = parseFloat(document.getElementById('payable_amount').value);
                     }

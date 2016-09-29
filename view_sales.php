@@ -190,10 +190,10 @@ include_once("init.php");
 
                                 /* Get data. */
 
-                                $sql = "SELECT * FROM stock_sales ORDER BY date desc LIMIT $start, $limit  ";
+                                $sql = "SELECT * FROM stock_sales ORDER BY id desc LIMIT $start, $limit  ";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
-                                    $sql = "SELECT * FROM stock_sales WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%'  ORDER BY date desc LIMIT $start, $limit";
+                                    $sql = "SELECT * FROM stock_sales WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%'  ORDER BY id desc LIMIT $start, $limit";
 
 
                                 }
@@ -387,7 +387,7 @@ include_once("init.php");
                                             <a href="update_sales.php?sid=<?php echo $row['id']; ?>&table=stock_sales&return=view_sales.php"
                                                class="table-actions-button ic-table-edit">
                                             </a>
-                                            <a onclick="return confirmSubmit()"
+                                            <a onClick="return confirmSubmit()"
                                                href="delete.php?id=<?php echo $row['id']; ?>&table=stock_sales&return=view_sales.php"
                                                class="table-actions-button ic-table-delete"></a>
                                         </td>

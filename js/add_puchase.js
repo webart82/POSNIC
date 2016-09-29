@@ -70,6 +70,13 @@
                 $(this).height(hauteur);
             });
         });
+        //Reset form
+$(document).ready(function() {
+            $('#Reset').click(function() {
+                location.reload();
+            });
+        }); 
+        
         /*$.validator.setDefaults({
          submitHandler: function() { alert("submitted!"); }
          });*/

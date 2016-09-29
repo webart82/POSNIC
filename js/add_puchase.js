@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
         $(function () {
-            document.getElementById('bill_no').focus();
+            document.getElementById('supplier').focus();
             $("#supplier").autocomplete("supplier1.php", {
                 width: 160,
                 autoFill: true,
@@ -80,12 +80,8 @@
             // validate signup form on keyup and submit
             $("#form1").validate({
                 rules: {
-                    bill_no: {
-                        required: true,
-                        minlength: 3,
-                        maxlength: 200
-                    },
-                    stockid: {
+                    
+                    purchaseid: {
                         required: true
                     },
                     grand_total: {
@@ -102,8 +98,8 @@
                     supplier: {
                         required: "Please Enter Supplier"
                     },
-                    stockid: {
-                        required: "Please Enter Stock ID"
+                    purchaseid: {
+                        required: "Please Enter Purchase ID"
                     },
                     grand_total: {
                         required: "Add Stock Items"
@@ -111,10 +107,7 @@
                     payment: {
                         required: "Enter Payment"
                     },
-                    bill_no: {
-                        required: "Please Enter Bill Number",
-                        minlength: "Bill Number must consist of at least 3 characters"
-                    }
+                   
                 }
             });
 

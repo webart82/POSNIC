@@ -73,7 +73,17 @@ $(document).ready(function() {
                 location.reload();
             });
         });  
-    
+        
+    //Press Enter key using cursor focus to next textbox 
+    $(document).ready(function(){
+            $('#item').keypress(function(e){
+             if(e.keyCode==13){                
+                $(':input:eq(' + ($(':input').index(this) + 1) + ')').focus(); 
+               return false;
+             }
+            });
+        });
+        
         /*$.validator.setDefaults({
          submitHandler: function() { alert("submitted!"); }
          });*/

@@ -37,7 +37,7 @@ include_once("init.php");
                         minlength: 3
 
                     },
-                    stockid: {
+                    purchaseid: {
                         required: true
                     },
                     grand_total: {
@@ -51,7 +51,7 @@ include_once("init.php");
                     supplier: {
                         required: "Please Enter Supplier"
                     },
-                    stockid: {
+                    purchaseid: {
                         required: "Please Enter Stock ID"
                     },
                     grand_total: {
@@ -471,8 +471,8 @@ include_once("init.php");
                                 $max = $max + 1;
                                 $autoid = "PR" . $max . "";
                                 ?>
-                                <td>Stock ID:</td>
-                                <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
+                                <td>Purchase ID:</td>
+                                <td><input name="purchaseid" type="text" id="purchaseid" readonly="readonly" maxlength="200"
                                            class="round default-width-input" style="width:130px "
                                            value="<?php echo $line->stock_id; ?>"/></td>
 

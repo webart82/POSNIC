@@ -130,8 +130,8 @@ include_once("init.php");
 
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
-                                    $SQL = "SELECT DISTINCT(stock_id) FROM  stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_supplier_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_id LIKE '%" . $_POST['searchtxt'] . "%' OR date LIKE '%" . $_POST['searchtxt'] . "%' OR type LIKE '%" . $_POST['searchtxt'] . "%' AND type='entry'";
-
+                                    //$SQL = "SELECT DISTINCT(stock_id) FROM  stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_supplier_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_id LIKE '%" . $_POST['searchtxt'] . "%' OR date LIKE '%" . $_POST['searchtxt'] . "%' OR type LIKE '%" . $_POST['searchtxt'] . "%' AND type='entry'";
+                                    $SQL = "SELECT DISTINCT(stock_id) FROM  stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] ."%' ORDER BY id DESC ";
 
                                 }
 
@@ -182,13 +182,13 @@ include_once("init.php");
 
 
                                 /* Get data. */
-
-                                $sql = "SELECT DISTINCT(stock_id) FROM stock_entries where type='entry' ORDER BY date desc LIMIT $start, $limit  ";
-
+                                
+                                //$sql = "SELECT DISTINCT(stock_id) FROM stock_entries where type='entry' ORDER BY date desc LIMIT $start, $limit  ";
+                                $sql = "SELECT * FROM stock_entries ORDER BY date desc LIMIT $start, $limit  ";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
-                                    $sql = "SELECT DISTINCT(stock_id) FROM stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_supplier_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_id LIKE '%" . $_POST['searchtxt'] . "%' OR date LIKE '%" . $_POST['searchtxt'] . "%' OR type LIKE '%" . $_POST['searchtxt'] . "%' and type='entry' ORDER BY date desc LIMIT $start, $limit";
-
+                                    //$sql = "SELECT DISTINCT(stock_id) FROM stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_supplier_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_id LIKE '%" . $_POST['searchtxt'] . "%' OR date LIKE '%" . $_POST['searchtxt'] . "%' OR type LIKE '%" . $_POST['searchtxt'] . "%' and type='entry' ORDER BY date desc LIMIT $start, $limit";
+                                    $sql = "SELECT * FROM stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%'  ORDER BY date desc LIMIT $start, $limit";
 
                                 }
 
@@ -357,6 +357,7 @@ include_once("init.php");
                                     <th>Edit /Delete</th>
                                     <th>Select</th>
                                     
+                                    
                                 </tr>
 
                                 <?php $i = 1;
@@ -364,38 +365,26 @@ include_once("init.php");
                                 $no = $no * $limit;
 
                                 while ($row = mysqli_fetch_array($result)) {
-
-                                    $entryid = $row['stock_id'];
-                                    $line = $db->queryUniqueObject("SELECT * FROM stock_entries WHERE stock_id='$entryid' ");
-
-                                    $mysqldate = $line->date;
-
-                                    $phpdate = strtotime($mysqldate);
-
-                                    $phpdate = date("d/m/Y", $phpdate);
-
+                                   // $entryid = $row['stock_id'];
+                                    //$line = $db->queryUniqueObject("SELECT * FROM stock_entries WHERE stock_id='$entryid' ");
+                                   // $mysqldate = $line->date;
+                                    //$phpdate = strtotime($mysqldate);
+                                   // $phpdate = date("d/m/Y", $phpdate);
                                     ?>
-
                                     <tr>
-
+                                        
                                         <td> <?php echo $no + $i; ?></td>
-
-                                        <td width="100"><?php echo $line->stock_id; ?></td>
-                                        <td width="100"><?php echo $line->stock_name; ?></td>
-
-
-                                        <td width="100"><?php echo $phpdate; ?></td>
-
-                                        <td width="100"><?php echo $line->stock_supplier_name; ?></td>
-                                        <td width="100"><?php echo $line->subtotal; ?></td>
-
-
+                                        <td><?php echo $row['stock_id']; ?></td>
+                                       <td><?php echo $row['stock_name']; ?></td>
+                                       <td><?php echo $row['date']; ?></td>
+                                       <td><?php echo $row['stock_supplier_name']; ?></td>
+                                       <td><?php echo $row['subtotal']; ?></td>
                                         <td>
-                                            <a href="update_purchase.php?sid=<?php echo $entryid; ?>&table=stock_entries&return=view_purchase.php"
+                                            <a href="update_purchase.php?sid=<?php echo $row['id']; ?>&table=stock_entries&return=view_purchase.php"
                                                class="table-actions-button ic-table-edit">
                                             </a>
                                             <a onclick="return confirmSubmit()"
-                                               href="delete.php?id=<?php echo isset($row['id']) ? $row['id'] : 0; ?>&table=stock_entries&return=view_purchase.php"
+                                               href="delete.php?id=<?php echo $row['id']; ?>&table=stock_entries&return=view_purchase.php"
                                                class="table-actions-button ic-table-delete"></a>
                                         </td>
                                         <td><input type="checkbox"

@@ -166,8 +166,11 @@ include_once("init.php");
                             //$selected_date = strtotime($selected_date);
                             //$mysqldate = date('Y-m-d H:i:s', $selected_date);
                             //$due = $mysqldate;
-                            $max = $db->maxOfAll("id", "stock_entries");
-                            $max = $max + 1;
+                            $max = $db->maxOfAll("stock_id", "stock_entries");
+                            
+                            $array = (str_split("$max",3));
+                           // print_r($array[1]);exit;
+                            $max = $array[1] + 1;
                             $autoid = "SID" . $max . "";
                             for ($i = 0; $i < count($stock_name); $i++) {
                                 $name1 = $stock_name[$i];
@@ -206,6 +209,10 @@ include_once("init.php");
 
 
                             }
+                            //$str = $_POST['stockid'];
+                            //$array = (str_split("$str",3));
+                            //print_r($array[1]);exit;
+                            
                             $msg = "<br><font color=green size=6px >Sales Added successfully Ref: [" . $_POST['stockid'] . "] !</font>";
                             echo $msg;
                             echo "<script>window.open('add_sales_print.php?sid=$autoid','myNewWinsr','width=620,height=800,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no');</script>";
@@ -223,9 +230,19 @@ include_once("init.php");
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <?php
-                                $max = $db->maxOfAll("id", "stock_entries");
-                                $max = $max + 1;
-                                $autoid = "SID" . $max . "";                         
+                                //$max = $db->maxOfAll("id", "stock_entries");
+                                //$max = $max + 1;
+                                //$autoid = "SID" . $max . "";    
+                                $str = $db->maxOfAll("stock_id", "stock_entries");
+                                $array = explode(' ', $str);
+                                foreach ($array as $key => $value) {
+                            }
+                                $array[$key]++;
+                                // print_r($array[1]);exit;
+                                $bid = $array[0]++;
+                                //echo '<pre>';print_r($bid);
+                                //exit;
+                                $autoid = $bid ; 
                                   ?>
                                 
                                 <td>Bill no:</td>

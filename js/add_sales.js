@@ -410,6 +410,11 @@ $(document).ready(function() {
             if(document.getElementById('round').checked != true && document.getElementById("disacount_amount").value != ""){
                 document.getElementById('disacount_amount').value = "";
                 document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value);
+                if(document.getElementById('tax').value != ""){
+                    document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value) + tax;
+                }else{
+                    document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value);
+                }
             }
         }
    

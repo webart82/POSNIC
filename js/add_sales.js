@@ -294,7 +294,8 @@ $(document).ready(function() {
         function discount_amount() {
 
             if (document.getElementById('grand_total').value != "") {
-                document.getElementById('disacount_amount').value = parseFloat(document.getElementById('grand_total').value) * (parseFloat(document.getElementById('discount').value)) / 100;
+                document.getElementById('disacount_amount').value = parseFloat(document.getElementById('grand_total').value) * 
+                        (parseFloat(document.getElementById('discount').value)) / 100;
 
             }
             if (document.getElementById('discount').value == "") {
@@ -304,7 +305,20 @@ $(document).ready(function() {
             if (document.getElementById('disacount_amount').value == "") {
                 discont = 0;
             }
+            //--------------------*******************-----------------//
+            if(document.getElementById('disacount_amount').value != "" && document.getElementById('tax').value != ""){
+                document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value)  - discont + tax;
+                
+            }
+            
+            //-------------------------------***************------------------//
+            if(document.getElementById('tax').value == ""){
             document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value) - discont;
+             }
+             if(document.getElementById('tax').value != "" && document.getElementById('disacount_amount').value == ""){
+            document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value) - discont + tax;
+            
+             }
             if (parseFloat(document.getElementById('grand_total').value) > parseFloat(document.getElementById('payable_amount').value)) {
                // document.getElementById('payment').value = parseFloat(document.getElementById('payable_amount').value);
 
@@ -314,12 +328,32 @@ $(document).ready(function() {
         function discount_as_amount() {
             if (parseFloat(document.getElementById('disacount_amount').value) > parseFloat(document.getElementById('grand_total').value))
                 document.getElementById('disacount_amount').value = "";
-
+            discont = parseFloat(document.getElementById('disacount_amount').value);
+            /***********************************************/
+            
+            var result = isNaN(parseFloat(document.getElementById('disacount_amount').value));
+            if(result == true)
+            {
+                document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value) + tax;
+                 if (document.getElementById('tax').value == "") {
+                document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value)
+            }
+            }
+           
+            
+            /*************************************************/
             if (document.getElementById('grand_total').value != "") {
                 if (parseFloat(document.getElementById('disacount_amount').value) < parseFloat(document.getElementById('grand_total').value)) {
                     discont = parseFloat(document.getElementById('disacount_amount').value);
-
+                     //--------------------*******************-----------------//
+            if(document.getElementById('disacount_amount').value != "" && document.getElementById('tax').value != ""){
+                document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value)  - discont + tax;   
+            }
+            //-------------------------------***************------------------//
+            if(document.getElementById('tax').value == "" || parseFloat(document.getElementById('disacount_amount').value != "")){
                     document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value) - discont;
+                }
+                
                     if (parseFloat(document.getElementById('grand_total').value) > parseFloat(document.getElementById('payable_amount').value)) {
                         //document.getElementById('payment').value = parseFloat(document.getElementById('payable_amount').value);
 
@@ -328,7 +362,9 @@ $(document).ready(function() {
                     // document.getElementById('disacount_amount').value=parseFloat(document.getElementById('grand_total').value)-1;
                 }
             }
+            
         }
+        
         
         function add_tax() {
             var grand_tot = parseFloat(document.getElementById('grand_total').value);
@@ -370,6 +406,10 @@ $(document).ready(function() {
             } else {
                 document.getElementById("discount").readOnly = false;
                 document.getElementById("disacount_amount").readOnly = true;
+            }
+            if(document.getElementById('round').checked != true && document.getElementById("disacount_amount").value != ""){
+                document.getElementById('disacount_amount').value = "";
+                document.getElementById('payable_amount').value = parseFloat(document.getElementById('grand_total').value);
             }
         }
    

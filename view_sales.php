@@ -117,16 +117,16 @@ include_once("init.php");
                             <input type="hidden" name="return" value="view_sales.php">
                             <input type="button" name="selectall" value="SelectAll"
                                    class="my_button round blue   text-upper" onClick="checkAll()"
-                                   style="margin-left:5px;"/>
+                                   style="margin-left:5px;" id="checkall" />
                             <input type="button" name="unselectall" value="DeSelectAll"
                                    class="my_button round blue   text-upper" onClick="uncheckAll()"
-                                   style="margin-left:5px;"/>
+                                   style="margin-left:5px;" id="cancelall"/>
                             <input name="dsubmit" type="button" value="Delete Selected"
                                    class="my_button round blue   text-upper" style="margin-left:5px;"
                                    onclick="return confirmDeleteSubmit()"/>
 
 
-                            <table>
+                            <table id="tblDisplay">
                                 <?php
 
 

@@ -5,6 +5,7 @@
  */
 
 
+   
         // Nannette Thacker http://www.shiningstar.net
         function confirmSubmit() {
             var agree = confirm("Are you sure you wish to Delete this Entry?");
@@ -60,60 +61,7 @@
             for (i = 0; i < field.length; i++)
                 field[i].checked = false;
         }
-        // -->
    
-$(document).ready(function()
-{
-$("#checkall").live('click',function(event){
-$('input:checkbox:not(#checkall)').attr('checked',this.checked);
-//To Highlight
-if ($(this).attr("checked") == true)
-{
-//$(this).parents('table:eq(0)').find('tr:not(#chkrow)').css("background-color","#FF3700");
-$("#tblDisplay").find('tr:not(#chkrow)').css("background-color","#DCDCDC");
-}
-else
-{
-//$(this).parents('table:eq(0)').find('tr:not(#chkrow)').css("background-color","#fff");
-$("#tblDisplay").find('tr:not(#chkrow)').css("background-color","#DCDCDC");
-}
-});
-$('input:checkbox:not(#checkall)').live('click',function(event)
-{
-if($("#checkall").attr('checked') == true && this.checked == false)
-{
-$("#checkall").attr('checked',false);
-$(this).closest('tr').css("background-color","#ffffff");
-}
-if(this.checked == true)
-{
-$(this).closest('tr').css("background-color","#DCDCDC");
-CheckSelectAll();
-}
-if(this.checked == false)
-{
-$(this).closest('tr').css("background-color","#ffffff");
-}
-});
-
-function CheckSelectAll()
-{
-var flag = true;
-$('input:button:not(#checkall)').each(function() {
-if(this.checked == false)
-flag = false;
-});
-$("#checkall").attr('checked',flag);
-}
-});
-$(document).ready(function() {
-$('#cancelall').click(function() {
-location.reload();
-});
-});  
-
-
-
 
         /*$.validator.setDefaults({
          submitHandler: function() { alert("submitted!"); }
@@ -155,4 +103,4 @@ location.reload();
 
         });
 
-    
+   

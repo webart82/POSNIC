@@ -166,9 +166,13 @@ include_once("init.php");
                             //$selected_date = strtotime($selected_date);
                             //$mysqldate = date('Y-m-d H:i:s', $selected_date);
                             //$due = $mysqldate;
-                            $max = $db->maxOfAll("id", "stock_entries");
-                            $max = $max + 1;
-                            $autoid = "SID" . $max . "";
+                            $str = $db->maxOfAll("stock_id", "stock_entries");
+                            //$max = $max + 1;
+                            $array = explode(' ', $str);
+                            $array[0]++;
+                            //$bid = $array[0]++;
+                            //$autoid = "SID" . $max . "";
+                            $autoid = $array[0]++;
                             for ($i = 0; $i < count($stock_name); $i++) {
                                 $name1 = $stock_name[$i];
                                 $quantity = $_POST['quty'][$i];
@@ -223,9 +227,12 @@ include_once("init.php");
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <?php
-                                $max = $db->maxOfAll("id", "stock_entries");
-                                $max = $max + 1;
-                                $autoid = "SID" . $max . "";                         
+                                $str = $db->maxOfAll("stock_id", "stock_entries");
+                                $array = explode(' ', $str);
+                                $array[0]++;
+                                //$max = $max + 1;
+                                //$autoid = "SID" . $max . "";  
+                                $autoid = $array[0]++;
                                   ?>
                                 
                                 <td>Bill no:</td>

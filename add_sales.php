@@ -11,7 +11,7 @@ include_once("init.php");
 
     <!-- Stylesheets -->
 
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">  
     <link rel="stylesheet" href="js/date_pic/date_input.css">
     <link rel="stylesheet" href="lib/auto/css/jquery.autocomplete.css">
 
@@ -78,14 +78,6 @@ include_once("init.php");
             <ul>
                 <li><a href="add_sales.php">Add Sales</a></li>
                 <li><a href="view_sales.php">View Sales</a></li>
-            </ul>
-<h3>Help Term</h3>
-            <ul>
-                <li><a> Home (Ctrl+0)</a></li>
-                <li><a> Add sales (Ctrl+)</a></li>
-                <li><a> Save (Ctrl+s)</a></li>
-                <li><a> Print (Ctrl+enter)</a></li>
-                
             </ul>
         </div>
         <!-- end side-menu -->
@@ -234,7 +226,7 @@ include_once("init.php");
                                            value="<?php echo $autoid ?>"/></td>
 
                                 <td>Date:</td>
-                                <td><input name="date" id="test1" placeholder="" value="<?php echo date('d-m-Y');?>"
+                                <td><input name="date" id="test1" placeholder="" value="<?php date_default_timezone_set("Asia/Kolkata");echo date('Y-m-d H:i:s');?>"
                                 style="margin-left: 15px;"type="text" id="name" maxlength="200" class="round default-width-input"/>
                                 </td>
                                

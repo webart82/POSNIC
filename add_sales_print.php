@@ -158,6 +158,7 @@ echo $_GET['sid'];
                                 $balance = $line3->balance;
                                 $date = $line->due;
                                 $discount = $line3->dis_amount;
+                                $tax=$line3->tax;
                             }
                             ?>
                             <tr>
@@ -178,6 +179,11 @@ echo $_GET['sid'];
                                 <td width="82%" align="right" bgcolor="#CCCCCC"><strong>Discount:&nbsp;&nbsp;</strong>
                                 </td>
                                 <td width="18%" bgcolor="#CCCCCC"><?php echo $discount ?>&nbsp;</td>
+                            </tr>
+                            <tr>
+                                <td width="82%" align="right" bgcolor="#CCCCCC"><strong>Tax:&nbsp;&nbsp;</strong>
+                                </td>
+                                <td width="18%" bgcolor="#CCCCCC"><?php echo $tax ?>&nbsp;</td>
                             </tr>
                             <tr>
                                 <td width="82%" align="right" bgcolor="#CCCCCC"><strong>SubTotal:&nbsp;&nbsp;</strong>

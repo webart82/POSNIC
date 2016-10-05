@@ -24,7 +24,7 @@
                     contact1: {
                         required: true,
                         minlength: 10,
-                        maxlength: 10
+                        maxlength: 13
                     },
                     contact2: {
                         minlength: 3,
@@ -33,13 +33,13 @@
                 },
                 messages: {
                     name: {
-                        required: "Please enter a supplier name",
+                        required: "Please enter a customer name",
                         minlength: "Customer must consist of at least 3 characters"
                     },
                     contact1: {
                         required: "Please enter a contact number",
-                        minlength: "Customer must consist of at least 10 characters",
-                        maxlength: "Customer must consist of at least 10 characters"
+                        minlength: "Contact must consist of at least 10 characters",
+                        maxlength: "Contact must consist of at least 13 characters"
                     },
                     address: {
                         minlength: "Customer Address must be at least 3 characters long",

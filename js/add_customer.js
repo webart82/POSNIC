@@ -33,13 +33,13 @@
                 },
                 messages: {
                     name: {
-                        required: "Please enter a customer name",
+                        required: "Please Enter Customer Name",
                         minlength: "Customer must consist of at least 3 characters"
                     },
                     contact1: {
-                        required: "Please enter a contact number",
-                        minlength: "Contact must consist of at least 10 characters",
-                        maxlength: "Contact must consist of at least 13 characters"
+                        required: "Please Enter Contact No",
+                        minlength: "Contact No must consist of at least 10 characters",
+                        maxlength: "Contact No must consist of at least 13 characters"
                     },
                     address: {
                         minlength: "Customer Address must be at least 3 characters long",

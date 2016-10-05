@@ -274,11 +274,11 @@ include_once("init.php");
                             <tr>
                                 <td><span class="man">*</span>Name:</td>
                                 <td><input name="name" placeholder="ENTER YOUR FULL NAME" type="text" id="name"
-                                           maxlength="200" class="round default-width-input"
+                                           maxlength="200" class="round default-width-input" onkeypress="return lettersOnly(event)"
                                            value="<?php echo isset($name) ? $name : ''; ?>"/></td>
-                                <td>Contact 1</td>
-                                <td><input name="contact1" placeholder="ENTER YOUR ADDRESS contact1" type="text"
-                                           id="buyingrate" maxlength="20" class="round default-width-input"
+                                <td><b><span class="man">*</span></b><b>Contact</b><b>-1</b></td>
+                                <td><input name="contact1" placeholder="ENTER YOUR CONTACT1" type="text"
+                                           id="buyingrate" maxlength="20" class="round default-width-input" onkeypress="return numbersonly(event)"
                                            value="<?php echo isset($contact1) ? $contact1 : ''; ?>"/></td>
                             </tr>
                             <tr>
@@ -286,13 +286,13 @@ include_once("init.php");
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td>Address</td>
+                                <td><b>Address:</b></td>
                                 <td><textarea name="address" placeholder="ENTER YOUR ADDRESS" cols="15"
                                               class="round full-width-textarea"><?php echo isset($address) ? $address : ''; ?></textarea>
                                 </td>
-                                <td>Contact 2</td>
-                                <td><input name="contact2" placeholder="ENTER YOUR contact2" type="text"
-                                           id="sellingrate" maxlength="20" class="round default-width-input"
+                                <td><b>Contact</b><b>-2</b></td>
+                                <td><input name="contact2" placeholder="ENTER YOUR CONTACT2" type="text"
+                                           id="sellingrate" maxlength="20" class="round default-width-input" onkeypress="return numbersonly(event)"
                                            value="<?php echo isset($contact2) ? $contact2 : ''; ?>"/></td>
 
                             </tr>

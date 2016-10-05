@@ -22,10 +22,11 @@
                         maxlength: 500
                     },
                     contact1: {
-                        minlength: 3,
+                        minlength: 10,
                         maxlength: 20
                     },
                     contact2: {
+                        required: true,
                         minlength: 3,
                         maxlength: 20
                     }
@@ -38,6 +39,11 @@
                     address: {
                         minlength: "Supplier Address must be at least 3 characters long",
                         maxlength: "Supplier Address must be at least 3 characters long"
+                    },
+                    contact1: {
+                        required: "Please enter a contact number",
+                        minlength: "contact number must consist of at least 10 characters",
+                        maxlength: "contact number consist of at least 13 characters"
                     }
                 }
             });

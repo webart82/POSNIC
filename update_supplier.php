@@ -60,6 +60,25 @@ include_once("init.php");
 
         });
 
+        //validation for name and contact field
+        function numbersonly(e) {
+            var unicode = e.charCode ? e.charCode : e.keyCode
+            if (unicode != 8 && unicode != 46 && unicode != 37 && unicode != 27 && unicode != 38 && unicode != 39 && unicode != 40 && unicode != 9) { //if the key isn't the backspace key (which we should allow)
+                if (unicode < 48 || unicode > 57)
+                    return false
+            }
+        }
+
+function ValidateAlpha(evt) {
+       evt = (evt) ? evt : event;
+       var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+          ((evt.which) ? evt.which : 0));
+       if (charCode > 31 && (charCode < 65 || charCode > 90) &&
+          (charCode < 97 || charCode > 122)) {
+          return false;
+       }
+       return true;
+     }
     </script>
 
 </head>
@@ -163,13 +182,13 @@ include_once("init.php");
                             <form name="form1" method="post" id="form1" action="">
                                 <input name="id" type="hidden" value="<?php echo $_GET['sid']; ?>">
                                 <tr>
-                                    <td>Name</td>
+                                    <td>Name:</td>
                                     <td><input name="name" type="text" id="name" maxlength="200"
-                                               class="round default-width-input"
+                                               class="round default-width-input"onKeyPress="return ValidateAlpha(event)"
                                                value="<?php echo $line->supplier_name; ?> "/></td>
-                                    <td>Contact 1</td>
+                                    <td><b>Contact</b><b>-1</b></td>
                                     <td><input name="contact1" type="text" id="buyingrate" maxlength="20"
-                                               class="round default-width-input"
+                                               class="round default-width-input"onkeypress="return numbersonly(event)"
                                                value="<?php echo $line->supplier_contact1; ?>"/></td>
                                 </tr>
                                 <tr>
@@ -177,13 +196,13 @@ include_once("init.php");
                                     <td>&nbsp;</td>
                                 </tr>
                                 <tr>
-                                    <td>Address</td>
+                                    <td>Address:</td>
                                     <td><textarea name="address" cols="15"
                                                   class="round full-width-textarea"><?php echo $line->supplier_address; ?></textarea>
                                     </td>
-                                    <td>Contact 2</td>
+                                    <td><b>Contact</b><b>-2</b></td>
                                     <td><input name="contact2" type="text" id="sellingrate" maxlength="20"
-                                               class="round default-width-input"
+                                               class="round default-width-input"onkeypress="return numbersonly(event)"
                                                value="<?php echo $line->supplier_contact2; ?>"/></td>
                                 </tr>
 
@@ -195,7 +214,7 @@ include_once("init.php");
                                     <td>
                                         <input class="button round blue image-right ic-add text-upper" type="submit"
                                                name="Submit" value="Save">
-                                        (Control + S)
+                                        <b>(Control + S)</b>
                                     </td>
                                     <td align="right"><input class="button round red   text-upper" type="reset"
                                                              name="Reset" value="Reset"></td>

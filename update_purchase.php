@@ -458,7 +458,7 @@ include_once("init.php");
                     <?php
                     if (isset($_GET['sid']))
                         $id = $_GET['sid'];
-                    $line = $db->queryUniqueObject("SELECT * FROM stock_entries WHERE stock_id='$id'");
+                    $line = $db->queryUniqueObject("SELECT * FROM stock_entries WHERE id='$id'");
                     ?>
                     <form name="form1" method="post" id="form1" action="">
                         <input type="hidden" id="posnic_total">

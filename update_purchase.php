@@ -477,13 +477,10 @@ include_once("init.php");
                                            value="<?php echo $line->stock_id; ?>"/></td>
 
                                 <td>Date:</td>
-                                <td><input name="date" id="test1" placeholder="" value="<?php echo $line->date; ?> "
+                                <td><input name="date" id="test1" placeholder="" style="margin-left: 15px;" value="<?php echo $line->date; ?> "
                                            type="text" id="name" maxlength="200" class="round default-width-input"/>
                                 </td>
-                                <td><span class="man">*</span>Bill No:</td>
-                                <td><input name="bill_no" placeholder="ENTER BILL NO" type="text" id="bill_no"
-                                           maxlength="200" value="<?php echo $line->billnumber; ?> "
-                                           class="round default-width-input" style="width:120px "/></td>
+                               
 
                             </tr>
                             <tr>
@@ -626,33 +623,7 @@ include_once("init.php");
                                     </tr>
                                 <?php } ?>
                             </table>
-                        </div>
-
-
-                        <table class="form">
-                            <tr>
-                                <td> &nbsp;</td>
-                                <td>Payment:<input type="text" class="round" value="<?php echo $line->payment; ?>"
-                                                   onkeyup=" balance_amount(); return numbersonly(event);"
-                                                   name="payment" id="payment">
-                                </td>
-                                <td> &nbsp;</td>
-                                <td>Balance:<input type="text" class="round" value="<?php echo $line->balance; ?>"
-                                                   id="balance" name="balance">
-                                </td>
-                                <td> &nbsp;</td>
-
-                                <td> &nbsp;</td>
-                                <td> &nbsp;</td>
-                                <td> &nbsp;</td>
-                                <td> &nbsp;</td>
-                                <td>Grand Total:<input type="hidden" readonly="readonly" id="grand_total"
-                                                       value="<?php echo $line->subtotal; ?>" name="subtotal">
-                                    <input type="text" id="main_grand_total" class="round default-width-input"
-                                           value="<?php echo $line->subtotal; ?>" style="text-align:right;width: 120px">
-                                </td>
-                            </tr>
-                        </table>
+                        </div> 
                         <table>
                             <tr>
                                 <td>Mode &nbsp;</td>
@@ -663,16 +634,13 @@ include_once("init.php");
                                         <option value="cheque">Other</option>
                                     </select>
                                 </td>
-                                <td>
-                                    Due Date:<input type="text" name="due" id="test2"
-                                                    value="<?php echo date('d-m-Y'); ?>" class="round">
-                                </td>
-                                <td> &nbsp;</td>
-                                <td> &nbsp;</td>
-
                                 <td>Description</td>
                                 <td><textarea name="description"><?php echo $line->description; ?></textarea></td>
-                                <td> &nbsp;</td>
+                                <td>Grand Total:<input type="hidden" readonly="readonly" id="grand_total"
+                                                       value="<?php echo $line->subtotal; ?>" name="subtotal">
+                                    <input type="text" id="main_grand_total" class="round default-width-input"
+                                           value="<?php echo $line->subtotal; ?>" style="text-align:right;width: 120px">
+                                </td>
                                 <td> &nbsp;</td>
                                 <td> &nbsp;</td>
                             </tr>

@@ -364,7 +364,14 @@ include_once("init.php");
                                 $no = $page - 1;
                                 $no = $no * $limit;
 
+$co=0;
+								$s=mysqli_query($db->connection, "select * from stock_entries");
+								while($r= mysqli_fetch_array($s))
+								{
+									$co++;
+								}
                                 while ($row = mysqli_fetch_array($result)) {
+									//$co++;
                                    // $entryid = $row['stock_id'];
                                     //$line = $db->queryUniqueObject("SELECT * FROM stock_entries WHERE stock_id='$entryid' ");
                                    // $mysqldate = $line->date;
@@ -399,7 +406,15 @@ include_once("init.php");
                                     <td align="center">
                                         <div style="margin-left:20px;"><?php echo $pagination; ?></div>
                                     </td>
-
+<tr>
+								<td>&nbsp;</td>
+								</tr>
+								<tr>
+								<td  colspan='8' align="center">
+								
+								<?php echo "Total Records : ".$co;?>
+								</td>
+								</tr>
                                 </tr>
                             </table>
                         </form>

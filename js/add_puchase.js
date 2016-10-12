@@ -76,7 +76,33 @@ $(document).ready(function() {
                 location.reload();
             });
         }); 
+        //Press Enter key using cursor focus to next textbox 
+    $(document).ready(function(){
+            $('#item').keypress(function(e){
+             if(e.keyCode==13){                
+                $(':input:eq(' + ($(':input').index(this) + 1) + ')').focus(); 
+               return false;
+             }
+            });
+        });
         
+function checkValid(form)
+{
+if(document.form1.supplier.value=="")
+{
+
+document.form1.supplier.focus();
+return false;
+}
+
+	 
+if(document.form1.item.value=="")
+{
+
+document.form1.item.focus();
+return false;
+}
+}       
         /*$.validator.setDefaults({
          submitHandler: function() { alert("submitted!"); }
          });*/
@@ -270,22 +296,22 @@ $(document).ready(function() {
             return true;
         }
         function balance_amount() {
-            if (document.getElementById('grand_total').value != "" && document.getElementById('payment').value != "") {
+            if (document.getElementById('grand_total').value != "" && document.getElementById('total').value != "") {
                 data = parseFloat(document.getElementById('grand_total').value);
-                document.getElementById('balance').value = data - parseFloat(document.getElementById('payment').value);
-                if (parseFloat(document.getElementById('grand_total').value) >= parseFloat(document.getElementById('payment').value)) {
+                document.getElementById('total').value = data - parseFloat(document.getElementById('total').value);
+                if (parseFloat(document.getElementById('grand_total').value) >= parseFloat(document.getElementById('total').value)) {
 
                 } else {
                     if (document.getElementById('grand_total').value != "") {
-                        document.getElementById('balance').value = '000.00';
-                        document.getElementById('payment').value = parseFloat(document.getElementById('grand_total').value);
+                        document.getElementById('total').value = '000.00';
+                        document.getElementById('total').value = parseFloat(document.getElementById('grand_total').value);
                     } else {
-                        document.getElementById('balance').value = '000.00';
-                        document.getElementById('payment').value = "";
+                        document.getElementById('total').value = '000.00';
+                        document.getElementById('total').value = "";
                     }
                 }
             } else {
-                document.getElementById('balance').value = "";
+                document.getElementById('total').value = "";
             }
 
 

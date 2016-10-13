@@ -384,13 +384,13 @@ include_once("init.php");
 
                     <?php
                     if (isset($_POST['supplier']) and isset($_POST['stock_name'])) {
-                        $billnumber = mysqli_real_escape_string($db->connection, $_POST['bill_no']);
+                        //$billnumber = mysqli_real_escape_string($db->connection, $_POST['bill_no']);
                         $autoid = mysqli_real_escape_string($db->connection, $_POST['id']);
 
                         $supplier = mysqli_real_escape_string($db->connection, $_POST['supplier']);
 
-                        $payment = mysqli_real_escape_string($db->connection, $_POST['payment']);
-                        $balance = mysqli_real_escape_string($db->connection, $_POST['balance']);
+                        //$payment = mysqli_real_escape_string($db->connection, $_POST['payment']);
+                        //$balance = mysqli_real_escape_string($db->connection, $_POST['balance']);
                         $address = mysqli_real_escape_string($db->connection, $_POST['address']);
                         $contact = mysqli_real_escape_string($db->connection, $_POST['contact']);
                         $count = $db->countOf("supplier_details", "supplier_name='$supplier'");
@@ -398,12 +398,12 @@ include_once("init.php");
                             $db->query("insert into supplier_details(supplier_name,supplier_address,supplier_contact1) values('$supplier','$address','$contact')");
                         }
                         $temp_balance = $db->queryUniqueValue("SELECT balance FROM supplier_details WHERE supplier_name='$supplier'");
-                        $temp_balance = (int)$temp_balance + (int)$balance;
+                        //$temp_balance = (int)$temp_balance + (int)$balance;
                         $db->execute("UPDATE supplier_details SET balance='$temp_balance' WHERE supplier_name='$supplier'");
-                        $selected_date = $_POST['due'];
-                        $selected_date = strtotime($selected_date);
-                        $mysqldate = date('Y-m-d H:i:s', $selected_date);
-                        $due = $mysqldate;
+                        //$selected_date = $_POST['due'];
+                        //$selected_date = strtotime($selected_date);
+                        //$mysqldate = date('Y-m-d H:i:s', $selected_date);
+                        //$due = $mysqldate;
                         $mode = mysqli_real_escape_string($db->connection, $_POST['mode']);
                         $description = mysqli_real_escape_string($db->connection, $_POST['description']);
 
@@ -442,7 +442,7 @@ include_once("init.php");
 
 
                             $db->execute("UPDATE stock_avail SET quantity='$amount1' WHERE name='$name1'");
-                            $db->query("UPDATE stock_entries SET stock_name='$name1', stock_supplier_name='$supplier', quantity='$quantity', company_price='$brate', selling_price='$srate', opening_stock='$amount', closing_stock='$amount1', date='$mysqldate', username='$username', type='entry', total='$total', payment='$payment', balance='$balance', mode='$mode', description='$description', due='$due', subtotal='$subtotal',billnumber='$billnumber' WHERE id='$sysid'");
+                            $db->query("UPDATE stock_entries SET stock_name='$name1', stock_supplier_name='$supplier', quantity='$quantity', company_price='$brate', selling_price='$srate', opening_stock='$amount', closing_stock='$amount1', date='$mysqldate', username='$username', type='entry', total='$total', mode='$mode', description='$description', subtotal='$subtotal' WHERE id='$sysid'");
                             //INSERT INTO `stock`.`stock_entries` (`id`, `stock_id`, `stock_name`, `stock_supplier_name`, `category`, `quantity`, `company_price`, `selling_price`, `opening_stock`, `closing_stock`, `date`, `username`, `type`, `salesid`, `total`, `payment`, `balance`, `mode`, `description`, `due`, `subtotal`, `count1`)
                             //VALUES (NULL, '$autoid1', '$name1', '$supplier', '', '$quantity', '$brate', '$srate', '$amount', '$amount1', '$mysqldate', 'sdd', 'entry', 'Sa45', '432.90', '2342.90', '24.34', 'cash', 'sdflj', '2010-03-25 12:32:02', '45645', '1');
 
@@ -450,7 +450,7 @@ include_once("init.php");
                             $i++;
                             $j++;
                         }
-                        echo "<br><font color=green size=+1 >Parchase order Updated successfully Ref: [ $autoid] !</font>";
+                        echo "<br><font color=green size=+1 >Parchase order Updated successfully Ref: [" . $_POST['purchaseid'] . "] !</font>";
 
 
                     }
@@ -467,10 +467,10 @@ include_once("init.php");
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <?php
-                                $max = $db->maxOfAll("id", "stock_sales");
-                                $max = $max + 1;
-                                $autoid = "PR" . $max . "";
-                                ?>
+                                $str = $db->maxOfAll("stock_id", "stock_entries"); 
+                                $array = explode(' ', $str);                           
+                                $autoid = ++$array[0];
+                                  ?>
                                 <td>Purchase ID:</td>
                                 <td><input name="purchaseid" type="text" id="purchaseid" readonly="readonly" maxlength="200"
                                            class="round default-width-input" style="width:130px "
@@ -508,14 +508,14 @@ include_once("init.php");
                         <input type="hidden" id="edit_guid">
                         <table id="hideen_display">
                             <tr>
-                                <td>Item:</td>
+                                <td>Item</td>
                                 <td> &nbsp;</td>
                                 <td> &nbsp;</td>
                                 <td> &nbsp;</td>
-                                <td>Quantity:</td>
-                                <td>Cost:</td>
-                                <td>Selling:</td>
-                                <td>Available Stock:</td>
+                                <td>Quantity</td>
+                                <td>Cost</td>
+                                <td>Selling</td>
+                                <td>Available Stock</td>
                                 <td>Total</td>
                                 <td> &nbsp;</td>
                                 <td> &nbsp;</td>
@@ -581,7 +581,7 @@ include_once("init.php");
                                     <tr>
 
                                         <td><input name="stock_name[]" type="text" id="<?php echo $item . "st" ?>"
-                                                   maxlength="20" style="width: 150px" readonly="readonly"
+                                                   maxlength="30" style="width: 150px" readonly="readonly"
                                                    class="round "
                                                    value="<?php echo $line1->stock_name; ?>"/></td>
 

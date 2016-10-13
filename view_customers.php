@@ -360,10 +360,26 @@ include_once("init.php");
                                     <th>Select</th>
                                 </tr>
 
-                                <?php $i = 1;
+                                <?php 
+								//count no of recards
+								$co=0;
+								$co1=0;
+								$s=mysqli_query($db->connection, "select * from customer_details");
+								while($r= mysqli_fetch_array($s))
+								{
+									$co++;
+								}
+								
+								$i = 1;
                                 $no = $page - 1;
                                 $no = $no * $limit;
+								
+								
                                 while ($row = mysqli_fetch_array($result)) {
+									
+									$co1++;
+									
+
                                     ?>
                                     <tr>
                                         <td> <?php echo $no + $i; ?></td>
@@ -387,10 +403,20 @@ include_once("init.php");
                                 } ?>
                                 <tr>
 
-                                    <td align="center">
+                                     <td align="center">
                                         <div style="margin-left:20px;"><?php echo $pagination; ?></div>
                                     </td>
 
+                                </tr>
+								<tr>
+								<td>&nbsp;</td>
+								</tr>
+								<tr>
+								<td  colspan='8' align="center">
+								<?php $end=$no+$co1;?>
+							 	Showing <?php echo $no+1;?> to <?php echo $end;?> of <?php echo $co;?> entries
+								</td>
+								</tr>
                                 </tr>
                             </table>
                         </form>

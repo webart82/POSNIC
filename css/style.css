@@ -616,13 +616,13 @@ table.form { width: 400px; margin-bottom: 1.25em; /* 20/16 */ }
 		padding: 0.833em 0 0.833em 1.25em; /* 10/12 15/12 */
 		border-left: 1px solid white;
 		border-bottom: 1px solid #f8f9fa;
+                font-weight:550;
 	}
 	
 	/* Push the first cell to the right so it doesn't stick to the table border */
 	table.form td:first-child, table th:first-child {
 		width: 4em /* 48/12 */;
 		text-align: left;
-		font-weight:900;
 		padding: 0;
 		padding-left: 10px;
 		border: none;

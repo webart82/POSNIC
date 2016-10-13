@@ -251,11 +251,11 @@ include_once("init.php");
                         <input type="hidden" id="edit_guid">
                         <table class="form">
                             <tr>
-                                <td>Item:</td>
-                                <td>Quantity:</td>
+                                <td>Item</td>
+                                <td>Quantity</td>
 
-                                <td>Price:</td>
-                                <td>Available Stock:</td>
+                                <td>Price</td>
+                                <td>Available Stock</td>
                                 <td> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Total</td>
                                 <td> &nbsp;</td>
                             </tr>
@@ -345,7 +345,7 @@ include_once("init.php");
                                 
                             </tr>
                         </table>
-                        <table>
+                        <table class="form">
                             <tr>
                                 <td>Mode &nbsp;</td>
                                 <td>

@@ -158,7 +158,7 @@ include_once("init.php");
                             //$selected_date = strtotime($selected_date);
                             //$mysqldate = date('Y-m-d H:i:s', $selected_date);
                             //$due = $mysqldate;
-                            $str = $db->maxOfAll("stock_id", "stock_entries");
+                            $str = $db->maxOfAll("transactionid", "stock_sales");
                             $array = explode(' ', $str);                           
                             $autoid = ++$array[0];
                             for ($i = 0; $i < count($stock_name); $i++) {
@@ -184,7 +184,7 @@ include_once("init.php");
                                     $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name1'");
                                     $amount1 = $amount - $quantity;
 
-                                    $db->query("insert into stock_entries (stock_id,stock_name,quantity,opening_stock,closing_stock,date,username,type,salesid,total,selling_price,count1,billnumber) values('$autoid','$name1','$quantity','$amount','$amount1','$mysqldate','$username','sales','$autoid','$total','$rate',$i+1,'$bill_no')");
+                                    //$db->query("insert into stock_entries (stock_id,stock_name,quantity,opening_stock,closing_stock,date,username,type,salesid,total,selling_price,count1,billnumber) values('$autoid','$name1','$quantity','$amount','$amount1','$mysqldate','$username','sales','$autoid','$total','$rate',$i+1,'$bill_no')");
                                     //echo "<br><font color=green size=+1 >New Sales Added ! Transaction ID [ $autoid ]</font>" ;
 
 
@@ -215,7 +215,7 @@ include_once("init.php");
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <?php
-                                $str = $db->maxOfAll("stock_id", "stock_entries"); 
+                                $str = $db->maxOfAll("transactionid", "stock_sales"); 
                                 $array = explode(' ', $str);                           
                                 $autoid = ++$array[0];
                                   ?>

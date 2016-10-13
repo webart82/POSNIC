@@ -364,8 +364,19 @@ include_once("init.php");
                                 $no = $page - 1;
                                 $no = $no * $limit;
 
+																//Count number of records
+								$co=0;
+								$co1=0;
+								$s=mysqli_query($db->connection, "select * from stock_sales");
+								while($r= mysqli_fetch_array($s))
+								{
+									$co++;
+								}
+								
+								
                                 while ($row = mysqli_fetch_array($result)) {
                                    // $entryid = $row['stock_id'];
+								   $co1++; 
                                     //$line = $db->queryUniqueObject("SELECT * FROM stock_entries WHERE stock_id='$entryid' ");
                                    // $mysqldate = $line->date;
                                     //$phpdate = strtotime($mysqldate);
@@ -401,6 +412,15 @@ include_once("init.php");
                                     </td>
 
                                 </tr>
+																<tr>
+								<td>&nbsp;</td>
+								</tr>
+								<tr>
+								<td  colspan='8' align="center">
+								<?php $end=$no+$co1;?>
+								Showing <?php echo $no+1;?> to <?php echo $end;?> of <?php echo $co;?> entries
+								 </td>
+								</tr>
                             </table>
                         </form>
 
@@ -415,4 +435,4 @@ include_once("init.php");
             <!-- end footer -->
 
 </body>
-</html>
+</html> 

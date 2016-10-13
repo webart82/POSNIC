@@ -174,7 +174,7 @@ include_once("init.php");
                                 <?php
                                 $max = $db->maxOfAll("id", "stock_details");
                                 $max = $max + 1;
-                                $autoid = "SD" . $max . "";
+                                $autoid = "ST" . $max . "";
                                 ?>
                                 <td><span class="man">*</span>Stock ID:</td>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"

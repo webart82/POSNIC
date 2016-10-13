@@ -187,10 +187,10 @@ include_once("init.php");
                                 <table class="form" border="0" cellspacing="0" cellpadding="0">
                                     <tr>
                             <?php
-                            $max = $db->maxOfAll("id", "stock_entries");
-                            $max = $max + 3;
-                            $autoid = "PR" . $max . "";
-                            ?>
+                                $str = $db->maxOfAll("stock_id", "stock_entries"); 
+                                $array = explode(' ', $str);                           
+                                $autoid = ++$array[0];
+                                  ?>
                                         <td>Purchase ID:</td>
                                         <td><input name="purchaseid" type="text" id="purchaseid" readonly="readonly" maxlength="200"
                                                    class="round default-width-input" style="width:130px "

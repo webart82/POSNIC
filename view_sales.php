@@ -414,21 +414,20 @@ $count=0;
                                 } ?>
                                 <tr>
 
-                                    <td align="center">
-                                        <div style="margin-left:20px;"><?php echo $pagination; ?></div>
-                                    </td>
+                                   
 
                                 </tr>
-								<tr>
-								<td>&nbsp;</td>
-								</tr>
-								<tr>
-								<td  colspan='8' align="center">
-								<?php $end=$no+$co1;?>
-								Showing <?php echo $no+1;?> to <?php echo $end;?> of <?php echo $co;?> entries
-							 	 </td>
-								</tr>
+                                <table>
+                                    <tr>
+                                    <td align='right'style="width:20%"><?php $end=$no+$co1;?>
+                                            Showing <?php echo $no+1;?> to <?php echo $end;?> of <?php echo $co;?> entries</td><td >&nbsp;</td><td><?php echo $pagination; ?></td>
+                                </tr>
+
+
+                                </table> 
+                                                                
                             </table>
+                            
                         </form>
 
 

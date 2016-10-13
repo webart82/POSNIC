@@ -367,7 +367,7 @@ include_once("init.php");
 																//Count number of records
 								$co=0;
 								$co1=0;
-								$s=mysqli_query($db->connection, "select * from stock_sales");
+								$s=mysqli_query($db->connection, "select * from stock_entries");
 								while($r= mysqli_fetch_array($s))
 								{
 									$co++;

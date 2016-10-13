@@ -38,7 +38,8 @@ include_once("init.php");
 
         <ul id="tabs" class="fl">
             <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class=active-tab sales-tab">Sales</a></li>
+			<li>
+            <li><a href="view_sales.php" class="active-tab sales-tab">Sales</a></li>
             <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
             <li><a href="view_purchase.php" class=" purchase-tab">Purchase</a></li>
             <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>

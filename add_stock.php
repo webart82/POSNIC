@@ -176,7 +176,7 @@ include_once("init.php");
                                 $max = $max + 1;
                                 $autoid = "ST" . $max . "";
                                 ?>
-                                <td><span class="man">*</span>Stock_ID:</td>
+                                <td><span class="man">*</span>Stock&nbsp;ID:</td>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
                                            class="round default-width-input"
                                            value="<?php echo isset($autoid) ? $autoid : ''; ?>"/></td>
@@ -194,7 +194,7 @@ include_once("init.php");
                                            onkeypress="return numbersonly(event)"
                                            value="<?php echo isset($cost) ? $cost : ''; ?>"/></td>
 
-                                <td><span class="man">*</span>Selling_Price</td>
+                                <td><span class="man">*</span>Selling&nbsp;Price</td>
                                 <td><input name="sell" placeholder="ENTER SELLING PRICE" type="text" id="sell"
                                            maxlength="200" class="round default-width-input"
                                            onkeypress="return numbersonly(event)"

@@ -13,49 +13,8 @@
     <!-- Scripts -->
     <script src="js/lib/jquery.min.js" type="text/javascript"></script>
     <script src="js/lib/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="js/install_step3.js" type="text/javascript"></script>
 
-    <script>
-        /*$.validator.setDefaults({
-         submitHandler: function() { alert("submitted!"); }
-         });*/
-
-        $(document).ready(function () {
-
-            // validate signup form on keyup and submit
-            $("#login-form").validate({
-                rules: {
-                    uname: {
-                        required: true,
-                        minlength: 5
-                    },
-                    password: {
-                        required: true,
-                        minlength: 5
-                    },
-                    answer: {
-                        required: true,
-                        minlength: 5
-                    }
-                },
-                messages: {
-                    uname: {
-                        required: "Please Enter The User Name",
-                        minlength: "Your User Name must consist of at least 5 characters"
-                    },
-                    password: {
-                        required: "Please Enter The Password",
-                        minlength: "Your Password must be at least 5 characters long"
-                    },
-                    answer: {
-                        required: "Please Enter Security Question Answer",
-                        minlength: "Your Security Question Answer must be at least 5 characters long"
-                    }
-                }
-            });
-
-        });
-
-    </script>
 
     <!-- Optimize for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -125,7 +84,7 @@ if (isset($_POST['submit']) and isset($_POST['uname']) and isset($_POST['passwor
     $password = $_POST['password'];
     $answer = $_POST['answer'];
     $db->query("INSERT INTO stock_user(username,password,answer,user_type)VALUES ('" . $uname . "','" . $password . "','" . $answer . "','admin')");
-    echo "<script>window.location = 'next_store_details.php';</script>";
+    echo "<script>window.location = 'install_step4.php';</script>";
     // exit;
 }
 ?>

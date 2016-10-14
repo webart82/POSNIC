@@ -370,10 +370,10 @@ include_once("init.php");
                                            name="Submit" value="Add">
                                 </td>
                                 <td> (Control + S)
-                                    <input class="button round red   text-upper" type="reset" id="Reset" name="Reset"
+                                    </td>
+                                <td> &nbsp;</td>
+                                <td> <input class="button round red   text-upper" type="reset" id="Reset" name="Reset"
                                            value="Reset"></td>
-                                <td> &nbsp;</td>
-                                <td> &nbsp;</td>
                             </tr>
                         </table>
                     </form>

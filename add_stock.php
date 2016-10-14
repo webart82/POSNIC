@@ -176,13 +176,13 @@ include_once("init.php");
                                 $max = $max + 1;
                                 $autoid = "ST" . $max . "";
                                 ?>
-                                <td><span class="man">*</span>Stock ID:</td>
+                                <td><span class="man">*</span>Stock&nbsp;ID:</td>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
                                            class="round default-width-input"
                                            value="<?php echo isset($autoid) ? $autoid : ''; ?>"/></td>
 
                                 <td><span class="man">*</span>Name:</td>
-                                <td><input name="name" placeholder="ENTER CATEGORY NAME" type="text" id="name"
+                                <td><input name="name" placeholder="ENTER STOCK NAME" type="text" id="name"
                                            maxlength="200" class="round default-width-input"
                                            value="<?php echo isset($name) ? $name : ''; ?>"/></td>
 
@@ -194,7 +194,7 @@ include_once("init.php");
                                            onkeypress="return numbersonly(event)"
                                            value="<?php echo isset($cost) ? $cost : ''; ?>"/></td>
 
-                                <td><span class="man">*</span>Sell:</td>
+                                <td><span class="man">*</span>Selling&nbsp;Price</td>
                                 <td><input name="sell" placeholder="ENTER SELLING PRICE" type="text" id="sell"
                                            maxlength="200" class="round default-width-input"
                                            onkeypress="return numbersonly(event)"

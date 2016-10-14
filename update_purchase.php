@@ -557,7 +557,7 @@ include_once("init.php");
                                 </td>
 
                             </tr>
-                        </table>
+                        </table>  
                         <input type="hidden" id="guid">
                         <input type="hidden" id="edit_guid">
 

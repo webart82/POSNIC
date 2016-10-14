@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!file_exists("config.php") || !include_once "config.php") {
-    header("location: install.php");
+    header("location: install_step1.php");
 }
 if (!defined('posnicEntry')) {
     define('posnicEntry', true);
@@ -27,41 +27,7 @@ if (isset($_SESSION['username'])) {
     <!-- Scripts -->
     <script src="js/lib/jquery.min.js" type="text/javascript"></script>
     <script src="js/lib/jquery.validate.min.js" type="text/javascript"></script>
-
-    <script>
-        /*$.validator.setDefaults({
-         submitHandler: function() { alert("submitted!"); }
-         });*/
-
-        $(document).ready(function () {
-
-            // validate signup form on keyup and submit
-            $("#login-form").validate({
-                rules: {
-                    username: {
-                        required: true,
-                        minlength: 3
-                    },
-                    password: {
-                        required: true,
-                        minlength: 3
-                    }
-                },
-                messages: {
-                    username: {
-                        required: "Please enter a username",
-                        minlength: "Your username must consist of at least 3 characters"
-                    },
-                    password: {
-                        required: "Please provide a password",
-                        minlength: "Your password must be at least 3 characters long"
-                    }
-                }
-            });
-
-        });
-
-    </script>
+    <script src="js/index.js" type="text/javascript"></script>
 
     <!-- Optimize for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>

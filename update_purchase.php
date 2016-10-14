@@ -540,7 +540,7 @@ include_once("init.php");
                                            class="round  my_with"
                                            value="<?php echo isset($category) ? $category : ''; ?>"/></td>
 
-
+ 
                                 <td><input name="" type="text" id="stock" readonly="readonly" maxlength="200" style="width: 143px"
                                            class="round  my_with"
                                            value="<?php echo isset($category) ? $category : ''; ?>"/></td>
@@ -557,7 +557,7 @@ include_once("init.php");
                                 </td>
 
                             </tr>
-                        </table>  
+                        </table>   
                         <input type="hidden" id="guid">
                         <input type="hidden" id="edit_guid">
 

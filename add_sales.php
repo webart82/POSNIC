@@ -209,11 +209,17 @@ include_once("init.php");
                             }
                             $msg = "<br><font color=green size=6px >Sales Added successfully Ref: [" . $_POST['stockid'] . "] !</font>";
                             echo $msg;
+                            if($str == ''){
+                            echo "<script>window.open('add_sales_print.php?sid=$autoid_new','myNewWinsr','width=620,height=800,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no');</script>";
+                            }
+                            if($str != ''){
                             echo "<script>window.open('add_sales_print.php?sid=$autoid','myNewWinsr','width=620,height=800,toolbar=0,menubar=no,status=no,resizable=yes,location=no,directories=no');</script>";
-
+                                
+                            }
+                            }
                         }
 
-                    }
+                    
 
                     ?>
 

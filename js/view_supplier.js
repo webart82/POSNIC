@@ -3,7 +3,50 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+var arrCheckedCheckboxes1 = [];
 
+function rowselection() {
+
+    if (sessionStorage.getItem('checked-checkboxes') && $.parseJSON(sessionStorage.getItem('checked-checkboxes')).length !== 0)
+    {
+        arrCheckedCheckboxes1 = $.parseJSON(sessionStorage.getItem('checked-checkboxes'));
+        //Convert checked checkboxes array to comma seprated id
+        $(arrCheckedCheckboxes1.toString()).prop('checked', true);
+		
+    }
+  
+}
+
+$(document).ready( function() {
+	
+	rowselection();
+	
+	 $("input:checkbox").change(function() {
+			// i++;
+		//	var arrCheckedCheckboxes1 = [];
+			//alert(arrCheckedCheckboxes);
+			// Get all checked checkboxes
+			var currentId = $(this).attr('id');
+			if ($(this).is(':checked')) {
+				arrCheckedCheckboxes1.push("#" + currentId);
+			}else {
+				console.log('came to else condition');
+				arrCheckedCheckboxes1 = jQuery.grep(arrCheckedCheckboxes1, function(value) {
+				  return value != "#" + currentId;
+				});
+				
+			}
+			 sessionStorage.setItem('checked-checkboxes', JSON.stringify(arrCheckedCheckboxes1));	
+			
+			// Convert checked checkboxes array to JSON ans store it in session storage
+		   
+			
+			
+			
+		});
+
+});
+		
         <!--
         // Nannette Thacker http://www.shiningstar.net
         function confirmSubmit() {

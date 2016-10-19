@@ -400,7 +400,7 @@ include_once("init.php");
                                         </td>
                                         <td><input type="checkbox"
                                                    value="<?php echo isset($row['id']) ? $row['id'] : 0; ?>"
-                                                   name="checklist[]" id="check_box"/></td>
+                                                   name="checklist[]" id="check_box<?php echo $row['id']; ?>"/></td>
                                         
                                     </tr>
                                     <?php $i++;

@@ -508,51 +508,48 @@ include_once("init.php");
                         <input type="hidden" id="edit_guid">
                         <table id="hideen_display">
                             <tr>
-                                <td>Item</td>
-                                <td> &nbsp;</td>
-                                <td> &nbsp;</td>
-                                <td> &nbsp;</td>
-                                <td>Quantity</td>
-                                <td>Cost</td>
-                                <td>Selling</td>
-                                <td>Available Stock</td>
-                                <td>Total</td>
-                                <td> &nbsp;</td>
-                                <td> &nbsp;</td>
-                                <td> &nbsp;</td>
+                                <td style="width: 174px">Item</td>
+                                
+                                <td style="width: 20px">Quantity</td>
+                                <td style="width: 87px">Cost</td>
+                                <td style="width: 87px">Selling</td>
+                                <td style="width: 97px">Available Stock</td>
+                                <td style="width: 160x float: Left;">Total&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>
+								
+                               
                             </tr>
                         </table>
                         <table class="form" id="display" style="display:none">
                             <tr>
 
                                 <td><input name="" type="text" id="item" maxlength="200" class="round my_with "
-                                           style="width: 150px"
+                                           style="width: 238px"
                                            value="<?php echo isset($supplier) ? $supplier : ''; ?>"/></td>
 
-                                <td><input name="" type="text" id="quty" maxlength="200" class="round  my_with"
+                                <td><input name="" type="text" id="quty" maxlength="200" class="round  my_with" style="width: 75px"
                                            onKeyPress="quantity_chnage(event);return numbersonly(event)"
                                            onkeyup="total_amount();unique_check()"
                                            value="<?php echo isset($category) ? $category : ''; ?>"/></td>
 
-                                <td><input name="" type="text" id="cost" readonly="readonly" maxlength="200"
+                                <td><input name="" type="text" id="cost" readonly="readonly" maxlength="200" style="width: 133px" 
                                            class="round my_with"
                                            value="<?php echo isset($category) ? $category : ''; ?>"/></td>
 
 
-                                <td><input name="" type="text" id="sell" readonly="readonly" maxlength="200"
+                                <td><input name="" type="text" id="sell" readonly="readonly" maxlength="200" style="width: 130px" 
                                            class="round  my_with"
                                            value="<?php echo isset($category) ? $category : ''; ?>"/></td>
 
-
-                                <td><input name="" type="text" id="stock" readonly="readonly" maxlength="200"
+ 
+                                <td><input name="" type="text" id="stock" readonly="readonly" maxlength="200" style="width: 143px"
                                            class="round  my_with"
                                            value="<?php echo isset($category) ? $category : ''; ?>"/></td>
                                 <td><input name="" type="text" id="total" maxlength="200"
-                                           class="round default-width-input " style="width:120px;  margin-left: 20px"
+                                           class="round default-width-input " style="width:45px;"
                                            value="<?php echo isset($category) ? $category : ''; ?>"/></td>
                                 <td><input type="button" onclick="add_values()" onkeyup=" balance_amount();"
                                            id="add_new_code"
-                                           style="margin-left:20px; width:30px;height:30px;border:none;background:url(images/save.png)"
+                                           style="width:30px;border:none;height:30px;background:url(images/save.png)"
                                            class="round">
                                 </td>
                                 <td><input type="button" value="" id="cancel" onclick="clear_data()"
@@ -560,7 +557,7 @@ include_once("init.php");
                                 </td>
 
                             </tr>
-                        </table>
+                        </table>   
                         <input type="hidden" id="guid">
                         <input type="hidden" id="edit_guid">
 
@@ -581,44 +578,44 @@ include_once("init.php");
                                     <tr>
 
                                         <td><input name="stock_name[]" type="text" id="<?php echo $item . "st" ?>"
-                                                   maxlength="30" style="width: 150px" readonly="readonly"
+                                                   maxlength="30" style="width: 238px" readonly="readonly"
                                                    class="round "
                                                    value="<?php echo $line1->stock_name; ?>"/></td>
 
                                         <td><input name="quantity[]" type="text" id="<?php echo $item . "q" ?>"
-                                                   maxlength="20" class="round my_with"
+                                                   maxlength="20" style="width: 75px" class="round my_with"
                                                    value="<?php echo $line1->quantity; ?>" readonly="readonly"
                                                    onkeypress="return numbersonly(event)"/></td>
 
 
                                         <td><input name="cost[]" type="text" id="<?php echo $item . "c" ?>"
-                                                   maxlength="20" class="round my_with"
+                                                   maxlength="20" style="width: 133px" class="round my_with"
                                                    value="<?php echo $line1->company_price; ?>" readonly="readonly"
                                                    onkeypress="return numbersonly(event)"/></td>
 
 
-                                        <td><input name="sell[]" type="text" id="<?php echo $item . "s" ?>"
+                                        <td><input name="sell[]" style="width: 130px" type="text" id="<?php echo $item . "s" ?>"
                                                    maxlength="20" readonly="readonly" class="round my_with"
                                                    value="<?php echo $line1->selling_price; ?>"
                                                    onkeypress="return numbersonly(event)"/></td>
-                                        <td><input name="stock[]" type="text" id="<?php echo $item . "p" ?>"
+                                        <td><input name="stock[]"  style="width: 143px" type="text" id="<?php echo $item . "p" ?>"
                                                    readonly="readonly" maxlength="200" class="round  my_with"
                                                    value="<?php $quantity = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='" . $line1->stock_name . "'");
                                                    echo $quantity; ?>"/></td>
-
-                                        <td><input name="total[]" type="text" id="<?php echo $item . "to" ?>"
+<td>
+                                        <input name="total[]" type="text" id="<?php echo $item . "to" ?>"
                                                    readonly="readonly" maxlength="20"
-                                                   style="margin-left:20px;width: 120px" class="round "
+                                                   style="width: 45px" class="round "
                                                    value="<?php echo $line1->total; ?>"/></td>
-                                        <td><input type="hidden" id="<?php echo $item . "my_tot" ?>" maxlength="20"
+                                        <input type="hidden" id="<?php echo $item . "my_tot" ?>" maxlength="20"
                                                    style="margin-left:20px;width: 120px" class="round "
-                                                   value="<?php echo $line1->total; ?>"/></td>
-                                        <td><input type="hidden" id="<?php echo $item; ?>"><input type="hidden"
+                                                   value="<?php echo $line1->total; ?>"/>
+                                        <input type="hidden" id="<?php echo $item; ?>"><input type="hidden"
                                                                                                   name="gu_id[]"
                                                                                                   value="<?php echo $line1->id ?>">
-                                        </td>
+                                        
                                         <td><input type=button value="" id="<?php echo $item; ?>"
-                                                   style="width:30px;border:none;height:30px;background:url(images/edit_new.png)"
+                                                   style="float: right;width:30px;border:none;height:30px;background:url(images/edit_new.png)"
                                                    class="round" onclick="edit_stock_details(this.id)"></td>
                                     </tr>
                                 <?php } ?>

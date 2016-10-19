@@ -190,12 +190,23 @@ include_once("init.php");
                                 $str = $db->maxOfAll("stock_id", "stock_entries"); 
                                 $array = explode(' ', $str);                           
                                 $autoid = ++$array[0];
+                                if($str == ''){
+                                  $autoid_new = "PR".$autoid;  
+                                }
                                   ?>
+                                        <?php if($str == ''){ ?>
+                                        <td>Purchase ID:</td>
+                                        <td><input name="purchaseid" type="text" id="purchaseid" readonly="readonly" maxlength="200"
+                                                   class="round default-width-input" style="width:130px "
+                                                   value="<?php echo $autoid_new ?>"/></td>
+                                        
+                                        <?php } ?>
+                                        <?php if($str != ''){ ?>
                                         <td>Purchase ID:</td>
                                         <td><input name="purchaseid" type="text" id="purchaseid" readonly="readonly" maxlength="200"
                                                    class="round default-width-input" style="width:130px "
                                                    value="<?php echo $autoid ?>"/></td>
-
+                                        <?php }?>
                                         <td>Date:</td>
                                         <td><input name="date" id="test1" placeholder=""  style="margin-left: 15px;" value="<?php date_default_timezone_set("Asia/Kolkata");
                                         echo date('Y-m-d H:i:s'); ?>"
@@ -298,10 +309,10 @@ include_once("init.php");
                                                    name="Submit" value="Add" onclick="return checkValid(this);">
                                         </td>
                                         <td> (Control + S)
-                                            <input class="button round red   text-upper" type="reset" id="Reset" name="Reset"
-                                                   value="Reset"></td>
+                                           </td>
                                         <td> &nbsp;</td>
-                                        <td> &nbsp;</td>
+                                        <td> <input class="button round red   text-upper" type="reset" id="Reset" name="Reset"
+                                                   value="Reset"> </td>
                                     </tr>
                                 </table>
                             </form>

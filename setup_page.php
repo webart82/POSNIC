@@ -17,7 +17,7 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
     $link = mysqli_connect("$host", "$user", "$pass");
     if (!$link) {
         $data = "Database Configration is Not vaild";
-        header("location: install.php?msg=$data");
+        header("location: install_step1.php?msg=$data");
         exit;
     }
 
@@ -27,7 +27,7 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
         $sql = "CREATE DATABASE $name";
         if (!mysqli_query($con, $sql)) {
             $data = "This Database Name Is Already In the DataBase";
-            header("location: database_install.php?msg=$data");
+            header("location: install_step2.php?msg=$data");
             exit;
         }
     }
@@ -370,11 +370,11 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
     $data = '<?php $config["database"] = "' . $name . '"; $config["host"]= "' . $host . '";$config["username"]= "' . $user . '"; $config["password"]= "' . $pass . '";?>';
     fwrite($ourFileHandle, $data);
     fclose($ourFileHandle);
-    header("location: user_details.php");
+    header("location: install_step3.php");
 
 
 } else {
-    header("location: install.php");
+    header("location: install_step1.php");
 }
 //
 

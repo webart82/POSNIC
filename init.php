@@ -6,7 +6,7 @@ if (!isset($_SESSION['username']) || $_SESSION['usertype'] != 'admin') { // if s
 
 include("lib/db.class.php");
 if (!include_once "config.php") {
-    header("location: install.php");
+    header("location: install_step1.php");
 }
 
 // Open the base (construct the object):

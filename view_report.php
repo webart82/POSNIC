@@ -111,8 +111,8 @@ include_once("init.php");
                                     <td>To</td>
                                     <td><input name="to_sales_date" type="text" id="to_sales_date" style="width:80px;">
                                     </td>
-                                    <td><input name="submit" type="button" value="Show" onClick='sales_report_fn();'>
-                                    </td>
+                                    <td><div style="padding-left: 15px;"><input class="button round blue image" name="submit" type="button" value="Show" onClick='sales_report_fn();'>
+                                        </div></td>
 
                                 </tr>
                             </form>
@@ -134,8 +134,8 @@ include_once("init.php");
                                     <td>To</td>
                                     <td><input name="to_purchase_date" type="text" id="to_purchase_date"
                                                style="width:80px;"></td>
-                                    <td><input name="submit" type="button" value="Show" onClick='purchase_report_fn();'>
-                                    </td>
+                                    <td><div style="padding-left: 15px;"><input class="button round blue image" name="submit" type="button" value="Show" onClick='purchase_report_fn();'>
+                                        </div></td>
                                 </tr>
                             </form>
 
@@ -158,8 +158,9 @@ include_once("init.php");
                                     <td>To</td>
                                     <td><input name="to_sales_purchase_date" type="text" id="to_sales_purchase_date"
                                                style="width:80px;"></td>
-                                    <td><input name="submit" type="button" value="Show"
-                                               onClick='sales_purchase_report_fn();'></td>
+                                    
+                                    <td><div style="padding-left: 15px;"><input  class="button round blue image" name="submit" type="button" value="Show"
+                                                onClick='sales_purchase_report_fn();'></div></td>
                                 </tr>
                             </form>
 

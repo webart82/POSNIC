@@ -410,11 +410,11 @@ $count=0;
                                                class="table-actions-button ic-table-delete"></a>
                                         </td>
                                         <td><input type="checkbox" value="<?php echo $row['id']; ?>" name="checklist[]"
-<<<<<<< HEAD
+
                                                    id="check_box<?php echo $row['id']; ?>" /></td>
-=======
-                                                   id="check_box" /></td>
->>>>>>> development
+
+                                                   </td>
+
 
                                     </tr>
                                     <?php $i++;

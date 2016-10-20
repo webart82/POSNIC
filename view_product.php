@@ -363,7 +363,7 @@ include_once("init.php");
                                                        class="table-actions-button ic-table-delete"></a>
                                                 </td>
                                                 <td><input type="checkbox" value="<?php echo $row['id']; ?>" name="checklist[]"
-                                                           id="check_box"/></td>
+                                                           id="check_box<?php echo $row['id']; ?>"/></td>
 
                                             </tr>
                                             <?php $i++;

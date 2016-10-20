@@ -16,6 +16,9 @@ include_once("init.php");
     <!-- Optimize for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
     <!-- jQuery & JS files -->
     <?php include_once("tpl/common_js.php"); ?>
     <script src="js/script.js"></script>
@@ -407,7 +410,11 @@ $count=0;
                                                class="table-actions-button ic-table-delete"></a>
                                         </td>
                                         <td><input type="checkbox" value="<?php echo $row['id']; ?>" name="checklist[]"
-                                                   id="check_box" /></td>
+
+                                                   id="check_box<?php echo $row['id']; ?>" /></td>
+
+                                                   </td>
+
 
                                     </tr>
                                     <?php $i++;

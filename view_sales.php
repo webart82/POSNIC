@@ -16,15 +16,18 @@ include_once("init.php");
     <!-- Optimize for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+
 
     <!-- jQuery & JS files -->
     <?php include_once("tpl/common_js.php"); ?>
     <script src="js/script.js"></script>
     <script src="js/view_sales.js"></script>
 
-
+<script>
+	//var c=sessionStorage.getItem('checked-checkboxesviewsales');
+	//alert(c);
+</script>
+		
     
 </head>
 <body>
@@ -119,15 +122,20 @@ include_once("init.php");
 
                             <input type="hidden" name="table" value="stock_sales">
                             <input type="hidden" name="return" value="view_sales.php">
-                            <input type="button" name="selectall" value="SelectAll"
+                         <!--   <input type="button" name="selectall" value="SelectAll"
                                    class="my_button round blue   text-upper" onClick="checkAll()"
                                    style="margin-left:5px;" id="checkall" />
                             <input type="button" name="unselectall" value="DeSelectAll"
                                    class="my_button round blue   text-upper" onClick="uncheckAll()"
-                                   style="margin-left:5px;" id="cancelall"/>
-                            <input name="dsubmit" type="button" value="Delete Selected"
+                                   style="margin-left:5px;" id="cancelall"/>-->
+								    <input name="dsubmit" type="button" value="Delete Selected"
                                    class="my_button round blue   text-upper" style="margin-left:5px;"
-                                   onclick="return confirmDeleteSubmit()"/>
+                                   onclick="return confirmDeleteSubmit();"/>
+								<!--   <input type="button" name="Deleteall" value="Delect All Records"
+                                   class="my_button round blue   text-upper" onClick="deleteall()"
+                                   style="margin-left:5px;" id="cancelall"/>-->
+								   
+                           
 
 
                             <table id="tblDisplay">
@@ -411,7 +419,7 @@ $count=0;
                                         </td>
                                         <td><input type="checkbox" value="<?php echo $row['id']; ?>" name="checklist[]"
 
-                                                   id="check_box<?php echo $row['id']; ?>" /></td>
+                                                   id="<?php echo $row['id']; ?>" /></td>
 
                                                    </td>
 

@@ -20,6 +20,10 @@ include_once("init.php");
     <?php include_once("tpl/common_js.php"); ?>
     <script src="js/script.js"></script>
     <script src="js/view_customers.js"></script>
+	<script>
+	//var c=sessionStorage.getItem('checked-checkboxesviewcustomers');
+	//lert(c);
+</script>
 </head>
 <body>
 
@@ -111,17 +115,19 @@ include_once("init.php");
 
                             <input type="hidden" name="table" value="customer_details">
                             <input type="hidden" name="return" value="view_customers.php">
-                            <input type="button" name="selectall" value="SelectAll"
+                          <!--  <input type="button" name="selectall" value="SelectAll"
                                    class="my_button round blue   text-upper" onClick="checkAll()"
                                    style="margin-left:5px;"/>
                             <input type="button" name="unselectall" value="DeSelectAll"
                                    class="my_button round blue   text-upper" onClick="uncheckAll()"
-                                   style="margin-left:5px;"/>
+                                   style="margin-left:5px;"/>-->
                             <input name="dsubmit" type="button" value="Delete Selected"
                                    class="my_button round blue   text-upper" style="margin-left:5px;"
                                    onclick="return confirmDeleteSubmit()"/>
-
-
+<!-- <input type="button" name="Deleteall" value="Delect All Records"
+                                   class="my_button round blue   text-upper" onClick="deleteall()"
+                                   style="margin-left:5px;" id="cancelall"/>
+-->
                             <table>
                                 <?php
 
@@ -393,7 +399,7 @@ include_once("init.php");
                                                class="table-actions-button ic-table-delete"></a>
                                         </td>
                                         <td><input type="checkbox" value="<?php echo $row['id']; ?>" name="checklist[]"
-                                               id="check_box<?php echo $row['id']; ?>"  /></td>
+                                               id="<?php echo $row['id']; ?>"  /></td>
 
                                     </tr>
                                     <?php $i++;

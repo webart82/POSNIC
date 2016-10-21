@@ -3,15 +3,48 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-var arrCheckedCheckboxes1 = [];
+ 
+ function deleteall()
+{
+
+//var info = 'id=' + movies2;
+//var jsonString = JSON.stringify(movies2);
+//alert(movies2[0]);
+var file1="viewsupplier";
+if(confirm("Are you sure you want to delete all records...?"))
+{
+ $.ajax({
+   type: "POST",
+   url: "deleteall.php",
+   data: {data : file1},
+   cache: false,
+   success: function(){
+sessionStorage.removeItem('checked-checkboxesviewsupplier');
+//sessionStorage.removeItem('checked-checkboxesviewsales');
+ window.location.href = "view_supplier.php";
+ }
+});
+  $(this).parents(".show").animate({ backgroundColor: "#003" }, "slow")
+  .animate({ opacity: "hide" }, "slow");
+ }
+return false;	 
+
+}
+ 
+ 
+ 
+ 
+var arrCheckedCheckboxes1viewsupplier = [];
+
+
 
 function rowselection() {
 
-    if (sessionStorage.getItem('checked-checkboxes') && $.parseJSON(sessionStorage.getItem('checked-checkboxes')).length !== 0)
+    if (sessionStorage.getItem('checked-checkboxesviewsupplier') && $.parseJSON(sessionStorage.getItem('checked-checkboxesviewsupplier')).length !== 0)
     {
-        arrCheckedCheckboxes1 = $.parseJSON(sessionStorage.getItem('checked-checkboxes'));
+        arrCheckedCheckboxes1viewsupplier = $.parseJSON(sessionStorage.getItem('checked-checkboxesviewsupplier'));
         //Convert checked checkboxes array to comma seprated id
-        $(arrCheckedCheckboxes1.toString()).prop('checked', true);
+        $(arrCheckedCheckboxes1viewsupplier.toString()).prop('checked', true);
 		
     }
   
@@ -23,20 +56,20 @@ $(document).ready( function() {
 	
 	 $("input:checkbox").change(function() {
 			// i++;
-		//	var arrCheckedCheckboxes1 = [];
+		//	var arrCheckedCheckboxes1viewsupplier = [];
 			//alert(arrCheckedCheckboxes);
 			// Get all checked checkboxes
 			var currentId = $(this).attr('id');
 			if ($(this).is(':checked')) {
-				arrCheckedCheckboxes1.push("#" + currentId);
+				arrCheckedCheckboxes1viewsupplier.push("#" + currentId);
 			}else {
 				console.log('came to else condition');
-				arrCheckedCheckboxes1 = jQuery.grep(arrCheckedCheckboxes1, function(value) {
+				arrCheckedCheckboxes1viewsupplier = jQuery.grep(arrCheckedCheckboxes1viewsupplier, function(value) {
 				  return value != "#" + currentId;
 				});
 				
 			}
-			 sessionStorage.setItem('checked-checkboxes', JSON.stringify(arrCheckedCheckboxes1));	
+			 sessionStorage.setItem('checked-checkboxesviewsupplier', JSON.stringify(arrCheckedCheckboxes1viewsupplier));	
 			
 			// Convert checked checkboxes array to JSON ans store it in session storage
 		   
@@ -57,30 +90,52 @@ $(document).ready( function() {
                 return false;
         }
 
-        function confirmDeleteSubmit() {
-            var flag = 0;
-            var field = document.forms.deletefiles;
+       function confirmDeleteSubmit() {
+				var retrievedData = sessionStorage.getItem("checked-checkboxesviewsupplier");
+	   var movies2 = JSON.parse(retrievedData);  
+           
+		   var flag =movies2.length;
+		   
+		  // alert(flag);
+            /*var field = document.forms.deletefiles;
             for (i = 0; i < field.length; i++) {
                 if (field[i].checked == true) {
                     flag = flag + 1;
 
                 }
 
-            }
-            if (flag < 1) {
+            }*/
+            if (flag ==0) {
                 alert("You must check one and only one checkbox!");
                 return false;
             } else {
-                var agree = confirm("Are you sure you wish to Delete Selected Record?");
+				
+                var agree = confirm("Are you sure you wish to Delete Selected Record.?");
                 if (agree)
 
-                    document.deletefiles.submit();
-                else
-                    return false;
+                
+{
+	var file1="viewsupplier";
+ $.ajax({
+   type: "POST",
+   url: "deleterecords.php",
+   data: {data : movies2,file : file1},
+   cache: false,
+   success: function(){
+sessionStorage.removeItem('checked-checkboxesviewsupplier');
+ window.location.href = "view_supplier.php";
+ }
+});
+  $(this).parents(".show").animate({ backgroundColor: "#003" }, "slow")
+  .animate({ opacity: "hide" }, "slow");
+ }
+  return false;
+               
 
             }
-        }
-        function confirmLimitSubmit() {
+        }        
+		
+		function confirmLimitSubmit() {
             if (document.getElementById('search_limit').value != "") {
 
                 document.limit_go.submit();

@@ -4,16 +4,51 @@
  * and open the template in the editor.
  */
         // Nannette Thacker http://www.shiningstar.net
-      
-var arrCheckedCheckboxes1 = [];
+  
+
+
+ function deleteall()
+{
+
+//var info = 'id=' + movies2;
+//var jsonString = JSON.stringify(movies2);
+//alert(movies2[0]);
+var file1="viewproduct";
+if(confirm("Are you sure you want to delete all records...?"))
+{
+ $.ajax({
+   type: "POST",
+   url: "deleteall.php",
+   data: {data : file1},
+   cache: false,
+   success: function(){
+sessionStorage.removeItem('checked-checkboxesviewproduct');
+//sessionStorage.removeItem('checked-checkboxesviewsales');
+ window.location.href = "view_product.php";
+ }
+});
+  $(this).parents(".show").animate({ backgroundColor: "#003" }, "slow")
+  .animate({ opacity: "hide" }, "slow");
+ }
+return false;	 
+
+}
+
+
+
+
+  
+var arrCheckedCheckboxes1viewproduct = [];
+
+
 
 function rowselection() {
 
-    if (sessionStorage.getItem('checked-checkboxes') && $.parseJSON(sessionStorage.getItem('checked-checkboxes')).length !== 0)
+    if (sessionStorage.getItem('checked-checkboxesviewproduct') && $.parseJSON(sessionStorage.getItem('checked-checkboxesviewproduct')).length !== 0)
     {
-        arrCheckedCheckboxes1 = $.parseJSON(sessionStorage.getItem('checked-checkboxes'));
+        arrCheckedCheckboxes1viewproduct = $.parseJSON(sessionStorage.getItem('checked-checkboxesviewproduct'));
         //Convert checked checkboxes array to comma seprated id
-        $(arrCheckedCheckboxes1.toString()).prop('checked', true);
+        $(arrCheckedCheckboxes1viewproduct.toString()).prop('checked', true);
 		
     }
   
@@ -25,20 +60,20 @@ $(document).ready( function() {
 	
 	 $("input:checkbox").change(function() {
 			// i++;
-		//	var arrCheckedCheckboxes1 = [];
+		//	var arrCheckedCheckboxes1viewproduct = [];
 			//alert(arrCheckedCheckboxes);
 			// Get all checked checkboxes
 			var currentId = $(this).attr('id');
 			if ($(this).is(':checked')) {
-				arrCheckedCheckboxes1.push("#" + currentId);
+				arrCheckedCheckboxes1viewproduct.push("#" + currentId);
 			}else {
 				console.log('came to else condition');
-				arrCheckedCheckboxes1 = jQuery.grep(arrCheckedCheckboxes1, function(value) {
+				arrCheckedCheckboxes1viewproduct = jQuery.grep(arrCheckedCheckboxes1viewproduct, function(value) {
 				  return value != "#" + currentId;
 				});
 				
 			}
-			 sessionStorage.setItem('checked-checkboxes', JSON.stringify(arrCheckedCheckboxes1));	
+			 sessionStorage.setItem('checked-checkboxesviewproduct', JSON.stringify(arrCheckedCheckboxes1viewproduct));	
 			
 			// Convert checked checkboxes array to JSON ans store it in session storage
 		   
@@ -49,7 +84,6 @@ $(document).ready( function() {
 
 });
 
-
 	  function confirmSubmit() {
             var agree = confirm("Are you sure you wish to Delete this Entry?");
             if (agree)
@@ -58,29 +92,50 @@ $(document).ready( function() {
                 return false;
         }
 
-        function confirmDeleteSubmit() {
-            var flag = 0;
-            var field = document.forms.deletefiles;
+       function confirmDeleteSubmit() {
+				var retrievedData = sessionStorage.getItem("checked-checkboxesviewproduct");
+	   var movies2 = JSON.parse(retrievedData);  
+           
+		   var flag =movies2.length;
+		   
+		  // alert(flag);
+            /*var field = document.forms.deletefiles;
             for (i = 0; i < field.length; i++) {
                 if (field[i].checked == true) {
                     flag = flag + 1;
 
                 }
 
-            }
-            if (flag < 1) {
+            }*/
+            if (flag ==0) {
                 alert("You must check one and only one checkbox!");
                 return false;
             } else {
-                var agree = confirm("Are you sure you wish to Delete Selected Record?");
+				
+                var agree = confirm("Are you sure you wish to Delete Selected Record.?");
                 if (agree)
 
-                    document.deletefiles.submit();
-                else
-                    return false;
+                
+{
+	var file1="viewproduct";
+ $.ajax({
+   type: "POST",
+   url: "deleterecords.php",
+   data: {data : movies2,file : file1},
+   cache: false,
+   success: function(){
+sessionStorage.removeItem('checked-checkboxesviewproduct');
+ window.location.href = "view_product.php";
+ }
+});
+  $(this).parents(".show").animate({ backgroundColor: "#003" }, "slow")
+  .animate({ opacity: "hide" }, "slow");
+ }
+  return false;
+               
 
             }
-        }
+        }      
         function confirmLimitSubmit() {
             if (document.getElementById('search_limit').value != "") {
 

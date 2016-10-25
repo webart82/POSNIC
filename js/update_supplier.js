@@ -1,9 +1,4 @@
-/* 
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
+ 
         /*$.validator.setDefaults({
          submitHandler: function() { alert("submitted!"); }
          });*/
@@ -22,7 +17,6 @@
                         maxlength: 500
                     },
                     contact1: {
-                        required: true,
                         minlength: 3,
                         maxlength: 20
                     },
@@ -33,13 +27,8 @@
                 },
                 messages: {
                     name: {
-                        required: "Please enter a supplier Name",
+                        required: "Please enter a Supplier Name",
                         minlength: "Supplier must consist of at least 3 characters"
-                    },
-                    contact1: {
-                        required: "Please enter a contact number",
-                        minlength: "Customer must consist of at least 10 characters",
-                        maxlength: "Customer must consist of at least 10 characters"
                     },
                     address: {
                         minlength: "Supplier Address must be at least 3 characters long",
@@ -50,7 +39,8 @@
 
         });
 
-   function numbersonly(e) {
+        //validation for name and contact field
+        function numbersonly(e) {
             var unicode = e.charCode ? e.charCode : e.keyCode
             if (unicode != 8 && unicode != 46 && unicode != 37 && unicode != 27 && unicode != 38 && unicode != 39 && unicode != 40 && unicode != 9) { //if the key isn't the backspace key (which we should allow)
                 if (unicode < 48 || unicode > 57)
@@ -68,3 +58,5 @@ function ValidateAlpha(evt) {
        }
        return true;
      }
+ 
+

@@ -22,6 +22,7 @@
                         maxlength: 500
                     },
                     contact1: {
+                        required: true,
                         minlength: 3,
                         maxlength: 20
                     },
@@ -34,6 +35,11 @@
                     name: {
                         required: "Please enter a supplier Name",
                         minlength: "Supplier must consist of at least 3 characters"
+                    },
+                    contact1: {
+                        required: "Please enter a contact number",
+                        minlength: "Customer must consist of at least 10 characters",
+                        maxlength: "Customer must consist of at least 10 characters"
                     },
                     address: {
                         minlength: "Supplier Address must be at least 3 characters long",

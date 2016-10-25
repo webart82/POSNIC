@@ -158,13 +158,15 @@ include_once("init.php");
                             //$selected_date = strtotime($selected_date);
                             //$mysqldate = date('Y-m-d H:i:s', $selected_date);
                             //$due = $mysqldate;
-                            $str = $db->maxOfAll("transactionid", "stock_sales");
-                          
+                            $str = $db->maxOfAll("transidnumber", "stock_sales");
+                          	
                            
                             $array = explode(' ', $str);                           
                             $autoid = ++$array[0];
+							$finalautoid="SL".$autoid;
                             if($str == ''){
-                            $autoid_new = "SL".$autoid;
+                            $autoid_new = $autoid;
+								$finalautoid_new="SL".$autoid;
                             }
                             for ($i = 0; $i < count($stock_name); $i++) {
                                 $name1 = $stock_name[$i];
@@ -183,12 +185,12 @@ include_once("init.php");
                                 if ($count >= 1) {
 
                                     if($str == ''){
-                                    $db->query("insert into stock_sales (tax,tax_dis,discount,dis_amount,grand_total,transactionid,stock_name,selling_price,quantity,amount,date,username,customer_id,subtotal,payment,mode,description,count1,billnumber)
-                            values('$tax','$tax_dis','$discount','$dis_amount','$payable','$autoid_new','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$subtotal','$payment','$mode','$description',$i+1,'$bill_no')");
+                                    $db->query("insert into stock_sales (transidnumber,tax,tax_dis,discount,dis_amount,grand_total,transactionid,stock_name,selling_price,quantity,amount,date,username,customer_id,subtotal,payment,mode,description,count1,billnumber)
+                            values('$autoid_new ','$tax','$tax_dis','$discount','$dis_amount','$payable','$finalautoid_new','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$subtotal','$payment','$mode','$description',$i+1,'$bill_no')");
                                     }
                                      if($str != ''){
-                                    $db->query("insert into stock_sales (tax,tax_dis,discount,dis_amount,grand_total,transactionid,stock_name,selling_price,quantity,amount,date,username,customer_id,subtotal,payment,mode,description,count1,billnumber)
-                            values('$tax','$tax_dis','$discount','$dis_amount','$payable','$autoid','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$subtotal','$payment','$mode','$description',$i+1,'$bill_no')");
+                                    $db->query("insert into stock_sales (transidnumber,tax,tax_dis,discount,dis_amount,grand_total,transactionid,stock_name,selling_price,quantity,amount,date,username,customer_id,subtotal,payment,mode,description,count1,billnumber)
+                            values('$autoid ','$tax','$tax_dis','$discount','$dis_amount','$payable','$finalautoid','$name1','$rate','$quantity','$total','$mysqldate','$username','$customer','$subtotal','$payment','$mode','$description',$i+1,'$bill_no')");
                                      }
                                     $amount = $db->queryUniqueValue("SELECT quantity FROM stock_avail WHERE name='$name1'");
                                     $amount1 = $amount - $quantity;
@@ -230,24 +232,41 @@ include_once("init.php");
                         <table class="form" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <?php
-                                $str = $db->maxOfAll("transactionid", "stock_sales"); 
+                                $str = $db->maxOfAll("transidnumber", "stock_sales"); 
+						
+								/*$s=mysqli_query($db->connection, "select MAX(transactionid) AS tid from stock_sales");
+								while($r= mysqli_fetch_array($s))
+								{
+									$v=$r['tid'];
+									
+								}*/
+								//MAX(Price) AS HighestPrice
+							
                                 $array = explode(' ', $str);                           
                                 $autoid = ++$array[0];
+								
+								$f1="SL".$autoid;
+								//echo "fdddddddddddddddddddddddddddd".$f1;
+								
                                 if($str == ''){
-                                $autoid_new = "SL".$autoid;
+                                $autoid_new = 1;
+								
+								$finalautoid_new="SL".$autoid_new ;
+								
+								
                                 }
                                   ?>
                                 <?php if($str == ''){?>
                                 <td>Bill no:</td>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
                                            class="round default-width-input" style="width:130px "
-                                           value="<?php echo $autoid_new ?>"/></td>
+                                           value="<?php echo $finalautoid_new ?>"/></td>
                                 <?php }?>
                                 <?php if($str != ''){?>
                                 <td>Bill no:</td>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
                                            class="round default-width-input" style="width:130px "
-                                           value="<?php echo $autoid ?>"/></td>
+                                           value="<?php echo $f1 ?>"/></td>
                                 <?php }?>
                                 <td>Date:</td>
                                 <td><input name="date" id="test1" placeholder="" value="<?php date_default_timezone_set("Asia/Kolkata");echo date('Y-m-d H:i:s');?>"

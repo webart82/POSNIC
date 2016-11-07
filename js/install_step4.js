@@ -42,7 +42,7 @@
                 messages: {
                     sname: {
                         required: "Please Enter The Store Name",
-                        minlength: "Your Store Name must consist of at least 3 characters"
+                        minlength: "Store Name must be  at least 3 characters"
                     },
                     address: {
                         required: "Please Enter The Address",
@@ -50,15 +50,15 @@
                     },
                     place: {
                         required: "Please Enter The Place",
-                        minlength: "Your place must be at least 3 characters long"
+                        minlength: "Place must be at least 3 characters long"
                     },
                     website: {
                         required: "Please Enter The Website",
-                        minlength: "Your Website must be at least 3 characters long"
+                        minlength: "Website must be at least 3 characters long"
                     },
                     email: {
                         required: "Please Enter The email",
-                        minlength: "Your Email must be at least 3 characters long"
+                        minlength: "Email must be at least 3 characters long"
                     },
                     phone: {
                         required: "Please Enter The Phone",

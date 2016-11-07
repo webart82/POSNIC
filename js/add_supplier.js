@@ -24,26 +24,27 @@
                     contact1: {
                         required: true,
                         minlength: 3,
-                        maxlength: 20
+                        maxlength: 13
                     },
                     contact2: {
                         minlength: 3,
-                        maxlength: 20
+                        maxlength: 13
                     }
                 },
                 messages: {
                     name: {
                         required: "Please enter a supplier Name",
-                        minlength: "Supplier must consist of at least 3 characters"
+                        minlength: "Supplier Name must consist of at least 3 characters",
+                        maxlength: "Supplier Name is too long "
                     },
                     contact1: {
                         required: "Please enter a contact number",
                         minlength: "Customer must consist of at least 10 characters",
-                        maxlength: "Customer must consist of at least 10 characters"
+                        maxlength: "Contact No should not be more than 13 digits"
                     },
                     address: {
-                        minlength: "Supplier Address must be at least 3 characters long",
-                        maxlength: "Supplier Address must be at least 3 characters long"
+                        minlength: "Address must be at least 3 characters long",
+                        maxlength: "Address is too long !"
                     }
                 }
             });

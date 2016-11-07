@@ -28,11 +28,12 @@
                 messages: {
                     name: {
                         required: "Please enter a Supplier Name",
-                        minlength: "Supplier must consist of at least 3 characters"
+                        minlength: "Supplier must consist of at least 3 characters",
+                        maxlength: "Supplier name is too long !"
                     },
                     address: {
-                        minlength: "Supplier Address must be at least 3 characters long",
-                        maxlength: "Supplier Address must be at least 3 characters long"
+                        minlength: "Address must be at least 3 characters long",
+                        maxlength: "Address is too long !"
                     }
                 }
             });

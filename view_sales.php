@@ -27,7 +27,12 @@ include_once("init.php");
 	//var c=sessionStorage.getItem('checked-checkboxesviewsales');
 	//alert(c);
 </script>
-		
+<style>
+    .rowClass:hover{
+        background: #DCDCDC;  
+    }
+  
+</style>		
     
 </head>
 <body>
@@ -398,7 +403,7 @@ $count=0;
 									$count++;
 									$co1++;
                                     ?>
-                                    <tr>
+                                <tr class="rowClass" id="rowId<?php echo $row['id']; ?>">
                                         <td> <?php echo $no + $i; ?></td>
 
                                         <td><?php echo $row['stock_name']; ?></td>

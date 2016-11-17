@@ -40,7 +40,7 @@ return false;
   
 var arrCheckedCheckboxes1viewproduct = [];
 
-
+var array2 = [];
 
 function rowselection() {
 
@@ -49,7 +49,13 @@ function rowselection() {
         arrCheckedCheckboxes1viewproduct = $.parseJSON(sessionStorage.getItem('checked-checkboxesviewproduct'));
         //Convert checked checkboxes array to comma seprated id
         $(arrCheckedCheckboxes1viewproduct.toString()).prop('checked', true);
-		
+	 array2 = arrCheckedCheckboxes1viewproduct;
+        array2.forEach(function (element) {
+            var element1 = element.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
+            var rowselect = "rowId" + element1;
+           $(rowselect).css("background-color", "#DCDCDC");
+            //alert(rowselect);
+        });	
     }
   
 }

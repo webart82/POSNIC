@@ -22,7 +22,12 @@ include_once("init.php");
     <script src="js/view_payments.js"></script>
 
 
-    
+   <style>
+    .rowClass:hover{
+        background: #DCDCDC;  
+    }
+  
+</style> 
 </head>
 <body>
 
@@ -364,7 +369,7 @@ include_once("init.php");
 
                                     ?>
 
-                                    <tr>
+                                    <tr class="rowClass" id="rowId<?php echo $row['id']; ?>">
 
 
                                         <td>   <?php echo $no + $i; ?></td>

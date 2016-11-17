@@ -36,7 +36,7 @@ return false;
  
 var arrCheckedCheckboxes1viewsupplier = [];
 
-
+var array2 = [];
 
 function rowselection() {
 
@@ -45,7 +45,13 @@ function rowselection() {
         arrCheckedCheckboxes1viewsupplier = $.parseJSON(sessionStorage.getItem('checked-checkboxesviewsupplier'));
         //Convert checked checkboxes array to comma seprated id
         $(arrCheckedCheckboxes1viewsupplier.toString()).prop('checked', true);
-		
+	  array2 = arrCheckedCheckboxes1viewsupplier;
+        array2.forEach(function (element) {
+            var element1 = element.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
+            var rowselect = "rowId" + element1;
+            $(rowselect).css("background-color", "#DCDCDC");
+            //alert(rowselect);
+        });	
     }
   
 }

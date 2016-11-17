@@ -33,7 +33,7 @@ return false;
         
 		var arrCheckedCheckboxes1viewcustomers = [];
 
-
+var array2 = [];
 
 function rowselection() {
 
@@ -42,6 +42,13 @@ function rowselection() {
         arrCheckedCheckboxes1viewcustomers = $.parseJSON(sessionStorage.getItem('checked-checkboxesviewcustomers'));
         //Convert checked checkboxes array to comma seprated id
         $(arrCheckedCheckboxes1viewcustomers.toString()).prop('checked', true);
+          array2 = arrCheckedCheckboxes1viewcustomers;
+        array2.forEach(function (element) {
+            var element1 = element.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
+            var rowselect = "rowId" + element1;
+           $(rowselect).css("background-color", "#DCDCDC");
+            //alert(rowselect);
+        });
 		
     }
   

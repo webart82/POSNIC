@@ -35,7 +35,7 @@ return false;
 		var arrCheckedCheckboxes1viewpurchase = [];
 
 
-
+var array2 = [];
 function rowselection() {
 
     if (sessionStorage.getItem('checked-checkboxesviewpurchase') && $.parseJSON(sessionStorage.getItem('checked-checkboxesviewpurchase')).length !== 0)
@@ -43,6 +43,13 @@ function rowselection() {
         arrCheckedCheckboxes1viewpurchase = $.parseJSON(sessionStorage.getItem('checked-checkboxesviewpurchase'));
         //Convert checked checkboxes array to comma seprated id
         $(arrCheckedCheckboxes1viewpurchase.toString()).prop('checked', true);
+          array2 = arrCheckedCheckboxes1viewpurchase;
+        array2.forEach(function (element) {
+            var element1 = element.replace(/[&\/\\#,+()$~%.'":*?<>{}]/g, '');
+            var rowselect = "rowId" + element1;
+             $(rowselect).css("background-color", "#DCDCDC");
+            //alert(rowselect);
+        });
 		
     }
   

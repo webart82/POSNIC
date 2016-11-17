@@ -24,7 +24,12 @@ include_once("init.php");
 	//var c=sessionStorage.getItem('checked-checkboxesviewsupplier');
 	//alert(c);
 </script>
-
+<style>
+    .rowClass:hover{
+        background: #DCDCDC;  
+    }
+  
+</style>
 
     </head>
     <body>
@@ -346,7 +351,7 @@ include_once("init.php");
 
                                             $co1++;
                                             ?>
-                                            <tr>
+                                             <tr class="rowClass" id="rowId<?php echo $row['id']; ?>">
                                                 <td> <?php echo $no + $i; ?></td>
 
                                                 <td><?php echo $row['supplier_name']; ?></td>

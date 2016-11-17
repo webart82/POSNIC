@@ -24,6 +24,12 @@ include_once("init.php");
 	//var c=sessionStorage.getItem('checked-checkboxesviewpurchase');
 	//alert(c);
 </script>
+<style>
+    .rowClass:hover{
+        background: #DCDCDC;  
+    }
+  
+</style>	
 </head>
 <body>
 
@@ -388,7 +394,7 @@ include_once("init.php");
                                     //$phpdate = strtotime($mysqldate);
                                    // $phpdate = date("d/m/Y", $phpdate);
                                     ?>
-                                    <tr>
+                                    <tr class="rowClass" id="rowId<?php echo $row['id']; ?>">
                                         
                                         <td> <?php echo $no + $i; ?></td>
                                         <td><?php echo $row['stock_id']; ?></td>

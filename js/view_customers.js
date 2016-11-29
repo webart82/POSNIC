@@ -7,9 +7,7 @@
 function deleteall()
 {
 
-//var info = 'id=' + movies2;
-//var jsonString = JSON.stringify(movies2);
-//alert(movies2[0]);
+
 var file1="viewcustomers";
 if(confirm("Are you sure you want to delete all records...?"))
 {
@@ -31,8 +29,8 @@ return false;
 
 }
         
-		var arrCheckedCheckboxes1viewcustomers = [];
-
+		var arrCheckedCheckboxes1viewcustomers = [];//FOr checked tick box in viewcustomers
+		var arrCheckedCheckboxes1viewcustomersselected = [];//For ROw Selection in view_customers
 
 
 function rowselection() {
@@ -44,6 +42,18 @@ function rowselection() {
         $(arrCheckedCheckboxes1viewcustomers.toString()).prop('checked', true);
 		
     }
+	
+	 if (sessionStorage.getItem('checked-checkboxesviewcustomers_selected') && $.parseJSON(sessionStorage.getItem('checked-checkboxesviewcustomers_selected')).length !== 0)
+    {
+        arrCheckedCheckboxes1viewcustomersselected = $.parseJSON(sessionStorage.getItem('checked-checkboxesviewcustomers_selected'));
+        //Convert checked checkboxes array to comma seprated id
+         //alert(arrCheckedCheckboxes1viewcustomersselected);
+        $(arrCheckedCheckboxes1viewcustomersselected.toString()).css('background-color', '#DCDCDC');
+
+    }
+
+	
+	
   
 }
 
@@ -59,15 +69,20 @@ $(document).ready( function() {
 			var currentId = $(this).attr('id');
 			if ($(this).is(':checked')) {
 				arrCheckedCheckboxes1viewcustomers.push("#" + currentId);
+				arrCheckedCheckboxes1viewcustomersselected.push("#tr" + currentId);
 			}else {
 				console.log('came to else condition');
 				arrCheckedCheckboxes1viewcustomers = jQuery.grep(arrCheckedCheckboxes1viewcustomers, function(value) {
 				  return value != "#" + currentId;
 				});
+				 arrCheckedCheckboxes1viewcustomersselected = jQuery.grep(arrCheckedCheckboxes1viewcustomersselected, function (value) {
+                return value != "#tr" + currentId;
+            });
 				
 			}
 			 sessionStorage.setItem('checked-checkboxesviewcustomers', JSON.stringify(arrCheckedCheckboxes1viewcustomers));	
-			
+			sessionStorage.setItem('checked-checkboxesviewcustomers_selected', JSON.stringify(arrCheckedCheckboxes1viewcustomersselected));
+
 			// Convert checked checkboxes array to JSON ans store it in session storage
 		   
 			
@@ -86,9 +101,9 @@ $(document).ready( function() {
         }
 function confirmDeleteSubmit() {
 				var retrievedData = sessionStorage.getItem("checked-checkboxesviewcustomers");
-	   var movies2 = JSON.parse(retrievedData);  
+	   var viewCustomersCheckValues = JSON.parse(retrievedData);  
            
-		   var flag =movies2.length;
+		   var flag =viewCustomersCheckValues.length;
 		   
 		  // alert(flag);
             /*var field = document.forms.deletefiles;
@@ -113,7 +128,7 @@ function confirmDeleteSubmit() {
  $.ajax({
    type: "POST",
    url: "deleterecords.php",
-   data: {data : movies2,file : file1},
+   data: {data : viewCustomersCheckValues,file : file1},
    cache: false,
    success: function(){
 sessionStorage.removeItem('checked-checkboxesviewcustomers');
@@ -200,3 +215,46 @@ sessionStorage.removeItem('checked-checkboxesviewcustomers');
             });
 
         });
+$(document).ready(function ()
+{
+    $("#checkall").live('click', function (event) {
+        $('input:checkbox:not(#checkall)').attr('checked', this.checked);
+//To Highlight
+        if ($(this).attr("checked") == true)
+        {
+//$(this).parents('table:eq(0)').find('tr:not(#chkrow)').css("background-color","#FF3700");
+            $("#tblDisplay").find('tr:not(#chkrow)').css("background-color", "#DCDCDC");
+        } else
+        {
+//$(this).parents('table:eq(0)').find('tr:not(#chkrow)').css("background-color","#fff");
+            $("#tblDisplay").find('tr:not(#chkrow)').css("background-color", "#DCDCDC");
+        }
+    });
+    $('input:checkbox:not(#checkall)').live('click', function (event)
+    {
+        if ($("#checkall").attr('checked') == true && this.checked == false)
+        {
+            $("#checkall").attr('checked', false);
+            $(this).closest('tr').css("background-color", "#ffffff");
+        }
+        if (this.checked == true)
+        {
+            $(this).closest('tr').css("background-color", "#DCDCDC");
+            CheckSelectAll();
+        }
+        if (this.checked == false)
+        {
+            $(this).closest('tr').css("background-color", "#ffffff");
+        }
+    });
+
+    function CheckSelectAll()
+    {
+        var flag = true;
+        $('input:button:not(#checkall)').each(function () {
+            if (this.checked == false)
+                flag = false;
+        });
+        $("#checkall").attr('checked', flag);
+    }
+});

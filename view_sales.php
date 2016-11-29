@@ -398,7 +398,7 @@ $count=0;
 									$count++;
 									$co1++;
                                     ?>
-                                    <tr>
+                                    <tr id='tr<?php echo $row['id']; ?>'>
                                         <td> <?php echo $no + $i; ?></td>
 
                                         <td><?php echo $row['stock_name']; ?></td>

@@ -346,7 +346,7 @@ include_once("init.php");
 
                                             $co1++;
                                             ?>
-                                            <tr id='tr<?php echo $row['id']; ?>'>
+                                            <tr id=<?php echo "tr".$row['id']; ?>>
                                                 <td> <?php echo $no + $i; ?></td>
 
                                                 <td><?php echo $row['supplier_name']; ?></td>

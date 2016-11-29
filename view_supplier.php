@@ -13,7 +13,7 @@ include_once("init.php");
         <link rel="stylesheet" href="css/style.css">
 
         <!-- Optimize for mobile devices -->
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
         <!-- jQuery & JS files -->
         <?php include_once("tpl/common_js.php"); ?>
@@ -346,7 +346,7 @@ include_once("init.php");
 
                                             $co1++;
                                             ?>
-                                            <tr id='tr<?php echo $row['id']; ?>'>
+                                            <tr id=<?php echo "tr".$row['id']; ?>>
                                                 <td> <?php echo $no + $i; ?></td>
 
                                                 <td><?php echo $row['supplier_name']; ?></td>

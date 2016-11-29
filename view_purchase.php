@@ -388,7 +388,7 @@ include_once("init.php");
                                     //$phpdate = strtotime($mysqldate);
                                    // $phpdate = date("d/m/Y", $phpdate);
                                     ?>
-                                    <tr>
+                                    <tr id='tr<?php echo $row['id']; ?>'>
                                         
                                         <td> <?php echo $no + $i; ?></td>
                                         <td><?php echo $row['stock_id']; ?></td>

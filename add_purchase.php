@@ -144,7 +144,7 @@ include_once("init.php");
                                     $total = $_POST['total'];
                                     $subtotal = $_POST['subtotal'];
                                     $description = mysqli_real_escape_string($db->connection, $_POST['description']);
-                                    $due = mysqli_real_escape_string($db->connection, $_POST['duedate']);
+                                    //$due = mysqli_real_escape_string($db->connection, $_POST['duedate']);
                                     //$payment = mysqli_real_escape_string($db->connection, $_POST['payment']);
                                     //$balance = mysqli_real_escape_string($db->connection, $_POST['balance']);
                                     $mode = mysqli_real_escape_string($db->connection, $_POST['mode']);

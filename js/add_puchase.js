@@ -95,13 +95,6 @@ document.form1.supplier.focus();
 return false;
 }
 
-	 
-if(document.form1.item.value=="")
-{
-
-document.form1.item.focus();
-return false;
-}
 }       
         /*$.validator.setDefaults({
          submitHandler: function() { alert("submitted!"); }

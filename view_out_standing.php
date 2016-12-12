@@ -179,10 +179,10 @@ include_once("init.php");
 
                                 /* Get data. */
 
-                                $sql = "SELECT * FROM stock_entries where type LIKE 'entry%' and balance>0 ORDER BY date desc LIMIT $start, $limit   ";
+                                $sql = "SELECT * FROM stock_entries where type LIKE 'entry%'  ORDER BY date desc LIMIT $start, $limit   ";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
-                                    $sql = "SELECT * FROM stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' AND type LIKE 'entry%' and balance>0  ORDER BY date desc LIMIT $start, $limit";
+                                    $sql = "SELECT * FROM stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' AND type LIKE 'entry%' ORDER BY date desc LIMIT $start, $limit";
 
 
                                 }
@@ -347,13 +347,10 @@ include_once("init.php");
 
                                     <th>No</th>
                                     <th>Stock ID</th>
-                                    <th>Due Date</th>
                                     <th>Supplier</th>
                                     <th>Total</th>
                                     <th>Payment</th>
-                                    <th>Balance</th>
-                                    <th>Add Payment</th>
-
+                                
                                 </tr>
 
                                 <?php $i = 1;
@@ -368,13 +365,14 @@ include_once("init.php");
                                         <td> <?php echo $row['stock_id']; ?></td>
                                         <td> <?php echo $row['stock_supplier_name']; ?></td>
                                         <td> <?php echo $row['total']; ?></td>
-                                        <td> <?php echo $row['payment']; ?></td>
+                                       <!-- <td> <?php echo $row['payment']; ?></td>
                                         <td> <?php echo $row['balance']; ?></td>
 
 
                                         <td>
                                             <a href="update_out_standing.php?sid=<?php echo $row['stock_id']; ?>&table=stock_entries&return=view_out_standing.php"
                                                class="table-actions-button ">Pay Now</a>
+									   </td>-->
 
                                     </tr>
                                     <?php $i++;

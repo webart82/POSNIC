@@ -173,7 +173,7 @@ include_once("init.php");
                                     $start = 0;                                //if no page var is given, set start to 0
 
                                 /* Get data. */
-                                $sql = "SELECT DISTINCT(transactionid) FROM  stock_sales where balance>0 ORDER BY date desc LIMIT $start, $limit ";
+                                $sql = "SELECT DISTINCT(transactionid) FROM  stock_sales ORDER BY date desc LIMIT $start, $limit ";
 
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
@@ -342,9 +342,8 @@ include_once("init.php");
                                     <th>Transaction Id</th>
                                     <th>Due Date</th>
                                     <th>subtotal</th>
-                                    <th>Payment</th>
-                                    <th>Balance</th>
-                                    <th>Add Payment</th>
+                                    <th>Payment Received</th>
+                                 
 
                                 </tr>
 
@@ -373,14 +372,15 @@ include_once("init.php");
                                         <td width="100"><?php echo $phpdate; ?></td>
 
                                         <td width="100"><?php echo $line->subtotal; ?></td>
-                                        <td width="100"><?php echo $line->payment; ?></td>
-                                        <td width="100"><?php echo $line->balance; ?></td>
+                                        <td width="100"><?php echo $line->subtotal; ?></td>
+                                      <!--  <td width="100"><?php echo $line->balance; ?></td>
                                         <td>
                                             <a href="update_payment.php?sid=<?php echo $line->transactionid; ?>&table=stock_entries&return=view_payments.php">Pay
                                                 now
                                             </a>
 
                                         </td>
+										-->
 
 
                                     </tr>

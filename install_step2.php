@@ -113,7 +113,7 @@
                     ?>
                     <input type="radio" value="1" name="select[]" id="create"
                            onclick="create_data()">Create New DataBase
-                    <input type="text" id="name" class="round full-width-input" name="name" autofocus/>
+                    <input type="text" id="name" class="round full-width-input" name="name" value="posnic" autofocus/>
                     <?php
                 } else {
                     ?>

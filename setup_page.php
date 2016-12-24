@@ -37,7 +37,7 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
         echo "Failed to connect to MySQL: " . mysqli_connect_error();
     }
 
-    if (isset($_POST['dummy'])) {
+    if(isset($_POST['dummy'])) {
         $sql = file_get_contents('install_db/structure_with_demo.sql');
     }else {
         $sql = file_get_contents('install_db/structure_only.sql');
@@ -52,6 +52,8 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
                     printf("%s\n", $row[0]);
                 }
                 mysqli_free_result($result);
+            } else {    
+                echo "issue with query";
             }
             /* print divider */
             if (mysqli_more_results($con)) {

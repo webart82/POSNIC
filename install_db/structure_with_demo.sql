@@ -257,8 +257,6 @@ CREATE TABLE `stock_user` (
 -- Dumping data for table `stock_user`
 --
 
-INSERT INTO `stock_user` (`id`, `username`, `password`, `user_type`, `answer`) VALUES
-(null, 'admin', 'admin', 'admin', 'admin');
 
 -- --------------------------------------------------------
 
@@ -479,3 +477,7 @@ ALTER TABLE `transactions`
 --
 ALTER TABLE `uom_details`
   MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+
+
+INSERT INTO `stock_user` (`id`, `username`, `password`, `user_type`, `answer`) VALUES
+  (NULL, 'admin', 'admin', 'admin', 'admin');

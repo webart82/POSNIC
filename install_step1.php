@@ -86,21 +86,23 @@
 
             <p>
                 <label for="login-host">DataBase Host Name</label>
-                <input type="text" id="host" class="round full-width-input" placeholder="ENTER DATABASE HOST NAME"
+                <input type="text" id="host" class="round full-width-input" value="localhost"
                        name="host" autofocus/>
             </p>
 
             <p>
                 <label for="login-user">DataBase User Name</label>
-                <input type="text" id="username" name="username" placeholder="ENTER DATABASE USERNAME"
+                <input type="text" id="username" name="username" value="root"
                        class="round full-width-input"/>
             </p>
 
             <p>
                 <label for="login-password">DataBase User Password</label>
-                <input type="password" id="password" name="password" placeholder="ENTER DATABASE PASSWORD"
+                <input type="password" id="password" name="password" placeholder=""
                        class="round full-width-input"/>
             </p>
+            
+            <p>(Ex:Database password empty in localhost)</p>
 
 
             <!--<a href="dashboard.php" class="button round blue image-right ic-right-arrow">LOG IN</a>-->

@@ -23,49 +23,7 @@ include_once("init.php");
     <script src="js/script.js"></script>
     <script src="js/date_pic/jquery.date_input.js"></script>
     <script src="lib/auto/js/jquery.autocomplete.js "></script>
-    <script src="js/script.js"></script>
-    <script>
-        /*$.validator.setDefaults({
-         submitHandler: function() { alert("submitted!"); }
-         });*/
-        $(document).ready(function () {
-
-            // validate signup form on keyup and submit
-            $("#form1").validate({
-                rules: {
-                    name: {
-                        required: true,
-                        minlength: 3,
-                        maxlength: 200
-                    },
-                    address: {
-                        minlength: 3,
-                        maxlength: 500
-                    },
-                    contact1: {
-                        minlength: 3,
-                        maxlength: 20
-                    },
-                    contact2: {
-                        minlength: 3,
-                        maxlength: 20
-                    }
-                },
-                messages: {
-                    name: {
-                        required: "Please enter a supplier Name",
-                        minlength: "Supplier must consist of at least 3 characters"
-                    },
-                    address: {
-                        minlength: "Supplier Address must be at least 3 characters long",
-                        maxlength: "Supplier Address must be at least 3 characters long"
-                    }
-                }
-            });
-
-        });
-
-    </script>
+    <script src="js/add_supplier.js"></script>
 
 </head>
 <body>
@@ -201,11 +159,10 @@ include_once("init.php");
                             <tr>
                                 <td><span class="man">*</span>Name:</td>
                                 <td><input name="name" placeholder="ENTER YOUR FULL NAME" type="text" id="name"
-                                           maxlength="200" class="round default-width-input"
-                                           value="<?php echo isset($name) ? $name : ''; ?>"/></td>
-                                <td>Contact 1</td>
-                                <td><input name="contact1" placeholder="ENTER YOUR ADDRESS contact1" type="text"
-                                           id="buyingrate" maxlength="20" class="round default-width-input"
+                                           maxlength="200" class="round default-width-input"onKeyPress="return ValidateAlpha(event)"                                           value="<?php echo isset($name) ? $name : ''; ?>"/></td>
+                                <td><span class="man">*</span><b>Contact</b><b>-1</b></td>
+                                <td><input name="contact1" placeholder="ENTER YOUR CONTACT-1" type="text"
+                                           id="buyingrate" maxlength="20" class="round default-width-input"onkeypress="return numbersonly(event)"
                                            value="<?php echo isset($contact1) ? $contact1 : ''; ?>"/></td>
                             </tr>
                             <tr>
@@ -213,13 +170,13 @@ include_once("init.php");
                                 <td>&nbsp;</td>
                             </tr>
                             <tr>
-                                <td>Address</td>
+                                <td>Address:</td>
                                 <td><textarea name="address" placeholder="ENTER YOUR ADDRESS" cols="8"
                                               class="round full-width-textarea"><?php echo isset($address) ? $address : ''; ?></textarea>
                                 </td>
-                                <td>Contact 2</td>
-                                <td><input name="contact2" placeholder="ENTER YOUR contact2" type="text"
-                                           id="sellingrate" maxlength="20" class="round default-width-input"
+                                <td><b>Contact</b><b>-2</b></td>
+                                <td><input name="contact2" placeholder="ENTER YOUR CONTACT-2" type="text"
+                                           id="sellingrate" maxlength="20" class="round default-width-input"onkeypress="return numbersonly(event)"
                                            value="<?php echo isset($contact2) ? $contact2 : ''; ?>"/></td>
                             </tr>
                             <tr>
@@ -235,7 +192,7 @@ include_once("init.php");
                                 <td>
                                     <input class="button round blue image-right ic-add text-upper" type="submit"
                                            name="Submit" value="Add">
-                                    (Control + S)
+                                    <b>(Control + S)</b>
 
                                 <td align="right"><input class="button round red   text-upper" type="reset" name="Reset"
                                                          value="Reset"></td>

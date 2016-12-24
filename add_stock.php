@@ -23,79 +23,9 @@ include_once("init.php");
     <script src="js/script.js"></script>
     <script src="js/date_pic/jquery.date_input.js"></script>
     <script src="lib/auto/js/jquery.autocomplete.js "></script>
-
-    <script>
-        /*$.validator.setDefaults({
-         submitHandler: function() { alert("submitted!"); }
-         });*/
-        $(document).ready(function () {
-            $("#supplier").autocomplete("supplier1.php", {
-                width: 160,
-                autoFill: true,
-                selectFirst: true
-            });
-            $("#category").autocomplete("category.php", {
-                width: 160,
-                autoFill: true,
-                selectFirst: true
-            });
-            // validate signup form on keyup and submit
-            $("#form1").validate({
-                rules: {
-                    name: {
-                        required: true,
-                        minlength: 3,
-                        maxlength: 200
-                    },
-                    stockid: {
-                        required: true,
-                        minlength: 3,
-                        maxlength: 200
-                    },
-                    cost: {
-                        required: true,
-
-                    },
-                    sell: {
-                        required: true,
-
-                    }
-                },
-                messages: {
-                    name: {
-                        required: "Please Enter Stock Name",
-                        minlength: "Category Name must consist of at least 3 characters"
-                    },
-                    stockid: {
-                        required: "Please Enter Stock ID",
-                        minlength: "Category Name must consist of at least 3 characters"
-                    },
-                    sell: {
-                        required: "Please Enter Selling Price",
-                        minlength: "Category Name must consist of at least 3 characters"
-                    },
-                    cost: {
-                        required: "Please Enter Cost Price",
-                        minlength: "Category Name must consist of at least 3 characters"
-                    }
-                }
-            });
-
-        });
-        function numbersonly(e) {
-            var unicode = e.charCode ? e.charCode : e.keyCode
-            if (unicode != 8 && unicode != 46 && unicode != 37 && unicode != 38 && unicode != 39 && unicode != 40 && unicode != 9) { //if the key isn't the backspace key (which we should allow)
-                if (unicode < 48 || unicode > 57)
-                    return false
-            }
-        }
-    </script>
-
-
+    <script src="js/add_stock.js"></script>
 </head>
-
 <body>
-
 <!-- TOP BAR -->
 <?php include_once("tpl/top_bar.php"); ?>
 <!-- end top-bar -->
@@ -244,15 +174,15 @@ include_once("init.php");
                                 <?php
                                 $max = $db->maxOfAll("id", "stock_details");
                                 $max = $max + 1;
-                                $autoid = "SD" . $max . "";
+                                $autoid = "ST" . $max . "";
                                 ?>
-                                <td><span class="man">*</span>Stock ID:</td>
+                                <td><span class="man">*</span>Stock&nbsp;ID:</td>
                                 <td><input name="stockid" type="text" id="stockid" readonly="readonly" maxlength="200"
                                            class="round default-width-input"
                                            value="<?php echo isset($autoid) ? $autoid : ''; ?>"/></td>
 
                                 <td><span class="man">*</span>Name:</td>
-                                <td><input name="name" placeholder="ENTER CATEGORY NAME" type="text" id="name"
+                                <td><input name="name" placeholder="ENTER STOCK NAME" type="text" id="name"
                                            maxlength="200" class="round default-width-input"
                                            value="<?php echo isset($name) ? $name : ''; ?>"/></td>
 
@@ -264,7 +194,7 @@ include_once("init.php");
                                            onkeypress="return numbersonly(event)"
                                            value="<?php echo isset($cost) ? $cost : ''; ?>"/></td>
 
-                                <td><span class="man">*</span>Sell:</td>
+                                <td><span class="man">*</span>Selling&nbsp;Price</td>
                                 <td><input name="sell" placeholder="ENTER SELLING PRICE" type="text" id="sell"
                                            maxlength="200" class="round default-width-input"
                                            onkeypress="return numbersonly(event)"

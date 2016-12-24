@@ -19,112 +19,11 @@ include_once("init.php");
     <!-- jQuery & JS files -->
     <?php include_once("tpl/common_js.php"); ?>
     <script src="js/script.js"></script>
-
-
-    <script LANGUAGE="JavaScript">
-        <!--
-        // Nannette Thacker http://www.shiningstar.net
-        function confirmSubmit() {
-            var agree = confirm("Are you sure you wish to Delete this Entry?");
-            if (agree)
-                return true;
-            else
-                return false;
-        }
-
-        function confirmDeleteSubmit() {
-            var flag = 0;
-            var field = document.forms.deletefiles;
-            for (i = 0; i < field.length; i++) {
-                if (field[i].checked == true) {
-                    flag = flag + 1;
-
-                }
-
-            }
-            if (flag < 1) {
-                alert("You must check one and only one checkbox!");
-                return false;
-            } else {
-                var agree = confirm("Are you sure you wish to Delete Selected Record?");
-                if (agree)
-
-                    document.deletefiles.submit();
-                else
-                    return false;
-
-            }
-        }
-        function confirmLimitSubmit() {
-            if (document.getElementById('search_limit').value != "") {
-
-                document.limit_go.submit();
-
-            } else {
-                return false;
-            }
-        }
-
-
-        function checkAll() {
-
-            var field = document.forms.deletefiles;
-            for (i = 0; i < field.length; i++)
-                field[i].checked = true;
-        }
-
-        function uncheckAll() {
-            var field = document.forms.deletefiles;
-            for (i = 0; i < field.length; i++)
-                field[i].checked = false;
-        }
-        // -->
-    </script>
-    <script>
-
-
-        /*$.validator.setDefaults({
-         submitHandler: function() { alert("submitted!"); }
-         });*/
-        $(document).ready(function () {
-
-            // validate signup form on keyup and submit
-            $("#form1").validate({
-                rules: {
-                    name: {
-                        required: true,
-                        minlength: 3,
-                        maxlength: 200
-                    },
-                    address: {
-                        minlength: 3,
-                        maxlength: 500
-                    },
-                    contact1: {
-                        minlength: 3,
-                        maxlength: 20
-                    },
-                    contact2: {
-                        minlength: 3,
-                        maxlength: 20
-                    }
-                },
-                messages: {
-                    name: {
-                        required: "Please enter a supplier Name",
-                        minlength: "supplier must consist of at least 3 characters"
-                    },
-                    address: {
-                        minlength: "supplier Address must be at least 3 characters long",
-                        maxlength: "supplier Address must be at least 3 characters long"
-                    }
-                }
-            });
-
-        });
-
-    </script>
-
+    <script src="js/view_customers.js"></script>
+	<script>
+	//var c=sessionStorage.getItem('checked-checkboxesviewcustomers');
+	//lert(c);
+</script>
 </head>
 <body>
 
@@ -216,17 +115,19 @@ include_once("init.php");
 
                             <input type="hidden" name="table" value="customer_details">
                             <input type="hidden" name="return" value="view_customers.php">
-                            <input type="button" name="selectall" value="SelectAll"
+                          <!--  <input type="button" name="selectall" value="SelectAll"
                                    class="my_button round blue   text-upper" onClick="checkAll()"
                                    style="margin-left:5px;"/>
                             <input type="button" name="unselectall" value="DeSelectAll"
                                    class="my_button round blue   text-upper" onClick="uncheckAll()"
-                                   style="margin-left:5px;"/>
+                                   style="margin-left:5px;"/>-->
                             <input name="dsubmit" type="button" value="Delete Selected"
                                    class="my_button round blue   text-upper" style="margin-left:5px;"
                                    onclick="return confirmDeleteSubmit()"/>
-
-
+<!-- <input type="button" name="Deleteall" value="Delect All Records"
+                                   class="my_button round blue   text-upper" onClick="deleteall()"
+                                   style="margin-left:5px;" id="cancelall"/>
+-->
                             <table>
                                 <?php
 
@@ -465,12 +366,25 @@ include_once("init.php");
                                     <th>Select</th>
                                 </tr>
 
-                                <?php $i = 1;
+                                <?php
+                                //count no of recards
+                                $co = 0;
+                                $co1 = 0;
+                                $s = mysqli_query($db->connection, "select * from customer_details");
+                                while ($r = mysqli_fetch_array($s)) {
+                                    $co++;
+                                }
+
+                                $i = 1;
                                 $no = $page - 1;
                                 $no = $no * $limit;
+
+
                                 while ($row = mysqli_fetch_array($result)) {
+
+                                    $co1++;
                                     ?>
-                                    <tr>
+                                   <tr id='tr<?php echo $row['id']; ?>'>
                                         <td> <?php echo $no + $i; ?></td>
 
                                         <td><?php echo $row['customer_name']; ?></td>
@@ -485,18 +399,29 @@ include_once("init.php");
                                                class="table-actions-button ic-table-delete"></a>
                                         </td>
                                         <td><input type="checkbox" value="<?php echo $row['id']; ?>" name="checklist[]"
-                                                   id="check_box"/></td>
+                                               id="<?php echo $row['id']; ?>"  /></td>
 
                                     </tr>
                                     <?php $i++;
                                 } ?>
+                                
+				<table>
+                                   
+                                    <tr>
+                                    <td align='right'style="width:20%"><?php $end=$no+$co1;?>
+                                         <?php if($end !=''){?>
+                                            Showing <?php echo $no+1;?> to <?php echo $end;?> of <?php echo $co;?> entries</td><td >&nbsp;</td><td><?php echo $pagination; ?></td>
+                                 <?php }else{?>
+                                    Showing <?php echo $no;?> to <?php echo $end;?> of <?php echo $co;?> entries</td><td >&nbsp;</td><td><?php echo $pagination; ?></td>
+                                      <?php }?>
+                                    </tr>
+                               
                                 <tr>
-
-                                    <td align="center">
-                                        <div style="margin-left:20px;"><?php echo $pagination; ?></div>
-                                    </td>
-
+                                    <td align='right'style="width:20%"><?php $end=$no+$co1;?>
+                                            
                                 </tr>
+                              
+                                </table> 
                             </table>
                         </form>
 

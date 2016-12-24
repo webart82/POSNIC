@@ -15,48 +15,9 @@
     <!-- Scripts -->
     <script src="js/lib/jquery.min.js" type="text/javascript"></script>
     <script src="js/lib/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="js/install_step2.js" type="text/javascript"></script>
 
-    <script>
-        /*$.validator.setDefaults({
-         submitHandler: function() { alert("submitted!"); }
-         });*/
-
-        $(document).ready(function () {
-            document.getElementById('create').checked = true;
-            document.getElementById('select_box').disabled = true;
-
-            // validate signup form on keyup and submit
-            $("#login-form").validate({
-                rules: {
-                    name: {
-                        required: true,
-                        minlength: 3
-                    }
-
-                },
-                messages: {
-                    name: {
-                        required: "Please Enter The Database Name",
-                        minlength: "Your Database must consist of at least 3 characters"
-                    }
-                }
-            });
-
-        });
-        function create_data() {
-            document.getElementById("select_box").disabled = true;
-            document.getElementById("name").disabled = false;
-
-        }
-        function select_data() {
-            document.getElementById("select_box").disabled = false;
-            document.getElementById("name").disabled = true;
-
-        }
-    </script>
-    <style type="text/css">
-
-    </style>
+   
     <!-- Optimize for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </head>
@@ -121,7 +82,7 @@
     $link = mysqli_connect("$host", "$user", "$pass");
     if (!$link) {
         $data = "Database Configration is Not vaild";
-        header("location: install.php?msg=$data");
+        header("location: install_step1.php?msg=$data");
         exit;
     }
 
@@ -152,7 +113,7 @@
                     ?>
                     <input type="radio" value="1" name="select[]" id="create"
                            onclick="create_data()">Create New DataBase
-                    <input type="text" id="name" class="round full-width-input" name="name" autofocus/>
+                    <input type="text" id="name" class="round full-width-input" name="name" value="posnic" autofocus/>
                     <?php
                 } else {
                     ?>

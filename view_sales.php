@@ -16,12 +16,18 @@ include_once("init.php");
     <!-- Optimize for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 
+
+
     <!-- jQuery & JS files -->
     <?php include_once("tpl/common_js.php"); ?>
     <script src="js/script.js"></script>
     <script src="js/view_sales.js"></script>
 
-
+<script>
+	//var c=sessionStorage.getItem('checked-checkboxesviewsales');
+	//alert(c);
+</script>
+		
     
 </head>
 <body>
@@ -38,7 +44,8 @@ include_once("init.php");
 
         <ul id="tabs" class="fl">
             <li><a href="dashboard.php" class="dashboard-tab">Dashboard</a></li>
-            <li><a href="view_sales.php" class=active-tab sales-tab">Sales</a></li>
+			<li>
+            <li><a href="view_sales.php" class="active-tab sales-tab">Sales</a></li>
             <li><a href="view_customers.php" class=" customers-tab">Customers</a></li>
             <li><a href="view_purchase.php" class=" purchase-tab">Purchase</a></li>
             <li><a href="view_supplier.php" class=" supplier-tab">Supplier</a></li>
@@ -115,18 +122,23 @@ include_once("init.php");
 
                             <input type="hidden" name="table" value="stock_sales">
                             <input type="hidden" name="return" value="view_sales.php">
-                            <input type="button" name="selectall" value="SelectAll"
+                         <!--   <input type="button" name="selectall" value="SelectAll"
                                    class="my_button round blue   text-upper" onClick="checkAll()"
-                                   style="margin-left:5px;"/>
+                                   style="margin-left:5px;" id="checkall" />
                             <input type="button" name="unselectall" value="DeSelectAll"
                                    class="my_button round blue   text-upper" onClick="uncheckAll()"
-                                   style="margin-left:5px;"/>
-                            <input name="dsubmit" type="button" value="Delete Selected"
+                                   style="margin-left:5px;" id="cancelall"/>-->
+								    <input name="dsubmit" type="button" value="Delete Selected"
                                    class="my_button round blue   text-upper" style="margin-left:5px;"
-                                   onclick="return confirmDeleteSubmit()"/>
+                                   onclick="return confirmDeleteSubmit();"/>
+								<!--   <input type="button" name="Deleteall" value="Delect All Records"
+                                   class="my_button round blue   text-upper" onClick="deleteall()"
+                                   style="margin-left:5px;" id="cancelall"/>-->
+								   
+                           
 
 
-                            <table>
+                            <table id="tblDisplay">
                                 <?php
 
 
@@ -189,11 +201,20 @@ include_once("init.php");
 
 
                                 /* Get data. */
+								//Count number of records
+								$co=0;
+								$co1=0;
+								$s=mysqli_query($db->connection, "select * from stock_sales");
+								while($r= mysqli_fetch_array($s))
+								{
+									$co++;
+								}
+								
 
-                                $sql = "SELECT * FROM stock_sales ORDER BY date desc LIMIT $start, $limit  ";
+                                $sql = "SELECT * FROM stock_sales ORDER BY id desc LIMIT $start, $limit  ";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
-                                    $sql = "SELECT * FROM stock_sales WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%'  ORDER BY date desc LIMIT $start, $limit";
+                                    $sql = "SELECT * FROM stock_sales WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%'  ORDER BY id desc LIMIT $start, $limit";
 
 
                                 }
@@ -367,12 +388,17 @@ include_once("init.php");
                                     <th>Select</th>
                                 </tr>
 
-                                <?php $i = 1;
+                                <?php
+$count=0;
+
+								$i = 1;
                                 $no = $page - 1;
                                 $no = $no * $limit;
                                 while ($row = mysqli_fetch_array($result)) {
+									$count++;
+									$co1++;
                                     ?>
-                                    <tr>
+                                    <tr id='tr<?php echo $row['id']; ?>'>
                                         <td> <?php echo $no + $i; ?></td>
 
                                         <td><?php echo $row['stock_name']; ?></td>
@@ -387,24 +413,40 @@ include_once("init.php");
                                             <a href="update_sales.php?sid=<?php echo $row['id']; ?>&table=stock_sales&return=view_sales.php"
                                                class="table-actions-button ic-table-edit">
                                             </a>
-                                            <a onclick="return confirmSubmit()"
+                                            <a onClick="return confirmSubmit()"
                                                href="delete.php?id=<?php echo $row['id']; ?>&table=stock_sales&return=view_sales.php"
                                                class="table-actions-button ic-table-delete"></a>
                                         </td>
                                         <td><input type="checkbox" value="<?php echo $row['id']; ?>" name="checklist[]"
-                                                   id="check_box"/></td>
+
+                                                   id="<?php echo $row['id']; ?>" /></td>
+
+                                                   </td>
+
 
                                     </tr>
                                     <?php $i++;
                                 } ?>
                                 <tr>
 
-                                    <td align="center">
-                                        <div style="margin-left:20px;"><?php echo $pagination; ?></div>
-                                    </td>
+                                   
 
                                 </tr>
+                                <table>
+                                    <tr>
+                                    <td align='right'style="width:20%"><?php $end=$no+$co1;?>
+                                        <?php if($end == '0'){?>
+                                            Showing <?php echo $no;?> to <?php echo $end;?> of <?php echo $co;?> entries</td><td >&nbsp;</td><td><?php echo $pagination; ?></td>
+                                <?php }else{?>
+                                    Showing <?php echo $no+1; ;?> to <?php echo $end;?> of <?php echo $co;?> entries</td><td >&nbsp;</td><td><?php echo $pagination; ?></td>
+                                <?php }?>
+                                    </tr>
+
+
+                                </table> 
+                                                                
                             </table>
+                            
                         </form>
 
 

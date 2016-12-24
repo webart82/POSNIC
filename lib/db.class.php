@@ -34,7 +34,7 @@
 
       if ($this->connection==FALSE) {
           $data='Database Connection is Not valid Please Enter The valid database connection';
-   header("location: install.php?msg=$data");
+   header("location: install_step1.php?msg=$data");
     exit;
        
 }

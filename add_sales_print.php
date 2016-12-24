@@ -37,10 +37,18 @@ echo $_GET['sid'];
 
         -->
     </style>
+     <?php include_once("tpl/common_js.php"); ?>
+    <script>
+        $(document).ready(function(){
+           jQuery(document).bind('keydown', 'return',function() {
+			  window.close();
+	    }); 
+        });
+     </script>
 </head>
 
-<body>
-<input name="print" type="button" value="Print" id="printButton" onClick="printpage()">
+    <body onload="window.print();">
+    <input name="print" type="button" class="hide" value="Print" id="printButton" onClick="printpage()">
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
         <td align="center" valign="top">
@@ -150,6 +158,7 @@ echo $_GET['sid'];
                                 $balance = $line3->balance;
                                 $date = $line->due;
                                 $discount = $line3->dis_amount;
+                                $tax=$line3->tax;
                             }
                             ?>
                             <tr>
@@ -172,6 +181,11 @@ echo $_GET['sid'];
                                 <td width="18%" bgcolor="#CCCCCC"><?php echo $discount ?>&nbsp;</td>
                             </tr>
                             <tr>
+                                <td width="82%" align="right" bgcolor="#CCCCCC"><strong>Tax:&nbsp;&nbsp;</strong>
+                                </td>
+                                <td width="18%" bgcolor="#CCCCCC"><?php echo $tax ?>&nbsp;</td>
+                            </tr>
+                            <tr>
                                 <td width="82%" align="right" bgcolor="#CCCCCC"><strong>SubTotal:&nbsp;&nbsp;</strong>
                                 </td>
                                 <td width="18%" bgcolor="#CCCCCC"><?php echo $subtotal; ?>&nbsp;</td>
@@ -184,18 +198,7 @@ echo $_GET['sid'];
                         <table width="100%" border="0" cellspacing="0" cellpadding="0">
                             <tr>
                                 <td width="33%" align="left" valign="top"><br/>
-                                    <strong>&nbsp;&nbsp;Paid Amount :&nbsp;&nbsp;<?php echo $payment; ?><br/>
-                                        &nbsp;&nbsp;Balance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                        &nbsp;:&nbsp;&nbsp;<?php echo $balance; ?><br/>
-                                        &nbsp;&nbsp;Due Date&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;: <?php if ($balance == 0) {
-                                            $mysqldate = $ldue;
-
-                                            $phpdate = strtotime($mysqldate);
-
-                                            $phpdate = date("d/m/Y", $phpdate);
-                                        }
-                                        echo $phpdate; ?> <br/>
-                                    </strong></td>
+                                    </td>
                                 <td width="67%" align="right"><br/>
                                     <br/>
                                     <br/>

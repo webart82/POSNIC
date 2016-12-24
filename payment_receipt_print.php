@@ -75,7 +75,8 @@ if(isset($_GET['sid']))
                                 <td width="95%" align="left" valign="top"><br/>
                                     <?php
                                     echo $line->customer;
-                                    $cname = $line->customer_id;
+                                    echo '<br>';
+                                    $cname = $line->customer;
 
                                     $line2 = $db->queryUniqueObject("SELECT * FROM customer_details WHERE customer_name='$cname' ");
 
@@ -84,7 +85,7 @@ if(isset($_GET['sid']))
                                     <br/>
                                     <?php
                                     echo "Contact1: " . $line2->customer_contact1 . "<br>";
-                                    echo "Contact1: " . $line2->customer_contact2 . "<br>";
+                                    echo "Contact2: " . $line2->customer_contact2 . "<br>";
 
 
                                     ?></td>
@@ -102,7 +103,7 @@ if(isset($_GET['sid']))
                                     <strong>&nbsp;&nbsp;Paid Amount :&nbsp;&nbsp;<?php echo $line->payment; ?><br/>
                                         &nbsp;&nbsp;Balance &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                         &nbsp;:&nbsp;&nbsp;<?php echo $line->balance; ?><br/>
-                                        &nbsp;&nbsp;Due Date&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;:
+                                        
 
                                         <?php
                                         $bal = $line->balance;
@@ -115,7 +116,7 @@ if(isset($_GET['sid']))
                                             $phpdate = date("d/m/Y", $phpdate);
                                             echo $phpdate;
                                         } else
-                                            echo "NONE";
+                                            echo "";
                                         ?> <br/>
                                     </strong>
                                     <br/>

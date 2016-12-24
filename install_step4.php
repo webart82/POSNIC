@@ -49,10 +49,10 @@ if (isset($_POST['submit']) and $_POST['submit'] === 'Upload') {
             $upload = $_FILES["file"]["name"];
             $type;
             $db->query("UPDATE store_details  SET log='" . $upload . "',type='" . $type . "'");
-            header("location: next_store_details.php");
+            header("location: install_step4.php");
 
         }
-        // header("location: next_store_details.php");
+        // header("location: install_step4.php");
         ?>
         <script type="text/javascript">
             setTimeout("window.location.reload();", 4000);
@@ -79,83 +79,7 @@ if (isset($_POST['submit']) and $_POST['submit'] === 'Upload') {
     <!-- Scripts -->
     <script src="js/lib/jquery.min.js" type="text/javascript"></script>
     <script src="js/lib/jquery.validate.min.js" type="text/javascript"></script>
-
-    <script>
-        /*$.validator.setDefaults({
-         submitHandler: function() { alert("submitted!"); }
-         });*/
-
-        $(document).ready(function () {
-
-            // validate signup form on keyup and submit
-            $("#login-form").validate({
-                rules: {
-                    sname: {
-                        required: true,
-                        minlength: 3
-                    },
-                    address: {
-                        required: true,
-                        minlength: 3
-                    },
-                    place: {
-                        required: true,
-                        minlength: 3
-                    },
-                    website: {
-                        required: true,
-                        minlength: 3
-                    },
-                    email: {
-                        required: true,
-                        minlength: 3
-                    },
-                    phone: {
-                        required: true,
-                        minlength: 10,
-                        maxlength: 12
-                    },
-                    city: {
-                        required: true,
-                        minlength: 3
-                    }
-                },
-                messages: {
-                    sname: {
-                        required: "Please Enter The Store Name",
-                        minlength: "Your Store Name must consist of at least 3 characters"
-                    },
-                    address: {
-                        required: "Please Enter The Address",
-                        minlength: "Your Address must be at least 3 characters long"
-                    },
-                    place: {
-                        required: "Please Enter The Place",
-                        minlength: "Your place must be at least 3 characters long"
-                    },
-                    website: {
-                        required: "Please Enter The Website",
-                        minlength: "Your Website must be at least 3 characters long"
-                    },
-                    email: {
-                        required: "Please Enter The email",
-                        minlength: "Your Email must be at least 3 characters long"
-                    },
-                    phone: {
-                        required: "Please Enter The Phone",
-                        minlength: "Your Phone must be at least 10 characters long",
-                        maxlength: "Your Phone must be at Less than 13 characters long"
-                    },
-                    city: {
-                        required: "Please Enter The city",
-                        minlength: "Your city must be at least 3 characters long"
-                    }
-                }
-            });
-
-        });
-
-    </script>
+    <script src="js/install_step4.js" type="text/javascript"></script> 
 
     <!-- Optimize for mobile devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>

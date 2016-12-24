@@ -19,112 +19,10 @@ include_once("init.php");
     <!-- jQuery & JS files -->
     <?php include_once("tpl/common_js.php"); ?>
     <script src="js/script.js"></script>
+    <script src="js/view_payments.js"></script>
 
 
-    <script LANGUAGE="JavaScript">
-        <!--
-        // Nannette Thacker http://www.shiningstar.net
-        function confirmSubmit() {
-            var agree = confirm("Are you sure you wish to Delete this Entry?");
-            if (agree)
-                return true;
-            else
-                return false;
-        }
-
-        function confirmDeleteSubmit() {
-            var flag = 0;
-            var field = document.forms.deletefiles;
-            for (i = 0; i < field.length; i++) {
-                if (field[i].checked == true) {
-                    flag = flag + 1;
-
-                }
-
-            }
-            if (flag < 1) {
-                alert("You must check one and only one checkbox!");
-                return false;
-            } else {
-                var agree = confirm("Are you sure you wish to Delete Selected Record?");
-                if (agree)
-
-                    document.deletefiles.submit();
-                else
-                    return false;
-
-            }
-        }
-        function confirmLimitSubmit() {
-            if (document.getElementById('search_limit').value != "") {
-
-                document.limit_go.submit();
-
-            } else {
-                return false;
-            }
-        }
-
-
-        function checkAll() {
-
-            var field = document.forms.deletefiles;
-            for (i = 0; i < field.length; i++)
-                field[i].checked = true;
-        }
-
-        function uncheckAll() {
-            var field = document.forms.deletefiles;
-            for (i = 0; i < field.length; i++)
-                field[i].checked = false;
-        }
-        // -->
-    </script>
-    <script>
-
-
-        /*$.validator.setDefaults({
-         submitHandler: function() { alert("submitted!"); }
-         });*/
-        $(document).ready(function () {
-
-            // validate signup form on keyup and submit
-            $("#form1").validate({
-                rules: {
-                    name: {
-                        required: true,
-                        minlength: 3,
-                        maxlength: 200
-                    },
-                    address: {
-                        minlength: 3,
-                        maxlength: 500
-                    },
-                    contact1: {
-                        minlength: 3,
-                        maxlength: 20
-                    },
-                    contact2: {
-                        minlength: 3,
-                        maxlength: 20
-                    }
-                },
-                messages: {
-                    name: {
-                        required: "Please enter a supplier Name",
-                        minlength: "supplier must consist of at least 3 characters"
-                    },
-                    address: {
-                        minlength: "supplier Address must be at least 3 characters long",
-                        maxlength: "supplier Address must be at least 3 characters long"
-                    }
-                }
-            });
-
-        });
-
-    </script>
-
+    
 </head>
 <body>
 
@@ -275,7 +173,7 @@ include_once("init.php");
                                     $start = 0;                                //if no page var is given, set start to 0
 
                                 /* Get data. */
-                                $sql = "SELECT DISTINCT(transactionid) FROM  stock_sales where balance>0 ORDER BY date desc LIMIT $start, $limit ";
+                                $sql = "SELECT DISTINCT(transactionid) FROM  stock_sales ORDER BY date desc LIMIT $start, $limit ";
 
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
@@ -444,9 +342,8 @@ include_once("init.php");
                                     <th>Transaction Id</th>
                                     <th>Due Date</th>
                                     <th>subtotal</th>
-                                    <th>Payment</th>
-                                    <th>Balance</th>
-                                    <th>Add Payment</th>
+                                    <th>Payment Received</th>
+                                 
 
                                 </tr>
 
@@ -475,14 +372,15 @@ include_once("init.php");
                                         <td width="100"><?php echo $phpdate; ?></td>
 
                                         <td width="100"><?php echo $line->subtotal; ?></td>
-                                        <td width="100"><?php echo $line->payment; ?></td>
-                                        <td width="100"><?php echo $line->balance; ?></td>
+                                        <td width="100"><?php echo $line->subtotal; ?></td>
+                                      <!--  <td width="100"><?php echo $line->balance; ?></td>
                                         <td>
                                             <a href="update_payment.php?sid=<?php echo $line->transactionid; ?>&table=stock_entries&return=view_payments.php">Pay
                                                 now
                                             </a>
 
                                         </td>
+										-->
 
 
                                     </tr>

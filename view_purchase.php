@@ -19,112 +19,11 @@ include_once("init.php");
     <!-- jQuery & JS files -->
     <?php include_once("tpl/common_js.php"); ?>
     <script src="js/script.js"></script>
-
-
-    <script LANGUAGE="JavaScript">
-        <!--
-        // Nannette Thacker http://www.shiningstar.net
-        function confirmSubmit() {
-            var agree = confirm("Are you sure you wish to Delete this Entry?");
-            if (agree)
-                return true;
-            else
-                return false;
-        }
-
-        function confirmDeleteSubmit() {
-            var flag = 0;
-            var field = document.forms.deletefiles;
-            for (i = 0; i < field.length; i++) {
-                if (field[i].checked == true) {
-                    flag = flag + 1;
-
-                }
-
-            }
-            if (flag < 1) {
-                alert("You must check one and only one checkbox!");
-                return false;
-            } else {
-                var agree = confirm("Are you sure you wish to Delete Selected Record?");
-                if (agree)
-
-                    document.deletefiles.submit();
-                else
-                    return false;
-
-            }
-        }
-        function confirmLimitSubmit() {
-            if (document.getElementById('search_limit').value != "") {
-
-                document.limit_go.submit();
-
-            } else {
-                return false;
-            }
-        }
-
-
-        function checkAll() {
-
-            var field = document.forms.deletefiles;
-            for (i = 0; i < field.length; i++)
-                field[i].checked = true;
-        }
-
-        function uncheckAll() {
-            var field = document.forms.deletefiles;
-            for (i = 0; i < field.length; i++)
-                field[i].checked = false;
-        }
-        // -->
-    </script>
-    <script>
-
-
-        /*$.validator.setDefaults({
-         submitHandler: function() { alert("submitted!"); }
-         });*/
-        $(document).ready(function () {
-
-            // validate signup form on keyup and submit
-            $("#form1").validate({
-                rules: {
-                    name: {
-                        required: true,
-                        minlength: 3,
-                        maxlength: 200
-                    },
-                    address: {
-                        minlength: 3,
-                        maxlength: 500
-                    },
-                    contact1: {
-                        minlength: 3,
-                        maxlength: 20
-                    },
-                    contact2: {
-                        minlength: 3,
-                        maxlength: 20
-                    }
-                },
-                messages: {
-                    name: {
-                        required: "Please enter a supplier Name",
-                        minlength: "supplier must consist of at least 3 characters"
-                    },
-                    address: {
-                        minlength: "supplier Address must be at least 3 characters long",
-                        maxlength: "supplier Address must be at least 3 characters long"
-                    }
-                }
-            });
-
-        });
-
-    </script>
-
+    <script src="js/view_purchase.js"></script>
+	<script>
+	//var c=sessionStorage.getItem('checked-checkboxesviewpurchase');
+	//alert(c);
+</script>
 </head>
 <body>
 
@@ -216,16 +115,18 @@ include_once("init.php");
 
                             <input type="hidden" name="table" value="stock_entries">
                             <input type="hidden" name="return" value="view_purchase.php">
-                            <input type="button" name="selectall" value="SelectAll"
+                         <!--   <input type="button" name="selectall" value="SelectAll"
                                    class="my_button round blue   text-upper" onClick="checkAll()"
                                    style="margin-left:5px;"/>
                             <input type="button" name="unselectall" value="DeSelectAll"
                                    class="my_button round blue   text-upper" onClick="uncheckAll()"
-                                   style="margin-left:5px;"/>
+                                   style="margin-left:5px;"/>-->
                             <input name="dsubmit" type="button" value="Delete Selected"
                                    class="my_button round blue   text-upper" style="margin-left:5px;"
                                    onclick="return confirmDeleteSubmit()"/>
-
+ <!--<input type="button" name="Deleteall" value="Delect All Records"
+                                   class="my_button round blue   text-upper" onClick="deleteall()"
+                                   style="margin-left:5px;" id="cancelall"/>-->
 
                             <table>
                                 <?php
@@ -235,8 +136,8 @@ include_once("init.php");
 
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
-                                    $SQL = "SELECT DISTINCT(stock_id) FROM  stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_supplier_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_id LIKE '%" . $_POST['searchtxt'] . "%' OR date LIKE '%" . $_POST['searchtxt'] . "%' OR type LIKE '%" . $_POST['searchtxt'] . "%' AND type='entry'";
-
+                                    //$SQL = "SELECT DISTINCT(stock_id) FROM  stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_supplier_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_id LIKE '%" . $_POST['searchtxt'] . "%' OR date LIKE '%" . $_POST['searchtxt'] . "%' OR type LIKE '%" . $_POST['searchtxt'] . "%' AND type='entry'";
+                                    $SQL = "SELECT DISTINCT(stock_id) FROM  stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] ."%' ORDER BY id DESC ";
 
                                 }
 
@@ -287,13 +188,13 @@ include_once("init.php");
 
 
                                 /* Get data. */
-
-                                $sql = "SELECT DISTINCT(stock_id) FROM stock_entries where type='entry' ORDER BY date desc LIMIT $start, $limit  ";
-
+                                
+                                //$sql = "SELECT DISTINCT(stock_id) FROM stock_entries where type='entry' ORDER BY date desc LIMIT $start, $limit  ";
+                                $sql = "SELECT * FROM stock_entries ORDER BY id desc LIMIT $start, $limit  ";
                                 if (isset($_POST['Search']) AND trim($_POST['searchtxt']) != "") {
 
-                                    $sql = "SELECT DISTINCT(stock_id) FROM stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_supplier_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_id LIKE '%" . $_POST['searchtxt'] . "%' OR date LIKE '%" . $_POST['searchtxt'] . "%' OR type LIKE '%" . $_POST['searchtxt'] . "%' and type='entry' ORDER BY date desc LIMIT $start, $limit";
-
+                                    //$sql = "SELECT DISTINCT(stock_id) FROM stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_supplier_name LIKE '%" . $_POST['searchtxt'] . "%' OR stock_id LIKE '%" . $_POST['searchtxt'] . "%' OR date LIKE '%" . $_POST['searchtxt'] . "%' OR type LIKE '%" . $_POST['searchtxt'] . "%' and type='entry' ORDER BY date desc LIMIT $start, $limit";
+                                    $sql = "SELECT * FROM stock_entries WHERE stock_name LIKE '%" . $_POST['searchtxt'] . "%'  ORDER BY id desc LIMIT $start, $limit";
 
                                 }
 
@@ -461,62 +362,69 @@ include_once("init.php");
                                     <th>Amount</th>
                                     <th>Edit /Delete</th>
                                     <th>Select</th>
-                                    <td></td>
+                                    
+                                    
                                 </tr>
 
                                 <?php $i = 1;
                                 $no = $page - 1;
                                 $no = $no * $limit;
 
+																//Count number of records
+								$co=0;
+								$co1=0;
+								$s=mysqli_query($db->connection, "select * from stock_entries");
+								while($r= mysqli_fetch_array($s))
+								{
+									$co++;
+								}
+								
+								
                                 while ($row = mysqli_fetch_array($result)) {
-
-                                    $entryid = $row['stock_id'];
-                                    $line = $db->queryUniqueObject("SELECT * FROM stock_entries WHERE stock_id='$entryid' ");
-
-                                    $mysqldate = $line->date;
-
-                                    $phpdate = strtotime($mysqldate);
-
-                                    $phpdate = date("d/m/Y", $phpdate);
-
+                                   // $entryid = $row['stock_id'];
+								   $co1++; 
+                                    //$line = $db->queryUniqueObject("SELECT * FROM stock_entries WHERE stock_id='$entryid' ");
+                                   // $mysqldate = $line->date;
+                                    //$phpdate = strtotime($mysqldate);
+                                   // $phpdate = date("d/m/Y", $phpdate);
                                     ?>
-
-                                    <tr>
-
-                                        <td></td>
-
-                                        <td width="100"><?php echo $line->stock_id; ?></td>
-                                        <td width="100"><?php echo $line->stock_name; ?></td>
-
-
-                                        <td width="100"><?php echo $phpdate; ?></td>
-
-                                        <td width="100"><?php echo $line->stock_supplier_name; ?></td>
-                                        <td width="100"><?php echo $line->subtotal; ?></td>
-
-
+                                    <tr id='tr<?php echo $row['id']; ?>'>
+                                        
+                                        <td> <?php echo $no + $i; ?></td>
+                                        <td><?php echo $row['stock_id']; ?></td>
+                                       <td><?php echo $row['stock_name']; ?></td>
+                                       <td><?php echo $row['date']; ?></td>
+                                       <td><?php echo $row['stock_supplier_name']; ?></td>
+                                       <td><?php echo $row['subtotal']; ?></td>
                                         <td>
-                                            <a href="update_purchase.php?sid=<?php echo $entryid; ?>&table=stock_entries&return=view_purchase.php"
+                                            <a href="update_purchase.php?sid=<?php echo $row['id']; ?>&table=stock_entries&return=view_purchase.php"
                                                class="table-actions-button ic-table-edit">
                                             </a>
                                             <a onclick="return confirmSubmit()"
-                                               href="delete.php?id=<?php echo isset($row['id']) ? $row['id'] : 0; ?>&table=stock_entries&return=view_purchase.php"
+                                               href="delete.php?id=<?php echo $row['id']; ?>&table=stock_entries&return=view_purchase.php"
                                                class="table-actions-button ic-table-delete"></a>
                                         </td>
                                         <td><input type="checkbox"
                                                    value="<?php echo isset($row['id']) ? $row['id'] : 0; ?>"
-                                                   name="checklist[]" id="check_box"/></td>
-                                        <td></td>
+                                                   name="checklist[]" id="<?php echo $row['id']; ?>"/></td>
+                                        
                                     </tr>
                                     <?php $i++;
                                 } ?>
                                 <tr>
+                                <table>
+                                    <tr>
+                                        <td align='right'style="width:20%"><?php $end = $no + $co1; ?>
+                                             <?php if($end !=''){?>
+                                            Showing <?php echo $no + 1; ?> to <?php echo $end; ?> of <?php echo $co; ?> entries</td><td >&nbsp;</td><td><?php echo $pagination; ?></td>
+                                    <?php }else{?>
+                                        
+                                        Showing <?php echo $no; ?> to <?php echo $end; ?> of <?php echo $co; ?> entries</td><td >&nbsp;</td><td><?php echo $pagination; ?></td>
+                                    <?php }?>
+                                    </tr>
 
-                                    <td align="center">
-                                        <div style="margin-left:20px;"><?php echo $pagination; ?></div>
-                                    </td>
 
-                                </tr>
+                                </table> 
                             </table>
                         </form>
 
@@ -531,4 +439,4 @@ include_once("init.php");
             <!-- end footer -->
 
 </body>
-</html>
+</html> 

@@ -17,7 +17,7 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
     $link = mysqli_connect("$host", "$user", "$pass");
     if (!$link) {
         $data = "Database Configration is Not vaild";
-        header("location: install.php?msg=$data");
+        header("location: install_step1.php?msg=$data");
         exit;
     }
 
@@ -27,7 +27,7 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
         $sql = "CREATE DATABASE $name";
         if (!mysqli_query($con, $sql)) {
             $data = "This Database Name Is Already In the DataBase";
-            header("location: database_install.php?msg=$data");
+            header("location: install_step2.php?msg=$data");
             exit;
         }
     }
@@ -150,12 +150,12 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
 
     if ($dummy === 1) {
         $sql = "INSERT INTO `stock_details` (`id`, `stock_id`, `stock_name`, `stock_quatity`, `supplier_id`, `company_price`, `selling_price`, `category`, `date`, `expire_date`, `uom`) VALUES
-(34, 'SD1', 'Cello griper', 0, 'arjun', '9.00', '10.00', 'pen', '2013-08-15 08:31:01', '2020-12-30 00:00:00', ''),
-(35, 'SD35', 'techo tip', 0, 'sadham', '8.00', '10.00', 'pen', '2013-08-15 08:31:50', '2020-12-30 00:00:00', ''),
-(36, 'SD36', 'cello', 0, 'sadham', '7.00', '10.00', 'pen', '2013-08-15 08:32:08', '2020-12-30 00:00:00', ''),
-(37, 'SD37', 'ceParker Urban Fashion ', 0, 'sadham', '1000.00', '1100.00', 'pen', '2013-08-15 08:33:30', '2020-12-30 00:00:00', ''),
-(38, 'SD38', 'Satzuma Diamante Pen', 0, 'sadham', '500.00', '550.00', 'pen', '2013-08-15 08:33:52', '2020-12-30 00:00:00', ''),
-(39, 'SD39', 'Lamy Mod 17 Safari Matt ...', 0, 'sadham', '1980.00', '2000.00', 'pen', '2013-08-15 08:34:17', '2020-12-30 00:00:00', '')";
+(34, 'ST1', 'Cello griper', 0, 'arjun', '9.00', '10.00', 'pen', '2013-08-15 08:31:01', '2020-12-30 00:00:00', ''),
+(35, 'ST35', 'techo tip', 0, 'sadham', '8.00', '10.00', 'pen', '2013-08-15 08:31:50', '2020-12-30 00:00:00', ''),
+(36, 'ST36', 'cello', 0, 'sadham', '7.00', '10.00', 'pen', '2013-08-15 08:32:08', '2020-12-30 00:00:00', ''),
+(37, 'ST37', 'ceParker Urban Fashion ', 0, 'sadham', '1000.00', '1100.00', 'pen', '2013-08-15 08:33:30', '2020-12-30 00:00:00', ''),
+(38, 'ST38', 'Satzuma Diamante Pen', 0, 'sadham', '500.00', '550.00', 'pen', '2013-08-15 08:33:52', '2020-12-30 00:00:00', ''),
+(39, 'ST39', 'Lamy Mod 17 Safari Matt ...', 0, 'sadham', '1980.00', '2000.00', 'pen', '2013-08-15 08:34:17', '2020-12-30 00:00:00', '')";
 
 // Execute query
         mysqli_query($con, $sql);
@@ -163,6 +163,7 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
     $sql = "CREATE TABLE IF NOT EXISTS `stock_entries` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `stock_id` varchar(120) NOT NULL,
+  `stockidnumber` int NOT NULL,
   `stock_name` varchar(260) NOT NULL,
   `stock_supplier_name` varchar(200) NOT NULL,
   `category` varchar(120) NOT NULL,
@@ -192,18 +193,19 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
 
 
     if ($dummy === 1) {
-        $sql = "INSERT INTO `stock_entries` (`id`, `stock_id`, `stock_name`, `stock_supplier_name`, `category`, `quantity`, `company_price`, `selling_price`, `opening_stock`, `closing_stock`, `date`, `username`, `type`, `salesid`, `total`, `payment`, `balance`, `mode`, `description`, `due`, `subtotal`, `count1`, `billnumber`) VALUES
-(261, 'PR3', 'Cello griper', 'arjun', '', 1000, '9.00', '10.00', 0, 1000, '2013-08-15 00:00:00', 'admin', 'entry', '', '9000.00', '9000.00', '0.00', 'cheque', 'uouo', '2020-12-30 00:00:00', 9000, 1, 'BILL-126'),
-(262, 'PR264', 'techo tip', 'Monish', '', 1000, '8.00', '10.00', 0, 1000, '2013-08-15 00:00:00', 'admin', 'entry', '', '8000.00', '8000.00', '0.00', 'cheque', '768768', '2020-12-30 00:00:00', 8000, 1, 'BILL-126'),
-(263, 'SD263', 'Cello griper', '', '', 10, '0.00', '10.00', 1000, 990, '2013-08-15 00:00:00', 'admin', 'sales', 'SD263', '100.00', '0.00', '0.00', '', '', '2020-12-30 00:00:00', 0, 1, 'BILL-126'),
-(264, 'SD264', 'Cello griper', '', '', 100, '0.00', '10.00', 990, 890, '2013-08-15 00:00:00', 'admin', 'sales', 'SD264', '1000.00', '0.00', '0.00', '', '', '2020-12-30 00:00:00', 0, 1, 'BILL-127'),
-(265, 'SD265', 'Cello griper', '', '', 100, '0.00', '10.00', 890, 790, '2013-08-15 00:00:00', 'admin', 'sales', 'SD265', '1000.00', '0.00', '0.00', '', '', '2020-12-30 00:00:00', 0, 1, 'BILL-127'),
-(266, 'SD266', 'Cello griper', '', '', 100, '0.00', '10.00', 790, 690, '2013-08-15 00:00:00', 'admin', 'sales', 'SD266', '1000.00', '0.00', '0.00', '', '', '2020-12-30 00:00:00', 0, 1, 'BILL-127'),
-(267, 'SD267', 'Cello griper', '', '', 100, '0.00', '10.00', 690, 590, '2013-08-15 00:00:00', 'admin', 'sales', 'SD267', '1000.00', '0.00', '0.00', '', '', '2020-12-30 00:00:00', 0, 1, 'BILL-127'),
-(268, 'SD268', 'Cello griper', '', '', 100, '0.00', '10.00', 590, 490, '2013-08-15 00:00:00', 'admin', 'sales', 'SD268', '1000.00', '0.00', '0.00', '', '', '2020-12-30 00:00:00', 0, 1, 'BILL-127'),
-(269, 'SD269', 'Cello griper', '', '', 100, '0.00', '10.00', 490, 390, '2013-08-15 00:00:00', 'admin', 'sales', 'SD269', '1000.00', '0.00', '0.00', '', '', '2020-12-30 00:00:00', 0, 1, 'BILL-127'),
-(270, 'SD270', 'Cello griper', '', '', 100, '0.00', '10.00', 390, 290, '2013-08-15 00:00:00', 'admin', 'sales', 'SD270', '1000.00', '0.00', '0.00', '', '', '2020-12-30 00:00:00', 0, 1, 'BILL-127'),
-(271, 'SD270', 'techo tip', '', '', 100, '0.00', '10.00', 1000, 900, '2013-08-15 00:00:00', 'admin', 'sales', 'SD270', '1000.00', '0.00', '0.00', '', '', '2020-12-30 00:00:00', 0, 2, 'BILL-127')";
+        $sql = "INSERT INTO `stock_entries` (`id`, `stock_id`,`stockidnumber`, `stock_name`, `stock_supplier_name`, `category`, `quantity`, `company_price`, `selling_price`, `opening_stock`, `closing_stock`, `date`, `username`, `type`, `salesid`, `total`, `payment`, `balance`, `mode`, `description`, `due`, `subtotal`, `count1`, `billnumber`) VALUES
+(261, 'PR261','261', 'Cello griper', 'arjun', '', 1000, '9.00', '10.00', 0, 1000, '2013-08-15 00:00:00', 'admin', 'entry', '', '9000.00', '9000.00', '0.00', 'cheque', 'uouo', '2020-12-30 00:00:00', 9000, 1, 'BILL-126'),
+(262, 'PR262','262', 'Cello', 'ram', '', 1000, '8.00', '10.00', 0, 1000, '2013-08-15 00:00:00', 'admin', 'entry', '', '8000.00', '8000.00', '0.00', 'cheque', '768768', '2020-12-30 00:00:00', 8000, 1, 'BILL-126'),
+(263, 'PR263','263', 'techo tip', 'Monish', '', 1000, '8.00', '10.00', 0, 1000, '2013-08-15 00:00:00', 'admin', 'entry', '', '8000.00', '8000.00', '0.00', 'cheque', '768768', '2020-12-30 00:00:00', 8000, 1, 'BILL-126'),
+(264, 'PR264','264', 'ceParker Urban Fashion', 'vignesh', '', 1000, '8.00', '10.00', 0, 1000, '2013-08-15 00:00:00', 'admin', 'entry', '', '8000.00', '8000.00', '0.00', 'cheque', '768768', '2020-12-30 00:00:00', 8000, 1, 'BILL-126'),
+(265, 'PR265','265', 'techo tip', 'Monish', '', 1000, '8.00', '10.00', 0, 1000, '2013-08-15 00:00:00', 'admin', 'entry', '', '8000.00', '8000.00', '0.00', 'cheque', '768768', '2020-12-30 00:00:00', 8000, 1, 'BILL-126'),
+(266, 'PR266','266', 'Cello', 'ram', '', 1000, '8.00', '10.00', 0, 1000, '2013-08-15 00:00:00', 'admin', 'entry', '', '8000.00', '8000.00', '0.00', 'cheque', '768768', '2020-12-30 00:00:00', 8000, 1, 'BILL-126'),
+(267, 'PR267','267', 'techo tip', 'Monish', '', 1000, '8.00', '10.00', 0, 1000, '2013-08-15 00:00:00', 'admin', 'entry', '', '8000.00', '8000.00', '0.00', 'cheque', '768768', '2020-12-30 00:00:00', 8000, 1, 'BILL-126'),
+(268, 'PR268','268', 'Cello griper', 'satheesh', '', 1000, '8.00', '10.00', 0, 1000, '2013-08-15 00:00:00', 'admin', 'entry', '', '8000.00', '8000.00', '0.00', 'cheque', '768768', '2020-12-30 00:00:00', 8000, 1, 'BILL-126'),
+(269, 'PR269','269', 'techo tip', 'Monish', '', 1000, '8.00', '10.00', 0, 1000, '2013-08-15 00:00:00', 'admin', 'entry', '', '8000.00', '8000.00', '0.00', 'cheque', '768768', '2020-12-30 00:00:00', 8000, 1, 'BILL-126'),
+(270, 'PR270','270', 'ceParker Urban Fashion', 'sadham', '', 1000, '8.00', '10.00', 0, 1000, '2013-08-15 00:00:00', 'admin', 'entry', '', '8000.00', '8000.00', '0.00', 'cheque', '768768', '2020-12-30 00:00:00', 8000, 1, 'BILL-127'),
+(271, 'PR271','271', 'Cello', 'ram', '', 1000, '8.00', '10.00', 0, 1000, '2013-08-15 00:00:00', 'admin', 'entry', '', '8000.00', '8000.00', '0.00', 'cheque', '768768', '2020-12-30 00:00:00', 8000, 1, 'BILL-127'),
+(272, 'PR272','272', 'techo', 'Monish', '', 1000, '8.00', '10.00', 0, 1000, '2013-08-15 00:00:00', 'admin', 'entry', '', '8000.00', '8000.00', '0.00', 'cheque', '768768', '2020-12-30 00:00:00', 8000, 1, 'BILL-127')";
 
 // Execute query
         mysqli_query($con, $sql);
@@ -211,6 +213,7 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
     $sql = "CREATE TABLE IF NOT EXISTS `stock_sales` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `transactionid` varchar(250) NOT NULL,
+  `transidnumber` int NOT NULL,
   `stock_name` varchar(200) NOT NULL,
   `category` varchar(120) NOT NULL,
   `supplier_name` varchar(200) NOT NULL,
@@ -241,16 +244,18 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
 
 
     if ($dummy === 1) {
-        $sql = "INSERT INTO `stock_sales` (`id`, `transactionid`, `stock_name`, `category`, `supplier_name`, `selling_price`, `quantity`, `amount`, `date`, `username`, `customer_id`, `subtotal`, `payment`, `balance`, `discount`, `tax`, `tax_dis`, `dis_amount`, `grand_total`, `due`, `mode`, `description`, `count1`, `billnumber`) VALUES
-(20, 'SD263', 'Cello griper', '', '', '10.00', '10.00', '100.00', '2013-08-15', 'admin', 'jacob', '90.00', '10.00', '80.00', '10', '87879', 'bnmnbmn', '10', '100', '1970-01-01', 'cheque', 'uuuoiuo', 1, 'BILL-126'),
-(21, 'SD264', 'Cello griper', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'sam', '990.00', '100.00', '890.00', '0', '10', '8787', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127'),
-(22, 'SD265', 'Cello griper', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'sam', '990.00', '100.00', '890.00', '0', '10', '8787', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127'),
-(23, 'SD266', 'Cello griper', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'sam', '990.00', '100.00', '890.00', '0', '10', '8787', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127'),
-(24, 'SD267', 'Cello griper', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'sam', '990.00', '100.00', '890.00', '0', '10', '8787', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127'),
-(25, 'SD268', 'Cello griper', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'sam', '990.00', '100.00', '890.00', '0', '10', '8787', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127'),
-(26, 'SD269', 'Cello griper', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'sam', '990.00', '100.00', '890.00', '0', '10', '8787', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127'),
-(27, 'SD270', 'Cello griper', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'jerin', '1900.00', '190.00', '1810.00', '0', '78', 'hjhjkh', '100', '2000', '1970-01-01', 'cheque', 'khksg', 1, 'BILL-127'),
-(28, 'SD270', 'techo tip', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'jerin', '1900.00', '190.00', '1810.00', '0', '78', 'hjhjkh', '100', '2000', '1970-01-01', 'cheque', 'khksg', 2, 'BILL-127')";
+        $sql = "INSERT INTO `stock_sales` (`id`, `transactionid`, `transidnumber`, `stock_name`, `category`, `supplier_name`, `selling_price`, `quantity`, `amount`, `date`, `username`, `customer_id`, `subtotal`, `payment`, `balance`, `discount`, `tax`, `tax_dis`, `dis_amount`, `grand_total`, `due`, `mode`, `description`, `count1`, `billnumber`) VALUES
+(20, 'SL263','263', 'Cello griper', '', '', '10.00', '10.00', '100.00', '2013-08-15', 'admin', 'jacob', '90.00', '10.00', '80.00', '10', '87879', 'bnmnbmn', '10', '100', '1970-01-01', 'cheque', 'uuuoiuo', 1, 'BILL-126'),
+(21, 'SL264','264', 'Cello griper', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'sam', '990.00', '100.00', '890.00', '0', '10', '8787', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127'),
+(22, 'SL265','265', 'Cello griper', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'sam', '990.00', '100.00', '890.00', '0', '10', '8787', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127'),
+(23, 'SL266','266', 'Cello griper', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'sam', '990.00', '100.00', '890.00', '0', '10', '8787', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127'),
+(24, 'SL267','267', 'Cello griper', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'sam', '990.00', '100.00', '890.00', '0', '10', '8787', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127'),
+(25, 'SL268','268', 'Cello griper', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'sam', '990.00', '100.00', '890.00', '0', '10', '8787', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127'),
+(26, 'SL269','269', 'Cello griper', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'sam', '990.00', '100.00', '890.00', '0', '10', '8787', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127'),
+(27, 'SL270','270', 'Cello griper', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'jerin', '1900.00', '190.00', '1810.00', '0', '78', 'hjhjkh', '100', '2000', '1970-01-01', 'cheque', 'khksg', 1, 'BILL-127'),
+(28, 'SL270','270', 'techo tip', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'jerin', '1900.00', '190.00', '1810.00', '0', '78', 'hjhjkh', '100', '2000', '1970-01-01', 'cheque', 'khksg', 2, 'BILL-127'),
+(29, 'SL271','271', 'Cello griper', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'sam', '990.00', '100.00', '890.00', '0', '10', '8787', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127'),
+(30, 'SL272','272', 'Cello griper', '', '', '10.00', '100.00', '1000.00', '2013-08-15', 'admin', 'sam', '990.00', '100.00', '890.00', '0', '10', '8787', '10', '1000', '1970-01-01', 'cheque', 'iyiuy', 1, 'BILL-127')";
 
 // Execute query
         mysqli_query($con, $sql);
@@ -367,11 +372,11 @@ if (isset($_POST['host']) and isset($_POST['username']) and $_POST['host'] != ""
     $data = '<?php $config["database"] = "' . $name . '"; $config["host"]= "' . $host . '";$config["username"]= "' . $user . '"; $config["password"]= "' . $pass . '";?>';
     fwrite($ourFileHandle, $data);
     fclose($ourFileHandle);
-    header("location: user_details.php");
+    header("location: install_step3.php");
 
 
 } else {
-    header("location: install.php");
+    header("location: install_step1.php");
 }
 //
 
